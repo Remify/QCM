@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -13,7 +13,23 @@
     </script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+
+    <div class="containter">
+      <% questions.forEach(function(question) { %>
+        <div class="question" data-id="<%= question.id %>">
+          <span>
+            <h2><%= question.titre %></h2>
+          </span>
+          <div class="reponse">
+            <form>
+            <% question.reponses.forEach(function(reponse) { %>
+              <input type="radio" name="reponse" value="<%= reponse.id %>" />
+              <span><%= reponse.text %></span><br/>
+            <% }); %>
+            </form>
+          </div>
+        </div>
+      <% }); %>
+    </div>
   </body>
 </html>
