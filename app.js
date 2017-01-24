@@ -26,8 +26,13 @@ app.use(function(req, res, next){
     next();
 });
 
-io.on("inputQuestion", function(data) {
-    console.log(data);
+// TODO : Organiser les communications par socket
+io.sockets.on('connection', function (socket) {
+
+    // Quand le serveur reçoit un signal de type "inputQuestion" du client
+    socket.on('inputQuestion', function (data) {
+        console.log(data);
+    });
 });
 
 
