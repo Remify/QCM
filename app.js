@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var socket_io    = require('socket.io');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var results = require('./routes/results');
 
 var app = express();
 var server = require('http').Server(app);
@@ -31,10 +31,17 @@ io.sockets.on('connection', function (socket) {
 
     // Quand le serveur reçoit un signal de type "inputQuestion" du client
     socket.on('inputQuestion', function (data) {
+
         console.log(data);
+        // io.emit pour envoyer à tout le monde
+        io.emit('newSubmission', data);
     });
+
 });
 
+var sendToResult = function($data) {
+
+}
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -45,7 +52,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/results', results);
 
 
 // catch 404 and forward to error handler
