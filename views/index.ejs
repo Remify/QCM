@@ -25,8 +25,8 @@
             <div class="reponse">
                 <form>
                     <% question.reponses.forEach(function(reponse) { %>
-                    <input type="radio" name="reponse" value="<%= reponse.id %>"/>
-                    <span><%= reponse.text %></span><br/>
+                    <input type="radio" name="reponse" id="<%= question.id + "-" + reponse.id %>" value="<%= reponse.id %>"/>
+                    <label for="<%= question.id + "-" + reponse.id %>"><%= reponse.text %></label><br/>
                     <% }); %>
                 </form>
             </div>
