@@ -24,9 +24,9 @@ var questions = [
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.io.emit("socketToMe", questions);
     res.render('index', {questions : questions});
 });
+
 
 
 module.exports = router;

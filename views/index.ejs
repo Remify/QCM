@@ -7,11 +7,7 @@
     <script src="js/jquery-3.1.1.slim.min.js"></script>
     <script src="js/qcm.js"></script>
     <script>
-        var socket = io('//localhost:3000');
-
-        socket.on('socketToMe', function (data) {
-            console.log(data);
-        });
+        var socket = io.connect('http://localhost:3000');
     </script>
 </head>
 <body>
@@ -25,7 +21,7 @@
             <div class="reponse">
                 <form>
                     <% question.reponses.forEach(function(reponse) { %>
-                    <input type="radio" name="reponse" id="<%= question.id + "-" + reponse.id %>" value="<%= reponse.id %>"/>
+                    <input type="radio" name="reponse" data-question-id="<%= question.id %>" id="<%= question.id + "-" + reponse.id %>" value="<%= reponse.id %>"/>
                     <label for="<%= question.id + "-" + reponse.id %>"><%= reponse.text %></label><br/>
                     <% }); %>
                 </form>
