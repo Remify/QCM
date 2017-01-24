@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="js/jquery-3.1.1.slim.min.js"></script>
+    <script src="js/qcm.js"></script>
     <script>
         var socket = io('//localhost:3000');
 
@@ -11,25 +13,25 @@
             console.log(data);
         });
     </script>
-  </head>
-  <body>
+</head>
+<body>
 
     <div class="containter">
-      <% questions.forEach(function(question) { %>
+        <% questions.forEach(function(question) { %>
         <div class="question" data-id="<%= question.id %>">
-          <span>
-            <h2><%= question.titre %></h2>
-          </span>
-          <div class="reponse">
-            <form>
-            <% question.reponses.forEach(function(reponse) { %>
-              <input type="radio" name="reponse" value="<%= reponse.id %>" />
-              <span><%= reponse.text %></span><br/>
-            <% }); %>
-            </form>
-          </div>
+              <span>
+                <h2><%= question.titre %></h2>
+              </span>
+            <div class="reponse">
+                <form>
+                    <% question.reponses.forEach(function(reponse) { %>
+                    <input type="radio" name="reponse" value="<%= reponse.id %>"/>
+                    <span><%= reponse.text %></span><br/>
+                    <% }); %>
+                </form>
+            </div>
         </div>
-      <% }); %>
+        <% }); %>
     </div>
-  </body>
+</body>
 </html>
