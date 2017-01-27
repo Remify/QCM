@@ -11,7 +11,6 @@ var results = require('./routes/results');
 
 var app = express();
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,28 +19,18 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
+
+// Socket IO
+var io = require("./lib/sockets")(server);
+
+
 // Midleware pour Socket.io
 app.use(function(req, res, next){
     res.io = io;
     next();
 });
 
-// TODO : Organiser les communications par socket
-io.sockets.on('connection', function (socket) {
 
-    // Quand le serveur reçoit un signal de type "inputQuestion" du client
-    socket.on('inputQuestion', function (data) {
-
-        console.log(data);
-        // io.emit pour envoyer à tout le monde
-        io.emit('newSubmission', data);
-    });
-
-});
-
-var sendToResult = function($data) {
-
-}
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
