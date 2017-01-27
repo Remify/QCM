@@ -17,4 +17,8 @@ $(document).ready(function() {
         socket.emit("inputQuestion", data);
 
     });
+
+    $('#roomInput').change(function () {
+        socket.emit("room", this.value);
+    });
 });

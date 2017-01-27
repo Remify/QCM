@@ -13,7 +13,6 @@ $(document).ready(function () {
     var updateData = function(idQuestion, idReponse) {
 
         var index = idReponse - 1;
-        console.log('index update : ' + index);
 
         charts[idQuestion].data.datasets[0].data[index]++;
         charts[idQuestion].update();
