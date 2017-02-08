@@ -1,10 +1,19 @@
 Installation :
 `Npm install`
 
-Lancement : npm start
+Lancement : `npm start`
+
 Visible sur localhost:3000
 
-Sur Express Generator : http://expressjs.com/fr/guide/routing.html
+Base de donné
+===
+Installer `qcm-nodejs.sql` sur phpMyAdmin
 
+Nom de la base : `qcm-nodejs`
+
+
+A voir
+ ===
+Sur Express Generator : http://expressjs.com/fr/guide/routing.html
 
 Nodemon : Utilitaire qui relance le serveur à la modification
