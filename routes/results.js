@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var questions = require('../data/questions');
+var questions = require('../data/question');
 
 
 /* GET users listing. */

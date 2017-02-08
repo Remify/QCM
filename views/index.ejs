@@ -21,14 +21,14 @@
     <% questions.forEach(function(question) { %>
     <div class="question" data-id="<%= question.id %>">
               <span>
-                <h2><%= question.titre %></h2>
+                <h2><%= question.intitule %></h2>
               </span>
         <div class="reponse">
             <form>
                 <% question.reponses.forEach(function(reponse) { %>
                 <input type="radio" name="reponse" data-question-id="<%= question.id %>"
                        id="<%= question.id + "-" + reponse.id %>" value="<%= reponse.id %>"/>
-                <label for="<%= question.id + "-" + reponse.id %>"><%= reponse.text %></label><br/>
+                <label for="<%= question.id + "-" + reponse.id %>"><%= reponse.intitule %></label><br/>
                 <% }); %>
             </form>
         </div>
