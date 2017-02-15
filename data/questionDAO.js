@@ -7,14 +7,13 @@ var Question = require('./question');
 
 var QuestionDAO = {
     execute: function (query, callback) {
-        connection.connect();
 
         connection.query(query, function (error, results, fields) {
             if (error) throw error;
             callback(results, fields);
         });
 
-        connection.end();
+
     },
     retrieveById: function(id, callback) {
             var query = "SELECT question.id as qId, question.intitule as qIntitule, reponse.id as rId, reponse.intitule as rIntitule FROM question, reponse WHERE question_id =" + id;
@@ -31,6 +30,7 @@ var QuestionDAO = {
                     })
                 }
                 callback(q);
+
             })
     }
 }

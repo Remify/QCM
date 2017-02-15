@@ -20,6 +20,13 @@ $(document).ready(function() {
     });
 
     $('#roomInput').change(function () {
-        socket.emit("room", this.value);
+
+        socket.emit("roomConnect", this.value);
+        $(location).attr('href', 'room/'+this.value + "/" + socket.id);
+    });
+
+
+    socket.on("hello", function (data) {
+        console.log(data);
     });
 });

@@ -8,6 +8,7 @@ var socket_io    = require('socket.io');
 
 var index = require('./routes/index');
 var results = require('./routes/results');
+var room = require('./routes/room');
 
 var app = express();
 var server = require('http').Server(app);
@@ -42,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/results', results);
+app.use('/room', room);
 
 
 // catch 404 and forward to error handler
