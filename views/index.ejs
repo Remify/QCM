@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, shrink-to-fit=no">
+    <title>La réponse D</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/jquery-3.1.1.slim.min.js"></script>
     <script src="js/qcm.js"></script>
-    <script>
-        var socket = io.connect('http://localhost:3000');
-    </script>
 </head>
 <body>
-<div class="room">
-    <label for="roomInput">Room :</label>
-    <input id="roomInput" type="text">
-</div>
 
+<header>
+    <div class="logo">
+        <p>La Réponse D</p>
+    </div>
 
-<div class="containter">
-    <% questions.forEach(function(question) { %>
-    <div class="question" data-id="<%= question.id %>">
+    <nav>
+        <ul>
+            <li>Room</li>
+            <li>userName</li>
+        </ul>
+    </nav>
+</header>
+
+<section class="main-section">
+
+    <h1>La réponse D</h1>
+    <h2>Connectez vous et jouez !</h2>
+
+    <div class="room">
+        <label for="roomInput">Room :</label>
+        <input id="roomInput" type="text">
+    </div>
+
+    <div class="containter">
+        <% questions.forEach(function(question) { %>
+        <div class="question" data-id="<%= question.id %>">
               <span>
                 <h2><%= question.intitule %></h2>
               </span>
-        <div class="reponse">
-            <form>
-                <% question.reponses.forEach(function(reponse) { %>
-                <input type="radio" name="reponse" data-question-id="<%= question.id %>"
-                       id="<%= question.id + "-" + reponse.id %>" value="<%= reponse.id %>"/>
-                <label for="<%= question.id + "-" + reponse.id %>"><%= reponse.intitule %></label><br/>
-                <% }); %>
-            </form>
+            <div class="reponse">
+                <form>
+                    <% question.reponses.forEach(function(reponse) { %>
+                    <input type="radio" name="reponse" data-question-id="<%= question.id %>"
+                           id="<%= question.id + "-" + reponse.id %>" value="<%= reponse.id %>"/>
+                    <label for="<%= question.id + "-" + reponse.id %>"><%= reponse.intitule %></label><br/>
+                    <% }); %>
+                </form>
+            </div>
         </div>
+        <% }); %>
     </div>
-    <% }); %>
-</div>
+</section>
 </body>
 </html>

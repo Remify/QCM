@@ -17,3 +17,9 @@ A voir
 Sur Express Generator : http://expressjs.com/fr/guide/routing.html
 
 Nodemon : Utilitaire qui relance le serveur à la modification
+
+
+ATTENTION =====> En cas d'erreurs de connexion mysql, verifier port de connexion 3306 CAR lucas travail sur port 3307
+ ===
+ enlever ligne dans  data/database.js :     port:'3307'
+ port par defaut : 3306
