@@ -8,20 +8,22 @@
 <div id="questionSelection">
 
     <div class="roomQuestions sortBlock" >
-
+        <form action="/admin/room/<%= room.id %>/update/questions" id="formRoomQuestions" method="post">
+        <input type="hidden" name="questions" id="sortableData">
         <ul id="roomQuestions" class="connectedSortable">
             <% roomQuestions.forEach(function (question) { %>
-            <li><%= question.id %> - <%= question.intitule %></li>
+            <li id="question_<%= question.id %>"><%= question.intitule %></li>
             <% }) %>
-        </ul>
-
+        </ul><br>
+            <button id="roomButtonSave">Enregistrer</button>
+        </form>
     </div>
 
     <div class="allQuestions sortBlock">
 
         <ul id="allQuestions" class="connectedSortable">
             <% questions.forEach(function (question) { %>
-            <li><%= question.id %> - <%= question.intitule %></li>
+            <li id="question_<%= question.id %>"><%= question.intitule %></li>
             <% }) %>
         </ul>
 
