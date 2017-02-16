@@ -17,7 +17,14 @@ var RoomDAO = {
             console.log(results);
             callback(results);
         });
-    }
+    },
+
+    retrieveById: function(id, callback) {
+        var query = "SELECT * FROM rooms WHERE id = " + id;
+        this.execute(query, function (results, fields) {
+            callback(results);
+        });
+    },
 }
 
 

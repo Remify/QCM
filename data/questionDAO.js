@@ -34,6 +34,10 @@ var QuestionDAO = {
             })
     },
 
+    retrieveByRoomId: function(id, callback) {
+
+    },
+
     /**
      * Enregistre une nouvelle question. Retourne l'id de la question créé
      * Retourne
