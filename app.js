@@ -9,6 +9,7 @@ var engine = require('ejs-locals');
 var index = require('./routes/index');
 var results = require('./routes/results');
 var room = require('./routes/room');
+var admin = require('./routes/admin');
 
 var app = express();
 var server = require('http').Server(app);
@@ -51,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/results', results);
 app.use('/room', room);
+app.use('/admin', admin);
 
 
 // catch 404 and forward to error handler
