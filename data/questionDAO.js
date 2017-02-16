@@ -40,6 +40,13 @@ var QuestionDAO = {
             callback(results);
         });
     },
+    
+    getAllQuestions: function (callback) {
+        var query = "SELECT * FROM question"
+        this.execute(query, function (results) {
+            callback(results);
+        })
+    },
 
     /**
      * Enregistre une nouvelle question. Retourne l'id de la question créé

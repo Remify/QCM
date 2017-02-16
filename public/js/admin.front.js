@@ -9,3 +9,10 @@ $('#addResponseButton').click(function () {
     clone.find('span').text(nbRep);
     clone.appendTo('.reponses');
 });
+
+
+$(function() {
+    $( "#roomQuestions, #allQuestions" ).sortable({
+        connectWith: ".connectedSortable"
+    }).disableSelection();
+} );
