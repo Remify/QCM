@@ -32,6 +32,30 @@ var QuestionDAO = {
                 callback(q);
 
             })
+    },
+
+    /**
+     * Enregistre une nouvelle question. Retourne l'id de la question créé
+     * Retourne
+     * @param qIntitule
+     * @param callback
+     */
+    newQuestion : function (qIntitule, callback) {
+        var query = connection.query('INSERT INTO question SET intitule=?', qIntitule, function (error, results, fields) {
+            if (error) throw error;
+            callback(results.insertId);
+        });
+
+    },
+
+
+    newReponse : function (rIntitule, qId, callback) {
+
+        var reponse = { id: null, intitule: rIntitule, question_id:qId };
+        var query = connection.query('INSERT INTO reponse SET ?', reponse, function (error, results, fields) {
+            if (error) throw error;
+        });
+        console.log(query.sql);
     }
 }
 

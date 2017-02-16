@@ -2,7 +2,7 @@
     <% script('/js/admin.front.js') -%>
 
     <h1>Admin</h1>
-    <form action="admin/question/new" class="formNewQuestion">
+    <form action="/admin/question/new" class="formNewQuestion" method="post">
         <div class="question">
 
             <label>Intitulé de la question :</label>
@@ -15,6 +15,11 @@
             <div class="reponse">
                 <label>Réponse <span>1</span>:</label>
                 <input type="text" name="rIntitule" data-nb-rep="1">
+            </div>
+
+            <div class="reponse">
+                <label>Réponse <span>2</span>:</label>
+                <input type="text" name="rIntitule" data-nb-rep="2">
             </div>
         </div>
 
