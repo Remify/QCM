@@ -16,9 +16,9 @@ var QuestionDAO = {
 
     },
     retrieveById: function(id, callback) {
-            var query = "SELECT question.id as qId, question.intitule as qIntitule, reponse.id as rId, reponse.intitule as rIntitule FROM question, reponse WHERE question_id =" + id;
+            var query = "SELECT question.id as qId, question.intitule as qIntitule, reponse.id as rId, reponse.intitule as rIntitule FROM question, reponse WHERE question.id =" + id + " AND question_id = " + id;
             this.execute(query, function (results, fields) {
-
+                console.log(query);
                 if(results[0]) {
                     var q = new Question(results[0].qId, results[0].qIntitule);
                     results.forEach(function (result) {
