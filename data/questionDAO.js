@@ -35,7 +35,10 @@ var QuestionDAO = {
     },
 
     retrieveByRoomId: function(id, callback) {
-
+        var query = "SELECT id, intitule FROM question, room_questions WHERE question.id = room_questions.question_id AND room_questions.room_id = " + id ;
+        this.execute(query, function (results) {
+            callback(results);
+        });
     },
 
     /**

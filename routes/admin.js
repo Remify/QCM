@@ -39,9 +39,11 @@ router.get('/rooms', function(req, res, next) {
 
 router.get('/room/:id', function(req, res, next) {
     RoomDAO.retrieveById(req.params.id, function (results) {
-        if(results[0]) {
-
-            res.render('admin/room', {room: results[0]} );
+        var room = results[0];
+        if(room) {
+            questionDAO.retrieveByRoomId(req.params.id, function (results) {
+                res.render('admin/room', {room: room, questions: results} );
+            });
         } else {
             res.render('error', {message: "Cette room n'existe pas", error: "404"});
         }

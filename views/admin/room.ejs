@@ -3,3 +3,10 @@
 
 
 <h1>Room : <%= room.name %></h1>
+
+
+<ul>
+    <% questions.forEach(function (question) { %>
+    <li><%= question.id %> - <%= question.intitule %></li>
+    <% }) %>
+</ul>

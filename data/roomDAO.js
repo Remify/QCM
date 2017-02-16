@@ -21,7 +21,7 @@ var RoomDAO = {
 
     retrieveById: function(id, callback) {
         var query = "SELECT * FROM rooms WHERE id = " + id;
-        this.execute(query, function (results, fields) {
+        this.execute(query, function (results) {
             callback(results);
         });
     },
