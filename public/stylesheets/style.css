@@ -1,8 +1,144 @@
+
+/**********************************************/
+/******************  GENERAL  *****************/
+/**********************************************/
+
+
 body {
-  padding: 50px;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, p{
+  margin:0;
 }
 
 a {
   color: #00B7FF;
+}
+
+/**********************************************/
+/******************  HEADER  ******************/
+/**********************************************/
+
+header {
+  display: flex;
+  justify-content: space-around;
+  font-family: 'Abril Fatface', cursive;
+  width: 100%;
+  flex-direction: row;
+  background-color: #4899CC;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+header div{
+  margin: 20px 10px 20px 0;
+}
+
+/**********************************************/
+/***************  MAIN CONTENT  ***************/
+/**********************************************/
+
+.container{
+  width: 100%;
+  background-color: #FF7373;
+}
+
+.main-section h1{
+  font-family: 'Abril Fatface', cursive;
+  padding: 50px 0;
+  text-align: center;
+  color: white;
+}
+
+.main-section h2{
+  margin: 20px;
+  padding: 5px;
+  background-color: #4899CC;
+  border-radius: 20px;
+  font-family: 'Abril Fatface', cursive;
+  text-align: center;
+  color: white;
+}
+
+.room{
+  padding: 50px;
+  background-color: #FFFD8C;
+  margin: 0 auto;
+  flex-direction: column;
+  display: flex;
+  width: 65%;
+  justify-content: center;
+  border-radius: 0px 80px 80px 80px;
+}
+
+.room label{
+  padding: 20px 0;
+  color: #212121;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.room input{
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.room input:focus{
+   outline-style: none;
+ }
+
+.room input:focus::after{
+  content: " ";
+  outline-style: none;
+  border-bottom: 10px solid #FF7373;
+}
+
+.room button{
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background-color: #FF7373;
+  margin-top: 40px;
+  color: white;
+}
+
+.room button:hover{
+  outline-style: none;
+  background-color: #4899CC;
+}
+
+form {
+  background-color: white;
+  padding: 30px 0;
+  justify-content: center;
+  display: flex;
+}
+
+form label{
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+form input{
+  margin-left: 20px;
+}
+
+/**********************************************/
+/******************  FOOTER  *****************/
+/**********************************************/
+
+footer{
+  width: 100%;
+  background-color: #212121;
+  color: white;
+}
+
+footer p{
+  font-family: 'Abril Fatface', cursive;
+  text-align: center;
+  padding: 20px 50px;
 }
