@@ -5,6 +5,7 @@
 var questions = $('.question');
 var socket = io.connect('http://localhost:3000');
 
+
 $(document).ready(function() {
 
     $('.reponse input[type=radio]').change(function() {

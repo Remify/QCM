@@ -7,7 +7,7 @@ var questionDAO = require('../data/questionDAO')
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-    questionDAO.retrieveById(1, function (q) {
+    questionDAO.retrieveById(2, function (q) {
         var questions = [q];
         console.log(questions);
         res.render('index', {questions : questions });
