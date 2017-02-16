@@ -33,3 +33,4 @@ npm-debug.log
 .idea
 .idea/*
 .idea*
+/.idea/workspace.xml
