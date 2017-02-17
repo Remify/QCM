@@ -25,6 +25,13 @@ var RoomDAO = {
             callback(results);
         });
     },
+
+    retrieveByName: function(name, callback) {
+        var query = "SELECT * FROM rooms WHERE name LIKE '" + name + "'";
+        this.execute(query, function (results) {
+            callback(results[0]);
+        });
+    },
     
     removeQuestions: function (roomId, callback) {
           var query = "DELETE FROM room_questions WHERE room_id = " + roomId;

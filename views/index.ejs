@@ -5,30 +5,12 @@
         <h1>La réponse D</h1>
         <h2>Connectez vous et jouez !</h2>
 
-        <div class="room">
+        <form class="room" id="formLoginRoom" method="get">
             <label for="nameInput">Nom :</label>
-            <input id="nameInput" type="text">
+            <input id="nameInput" type="text" required>
             <label for="roomInput">Room :</label>
-            <input id="roomInput" type="text">
-            <button id="connectToRoom">Se connecter</button>
-        </div>
+            <input id="roomInput" type="text" required>
+            <input type="submit" id="connectToRoom" value="Se connecter">
+        </form>
 
-        <div class="containter">
-            <% questions.forEach(function(question) { %>
-            <div class="question" data-id="<%= question.id %>">
-              <span>
-                <h2><%= question.intitule %></h2>
-              </span>
-                <div class="reponse">
-                    <form>
-                        <% question.reponses.forEach(function(reponse) { %>
-                        <input type="radio" name="reponse" data-question-id="<%= question.id %>"
-                               id="<%= question.id + "-" + reponse.id %>" value="<%= reponse.id %>"/>
-                        <label for="<%= question.id + "-" + reponse.id %>"><%= reponse.intitule %></label><br/>
-                        <% }); %>
-                    </form>
-                </div>
-            </div>
-            <% }); %>
-        </div>
     </section>
