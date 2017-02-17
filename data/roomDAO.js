@@ -25,6 +25,32 @@ var RoomDAO = {
             callback(results);
         });
     },
+    
+    removeQuestions: function (roomId, callback) {
+          var query = "DELETE FROM room_questions WHERE room_id = " + roomId;
+
+          this.execute(query, function (results) {
+              callback(results);
+          });
+
+          console.log('remove');
+    },
+
+    addQuestions: function(roomId, questionsId, callback) {
+        var query =  "INSERT INTO room_questions VALUES "
+
+        for(i=0; i < questionsId.length; i++) {
+            if(i == questionsId.length -1) {
+                query += "( '', '" + roomId + "', '" + questionsId[i] + "', '" + i + "')";
+            } else {
+                query += "( '', '" + roomId + "', '" + questionsId[i] + "', '" + i + "'),";
+            }
+        }
+
+        this.execute(query, function (results) {
+            callback(results);
+        });
+    }
 }
 
 

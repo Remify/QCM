@@ -55,4 +55,17 @@ router.get('/room/:id', function(req, res, next) {
 });
 
 
+router.post('/room/:id/update/questions', function(req, res, next) {
+    var questionsId = req.body.questions.split(',').map(function (str) {
+        return str.replace("question_", "");
+    });
+    
+    RoomDAO.removeQuestions(req.params.id, function () {
+        RoomDAO.addQuestions(req.params.id, questionsId, function (results) {
+            res.redirect('/admin/room/' + req.params.id);
+        });
+    })
+
+});
+
 module.exports = router;
