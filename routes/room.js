@@ -18,7 +18,9 @@ router.get('/:room/', function(req, res, next) {
 });
 
 router.get('/:room/question/:qId/getResponses', function(req, res, next) {
-    res.send("req :" + req.params.qId);
+    questionDAO.retrieveById(req.params.qId, function (result) {
+         res.send(result);
+    });
 });
 
 module.exports = router;

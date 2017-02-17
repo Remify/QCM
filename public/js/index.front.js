@@ -34,4 +34,5 @@ $(document).ready(function() {
     socket.on("hello", function (data) {
         console.log(data);
     });
+
 });

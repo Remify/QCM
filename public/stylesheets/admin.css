@@ -14,3 +14,13 @@
     width:300px;
     height:150px;
 }
+
+#questionSelection .ui-sortable-handle {
+    padding: 5px;
+    background-color: rgb(170, 170, 170);
+}
+
+#questionSelection .ui-sortable-handle:hover {
+    background-color: #999;
+    cursor: pointer;
+}
