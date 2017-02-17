@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Jeu 16 Février 2017 à 23:12
--- Version du serveur :  5.7.11
--- Version de PHP :  5.6.19
+-- Client :  localhost
+-- Généré le :  Ven 17 Février 2017 à 11:39
+-- Version du serveur :  10.1.16-MariaDB
+-- Version de PHP :  5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,7 +36,7 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`id`, `intitule`) VALUES
-(2, 'Qu\'est ce qui est petit et Marron ?'),
+(2, 'Qu''est ce qui est petit et Marron ?'),
 (3, 'Cheval blanc'),
 (4, 'A cours de question ?');
 
@@ -91,19 +91,22 @@ INSERT INTO `rooms` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `room_questions` (
+  `id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
-  `question_id` int(11) NOT NULL
+  `question_id` int(11) NOT NULL,
+  `qOrder` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `room_questions`
 --
 
-INSERT INTO `room_questions` (`room_id`, `question_id`) VALUES
-(1, 2),
-(1, 3),
-(2, 2),
-(2, 4);
+INSERT INTO `room_questions` (`id`, `room_id`, `question_id`, `qOrder`) VALUES
+(8, 1, 1, 2),
+(7, 1, 1, 1),
+(6, 1, 1, 0),
+(36, 2, 3, 1),
+(35, 2, 4, 0);
 
 --
 -- Index pour les tables exportées
@@ -131,7 +134,7 @@ ALTER TABLE `rooms`
 -- Index pour la table `room_questions`
 --
 ALTER TABLE `room_questions`
-  ADD PRIMARY KEY (`room_id`,`question_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -152,6 +155,11 @@ ALTER TABLE `reponse`
 --
 ALTER TABLE `rooms`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `room_questions`
+--
+ALTER TABLE `room_questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
