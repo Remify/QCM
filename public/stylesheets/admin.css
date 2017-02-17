@@ -3,6 +3,14 @@
     margin: 0 20px;
     background-color: white;
     padding: 0 10px;
+}
+
+#questionSelection {
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+}
+#roomQuestions, #allQuestions {
     width:300px;
     height:150px;
 }
