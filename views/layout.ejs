@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0, shrink-to-fit=no">
     <title>La réponse D</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <%- stylesheets %>
 </head>
 <body>
     <!-- Inclusion du header -->
@@ -12,11 +13,7 @@
 
     <!-- Inculsion du content -->
     <div class="container">
-
-        <div class="starter-template">
-            <%- body %>
-        </div>
-
+        <%- body %>
     </div>
 
     <!-- Inclusion du footer -->
@@ -25,5 +22,6 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/jquery-3.1.1.slim.min.js"></script>
     <script src="/js/index.front.js"></script>
+    <%-scripts%>
 </body>
 </html>

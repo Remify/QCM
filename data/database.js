@@ -8,5 +8,4 @@ var connection = mysql.createConnection({
     port:''
 });
 
-
 module.exports = connection;

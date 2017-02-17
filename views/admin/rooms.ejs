@@ -1,0 +1,11 @@
+<% layout('../layout') -%>
+<% script('/js/admin.front.js') -%>
+
+
+<h1>Rooms :</h1>
+
+<ul>
+<% rooms.forEach(function (room) { %>
+    <li><a href="room/<%= room.id %>" ><%= room.name %></a></li>
+<% }) %>
+</ul>

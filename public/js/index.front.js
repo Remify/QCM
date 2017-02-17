@@ -5,6 +5,7 @@
 var questions = $('.question');
 var socket = io.connect('http://localhost:3000');
 
+
 $(document).ready(function() {
 
     $('.reponse input[type=radio]').change(function() {
@@ -25,7 +26,7 @@ $(document).ready(function() {
         var name = $('#nameInput').val();
         var room = $('#roomInput').val();
         socket.emit("roomConnect", {room: room, name: name});
-        //$(location).attr('href', 'room/'+this.value + "/" + socket.id);
+        $(location).attr('href', '/room/'+ room + "/" + socket.id);
     });
 
 
