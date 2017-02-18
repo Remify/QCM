@@ -6,7 +6,7 @@ var RoomDAO = {
 
         connection.query(query, function (error, results, fields) {
             if (error) throw error;
-            callback(results, fields);
+            callback(results, fields, error);
         });
     },
 
@@ -36,8 +36,9 @@ var RoomDAO = {
     removeQuestions: function (roomId, callback) {
           var query = "DELETE FROM room_questions WHERE room_id = " + roomId;
 
-          this.execute(query, function (results) {
-              callback(results);
+          this.execute(query, function (results, error) {
+              console.log(results);
+              callback(results, error);
           });
 
           console.log('remove');
@@ -46,13 +47,18 @@ var RoomDAO = {
     addQuestions: function(roomId, questionsId, callback) {
         var query =  "INSERT INTO room_questions VALUES "
 
+        /**
+         * i = order
+         */
         for(i=0; i < questionsId.length; i++) {
             if(i == questionsId.length -1) {
-                query += "( '', '" + roomId + "', '" + questionsId[i] + "', '" + i + "')";
+                query += "( null, '" + roomId + "', '" + questionsId[i] + "', '" + i + "')";
             } else {
-                query += "( '', '" + roomId + "', '" + questionsId[i] + "', '" + i + "'),";
+                query += "( null, '" + roomId + "', '" + questionsId[i] + "', '" + i + "'),";
             }
         }
+
+        console.log(query);
 
         this.execute(query, function (results) {
             callback(results);

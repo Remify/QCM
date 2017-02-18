@@ -38,6 +38,9 @@ router.get('/rooms', function(req, res, next) {
 });
 
 router.get('/room/:id', function(req, res, next) {
+
+
+    console.log(router.stack);
     RoomDAO.retrieveById(req.params.id, function (results) {
         var room = results[0];
         if(room) {
@@ -54,16 +57,30 @@ router.get('/room/:id', function(req, res, next) {
     })
 });
 
-
+/**
+ * Mise à jour des questions d'une room.
+ * D'abord on supprime les entrées dans room_questions, puis on ajoute les nouvelles (Bourrain mais efficace !)
+ */
 router.post('/room/:id/update/questions', function(req, res, next) {
     var questionsId = req.body.questions.split(',').map(function (str) {
         return str.replace("question_", "");
     });
     
     RoomDAO.removeQuestions(req.params.id, function () {
-        RoomDAO.addQuestions(req.params.id, questionsId, function (results) {
+        console.log(questionsId);
+
+        /**
+         * Vérifie si questionId existe / est vide
+         */
+        if(questionsId.length > 0 && questionsId[0]) {
+
+            RoomDAO.addQuestions(req.params.id, questionsId, function (results) {
+                res.redirect('/admin/room/' + req.params.id);
+            });
+        } else {
+            // Si il n'y a pas de nouvelles questions, redirection vers la room
             res.redirect('/admin/room/' + req.params.id);
-        });
+        }
     })
 
 });
