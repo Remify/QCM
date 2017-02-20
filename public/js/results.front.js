@@ -18,25 +18,45 @@ $(document).ready(function () {
 
     var updateData = function (idQuestion, idReponse) {
 
-        var index = idReponse - 1;
 
-        charts[idQuestion].data.datasets[0].data[index]++;
+        var question = $('#question-' + idQuestion).find('.json').data('json');
+        var arrRef = [];
+
+        for(i=0; i < question.reponses.length; i++ ) {
+            arrRef[question.reponses[i].id] = i;
+        }
+
+        var idValue = arrRef[idReponse];
+        console.log(idValue);
+        charts[idQuestion].data.datasets[0].data[idValue]++;
+        console.log(charts[idQuestion].data.datasets[0].data);
         charts[idQuestion].update();
     };
 
 
     $('.charts').each(function (index, chart) {
 
+        var question = $('#question-' + chart.dataset.questionId).find('.json').data('json');
+
+
+        var dataReponses = [];
+        for(i = 0; i < question.reponses.length; i++) {
+            dataReponses[i] = 0 ;
+        }
+
+
+        console.log(dataReponses);
 
         var data = {
-            labels: [
-                "Reponse 1",
-                "Reponse 2",
-                "Reponse 3"
-            ],
+
+            // Labels
+            labels: question.reponses.map(function (reponse) {
+                return reponse.intitule
+            }),
+
             datasets: [
                 {
-                    data: Array(parseInt(chart.dataset.reponseNb)).fill(0),
+                    data: dataReponses,
                     backgroundColor: [
                         "#FF6384",
                         "#36A2EB",

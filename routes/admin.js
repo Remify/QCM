@@ -139,4 +139,14 @@ router.get('/room/:id/dashboard', function (req, res, next) {
 });
 
 
+/**
+ * récupération des réponses en AJAX
+ */
+router.get('/question/:qId/getResponses', function(req, res, next) {
+    questionDAO.retrieveById(req.params.qId, function (result) {
+        res.send(result);
+    });
+});
+
+
 module.exports = router;
