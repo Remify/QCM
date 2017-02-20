@@ -41,6 +41,14 @@ var QuestionDAO = {
         });
     },
     
+    retrieveAllByRoomId: function (id, callback) {
+        var query = "SELECT reponse.id, reponse.intitule, question.id as qId, question.intitule as qIntitule FROM reponse, question WHERE question.id = reponse.question_id AND reponse.question_id IN ( SELECT question_id FROM room_questions WHERE room_questions.room_id = " + id +" )";
+
+        this.execute(query, function (results, fields) {
+            callback(results);
+        });
+    },
+    
     getAllQuestions: function (callback) {
         var query = "SELECT * FROM question"
         this.execute(query, function (results) {

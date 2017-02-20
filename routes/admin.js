@@ -85,4 +85,30 @@ router.post('/room/:id/update/questions', function(req, res, next) {
 
 });
 
+
+// TODO : session user : https://openclassrooms.com/courses/ultra-fast-applications-using-node-js/socket-io-let-s-go-to-real-time
+router.get('/room/:id/dashboard', function(req, res, next) {
+    
+    questionDAO.retrieveAllByRoomId(req.params.id, function (results) {
+
+        questions = [];
+        results.forEach(function (line) {
+
+            if(typeof  questions[line.qId] === 'undefined') {
+                var question = new Question(line.qId, line.qIntitule);
+                question.reponses.push({id:line.id,intitule:line.intitule});
+                questions[question.id] = question;
+
+            } else {
+                questions[line.qId].reponses.push({id:line.id,intitule:line.intitule});
+            }
+        });
+
+
+        res.render('admin/dashboard', {questions : questions});
+    });
+
+});
+
+
 module.exports = router;
