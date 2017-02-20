@@ -3,6 +3,14 @@ var questions = $('.question');
 
 
 $(document).ready(function() {
+
+    var roomName = $('#dataRoom').data('roomName');
+    var registration = JSON.parse(localStorage.getItem('node-' + roomName));
+
+    if(registration) {
+        socket.emit("roomConnect", {room: registration.room, name: registration.name});
+    }
+
     $('.question').each(function (question) {
         var question = this;
         var questionDiv = this;
@@ -36,8 +44,7 @@ $(document).ready(function() {
 
 
 
-
-    socket.on("displayQuestionToRoom", function (data) {
+    socket.on("displayQuestion", function (data) {
         console.log(data);
     });
 
