@@ -1,20 +1,24 @@
+/**************************************************/
+
+/******************  MOBIL FIRST  *****************/
+
+/**************************************************/
 
 /**********************************************/
 /******************  GENERAL  *****************/
 /**********************************************/
 
-
 body {
-  margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-h1, h2, h3, p{
-  margin:0;
+h1, h2, h3, p {
+    margin: 0;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
 }
 
 /**********************************************/
@@ -22,123 +26,229 @@ a {
 /**********************************************/
 
 header {
-  display: flex;
-  justify-content: space-around;
-  font-family: 'Abril Fatface', cursive;
-  width: 100%;
-  flex-direction: row;
-  background-color: #4899CC;
-  color: white;
-  text-transform: uppercase;
-  font-weight: bolder;
+    background-color: #212121;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Abril Fatface', cursive;
+    width: 100%;
+    flex-direction: column;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bolder;
 }
 
-header div{
-  margin: 20px 10px 20px 0;
+header div {
+    margin: 20px;
 }
+
+header a {
+    color: white;
+    text-decoration: none;
+    transition :all 0.3s ease-in-out;
+}
+
+header a:hover {
+    transition :all 0.3s ease-in-out;
+    color: #FF7373;
+}
+
+.header-bottom {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: #212121;
+    flex-direction: row;
+}
+
+.header-top {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: #4899CC;
+}
+
+.fa-user{
+    position: relative;
+}
+
+.fa-user::before{
+    left: -20px;
+    position: absolute;
+    font-size: 1.2rem;
+    content: "\f007";
+    font-family: FontAwesome;;
+}
+
+.fa-comment {
+    position: relative;
+}
+
+.fa-comment::before{
+    left: -28px;
+    position: absolute;
+    font-size: 1.2rem;
+    content: "\f075";
+    font-family: FontAwesome;;
+}
+
 
 /**********************************************/
 /***************  MAIN CONTENT  ***************/
 /**********************************************/
 
-.container{
-  width: 100%;
-  background-color: #FF7373;
+.main-section {
+    padding-bottom: 20%;
 }
 
-.main-section h1{
-  font-family: 'Abril Fatface', cursive;
-  padding: 50px 0;
-  text-align: center;
-  color: white;
+.container {
+    width: 100%;
+    background-color: #FF7373;
 }
 
-.main-section h2{
-  margin: 20px;
-  padding: 5px;
-  background-color: #4899CC;
-  border-radius: 20px;
-  font-family: 'Abril Fatface', cursive;
-  text-align: center;
-  color: white;
+
+.main-section h1 {
+    font-size:50px;
+    font-family: 'Pacifico', cursive;
+    padding: 50px 0;
+    text-align: center;
+    color: white;
 }
 
-.room{
-  padding: 50px;
-  background-color: #FFFD8C;
-  margin: 0 auto;
-  flex-direction: column;
-  display: flex;
-  width: 65%;
-  justify-content: center;
-  border-radius: 0px 80px 80px 80px;
+.main-section h2 {
+    width: 75%;
+    padding: 5px;
+    background-color: #4899CC;
+    border-radius: 20px;
+    font-family: 'Abril Fatface', cursive;
+    text-align: center;
+    color: white;
+    margin: 20px auto;
 }
 
-.room label{
-  padding: 20px 0;
-  color: #212121;
-  text-transform: uppercase;
-  font-weight: bolder;
+.room {
+    padding: 50px;
+    background-color: #FFFD8C;
+    margin: 0 auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
 }
 
-.room input{
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
+.room label {
+    font-size: 30px;
+    padding: 20px 0;
+    color: #212121;
+    font-weight: bolder;
 }
 
-.room input:focus{
-   outline-style: none;
- }
-
-.room input:focus::after{
-  content: " ";
-  outline-style: none;
-  border-bottom: 10px solid #FF7373;
+.room input {
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
 }
 
-.room button{
-  padding: 10px;
-  border-radius: 20px;
-  border: none;
-  background-color: #FF7373;
-  margin-top: 40px;
-  color: white;
+.room input:focus {
+    outline-style: none;
 }
 
-.room button:hover{
-  outline-style: none;
-  background-color: #4899CC;
+.room input:focus::after {
+    content: " ";
+    outline-style: none;
+    border-bottom: 10px solid #FF7373;
+}
+
+.room button {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #FF7373;
+    margin-top: 40px;
+    color: white;
+}
+
+.room button:hover {
+    outline-style: none;
+    background-color: #4899CC;
 }
 
 form {
-  background-color: white;
-  padding: 30px 0;
-  justify-content: center;
-  display: flex;
+    background-color: white;
+    padding: 30px 0;
+    justify-content: center;
+    display: flex;
 }
 
-form label{
-  font-weight: bold;
-  margin-right: 10px;
+form label {
+    font-family: 'Pacifico', cursive;
+    font-weight: bold;
+    margin-right: 10px;
 }
 
-form input{
-  margin-left: 20px;
+form input {
+    margin-left: 20px;
+    transition :all 0.3s ease-in-out;
+}
+
+form input:hover,
+form input:focus{
+    background-color: #FF7373;
+    color: white;
+    transition :all 0.3s ease-in-out;
+}
+
+input[type="submit"]{
+    margin-top:40px;
+    cursor:pointer;
+    background-color: #4899CC;
+    color: white;
 }
 
 /**********************************************/
 /******************  FOOTER  *****************/
 /**********************************************/
 
-footer{
-  width: 100%;
-  background-color: #212121;
-  color: white;
+footer {
+    width: 100%;
+    background-color: #212121;
+    color: white;
 }
 
-footer p{
-  font-family: 'Abril Fatface', cursive;
-  text-align: center;
-  padding: 20px 50px;
+footer p {
+    font-family: 'Abril Fatface', cursive;
+    text-align: center;
+    padding: 20px 50px;
+}
+
+/*****************************************************/
+
+/******************  Medium Devices  *****************/
+
+/*****************************************************/
+
+@media (min-width: 480px) {
+
+    header {
+        align-items: baseline;
+        flex-direction: row;
+    }
+
+    .header-top {
+        width: 40%;
+    }
+
+    .header-bottom {
+        width: 60%;
+
+    }
+
+    .main-section h1{
+        font-size: 70px;
+    }
+
+    .room{
+        width: 65%;
+        border-radius: 0px 80px 80px 80px;
+    }
 }
