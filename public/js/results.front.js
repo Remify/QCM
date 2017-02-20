@@ -5,12 +5,13 @@ var socket = io.connect('http://localhost:3000');
 var charts = [];
 
 $(document).ready(function () {
+    var roomName = $('#dataRoom').data('roomName');
 
     socket.on("newSubmission", function (data) {
         updateData(data.questionId, data.responseId);
     });
 
-    var updateData = function(idQuestion, idReponse) {
+    var updateData = function (idQuestion, idReponse) {
 
         var index = idReponse - 1;
 
@@ -19,7 +20,7 @@ $(document).ready(function () {
     };
 
 
-    $('.charts').each(function(index, chart) {
+    $('.charts').each(function (index, chart) {
 
 
         var data = {
@@ -44,11 +45,22 @@ $(document).ready(function () {
                 }]
         }
 
-        var myPieChart = new Chart($(this),{
+        var myPieChart = new Chart($(this), {
             type: 'pie',
             data: data
         });
 
-        charts[$(this).data('questionId')] = myPieChart ;
+        charts[$(this).data('questionId')] = myPieChart;
     });
+
+    $('.toggleButton').change(function () {
+
+        if (this.checked) {
+
+            socket.emit("displayQuestionToRoom", {questionId: this.dataset.questionId, room: roomName});
+        } else {
+
+        }
+    })
+
 });

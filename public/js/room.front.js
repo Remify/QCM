@@ -37,7 +37,7 @@ $(document).ready(function() {
 
 
 
-    socket.on("hello", function (data) {
+    socket.on("displayQuestionToRoom", function (data) {
         console.log(data);
     });
 

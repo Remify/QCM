@@ -1,13 +1,22 @@
-    <% layout('../layout') -%>
-    <% script('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js') -%>
-    <% script('/js/results.front.js') -%>
+<% layout('../layout') -%>
+<% script('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js') -%>
+<% script('/js/results.front.js') -%>
+<% stylesheet('/stylesheets/admin.css') -%>
 
+<div id="dataRoom" data-room-name="<%= room.name %>"></div>
 <h1>Resultats</h1>
 <div class="containter">
-    <% questions.forEach(function(question){%>
-        <h2><%= question.intitule %></h2>
-        <div>
-            <canvas class="charts" data-question-id="<%= question.id %>" data-reponse-nb="<%= question.reponses.length %>" id="chart-<%= question.id %>" width="400" height="400"></canvas>
-        </div>
+    <% questions.forEach(function(question){ %>
+    <h2><%= question.intitule %></h2>
+    <!-- Rounded switch -->
+    <label class="switch">
+        <input type="checkbox" class="toggleButton" data-question-id="<%= question.id %>">
+        <div class="slider round"></div>
+    </label>
+
+    <div width="400px" height="400px">
+        <canvas class="charts" data-question-id="<%= question.id %>" data-reponse-nb="<%= question.reponses.length %>"
+                id="chart-<%= question.id %>"></canvas>
+    </div>
     <% }); %>
 </div>
