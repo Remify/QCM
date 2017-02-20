@@ -8,8 +8,13 @@ $(document).ready(function () {
     var roomName = $('#dataRoom').data('roomName');
 
     socket.on("newSubmission", function (data) {
+        console.log(data);
         updateData(data.questionId, data.responseId);
     });
+
+
+    socket.emit("roomConnect", {room: roomName, name: 'admin'});
+
 
     var updateData = function (idQuestion, idReponse) {
 
