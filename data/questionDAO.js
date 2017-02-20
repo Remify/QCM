@@ -16,9 +16,9 @@ var QuestionDAO = {
 
     },
     retrieveById: function(id, callback) {
-            var query = "SELECT question.id as qId, question.intitule as qIntitule, reponse.id as rId, reponse.intitule as rIntitule FROM question, reponse WHERE question.id =" + id + " AND question_id = " + id;
+            var query = "SELECT question.id as qId, question.intitule as qIntitule, reponse.id as rId, reponse.intitule as rIntitule FROM question, reponse WHERE question.id = reponse.question_id AND question.id = " + id;
             this.execute(query, function (results, fields) {
-                console.log(query);
+
                 if(results[0]) {
                     var q = new Question(results[0].qId, results[0].qIntitule);
                     results.forEach(function (result) {
@@ -30,7 +30,6 @@ var QuestionDAO = {
                     })
                 }
                 callback(q);
-
             })
     },
 
@@ -40,9 +39,30 @@ var QuestionDAO = {
             callback(results);
         });
     },
+
+    retrieveByQuestionUId: function (uID, callback) {
+        var query = "SELECT question.id as qId, question.intitule as qIntitule, reponse.id as rId, reponse.intitule as rIntitule FROM question, reponse WHERE question.id = reponse.question_id AND question.id in (SELECT question_id FROM room_questions WHERE room_questions.id = " + uID + ")";
+
+        this.execute(query, function (results) {
+
+            if(results[0]) {
+                var q = new Question(uID, results[0].qIntitule);
+                results.forEach(function (result) {
+                    var reponse = {
+                        id: result.rId,
+                        intitule: result.rIntitule
+                    };
+                    q.reponses.push(reponse);
+                })
+            }
+            callback(q);
+
+        });
+    },
     
     retrieveAllByRoomId: function (id, callback) {
-        var query = "SELECT reponse.id, reponse.intitule, question.id as qId, question.intitule as qIntitule FROM reponse, question WHERE question.id = reponse.question_id AND reponse.question_id IN ( SELECT question_id FROM room_questions WHERE room_questions.room_id = " + id +" )";
+        var query = "SELECT reponse.id, reponse.intitule, question.id as qId, question.intitule as qIntitule, room_questions.id as qUID FROM reponse, question, room_questions WHERE question.id = reponse.question_id AND reponse.question_id = room_questions.question_id AND room_questions.room_id = " + id ;
+
 
         this.execute(query, function (results, fields) {
             callback(results);

@@ -29,13 +29,13 @@ $(document).ready(function() {
 
             // Abonnement à change
             $(radio).change(function() {
-                console.log('change');
                 var questionId = this.dataset.questionId;
                 var data = {
                     questionId : this.dataset.questionId,
                     responseId : this.value
                 }
 
+                console.log(data);
                 socket.emit("inputQuestion", data);
 
             });
