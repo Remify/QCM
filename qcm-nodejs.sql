@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `question` (
-  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `intitule` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -47,7 +47,7 @@ INSERT INTO `question` (`id`, `intitule`) VALUES
 --
 
 CREATE TABLE `reponse` (
-  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `intitule` text NOT NULL,
   `question_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -72,7 +72,7 @@ INSERT INTO `reponse` (`id`, `intitule`, `question_id`) VALUES
 --
 
 CREATE TABLE `rooms` (
-  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -91,7 +91,7 @@ INSERT INTO `rooms` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `room_questions` (
-  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   `qOrder` int(11) DEFAULT NULL
@@ -112,54 +112,54 @@ INSERT INTO `room_questions` (`id`, `room_id`, `question_id`, `qOrder`) VALUES
 -- Index pour les tables exportées
 --
 
--- --
--- -- Index pour la table `question`
--- --
--- ALTER TABLE `question`
---   ADD PRIMARY KEY (`id`);
 --
--- --
--- -- Index pour la table `reponse`
--- --
--- ALTER TABLE `reponse`
---   ADD PRIMARY KEY (`id`);
+-- Index pour la table `question`
 --
--- --
--- -- Index pour la table `rooms`
--- --
--- ALTER TABLE `rooms`
---   ADD PRIMARY KEY (`id`);
+ALTER TABLE `question`
+  ADD PRIMARY KEY (`id`);
+
 --
--- --
--- -- Index pour la table `room_questions`
--- --
--- ALTER TABLE `room_questions`
---   ADD PRIMARY KEY (`id`);
+-- Index pour la table `reponse`
 --
--- --
--- -- AUTO_INCREMENT pour les tables exportées
--- --
+ALTER TABLE `reponse`
+  ADD PRIMARY KEY (`id`);
+
 --
--- --
--- -- AUTO_INCREMENT pour la table `question`
--- --
--- ALTER TABLE `question`
---   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
--- --
--- -- AUTO_INCREMENT pour la table `reponse`
--- --
--- ALTER TABLE `reponse`
---   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
--- --
--- -- AUTO_INCREMENT pour la table `rooms`
--- --
--- ALTER TABLE `rooms`
---   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
--- --
--- -- AUTO_INCREMENT pour la table `room_questions`
--- --
--- ALTER TABLE `room_questions`
---   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
+-- Index pour la table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `room_questions`
+--
+ALTER TABLE `room_questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `question`
+--
+ALTER TABLE `question`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `reponse`
+--
+ALTER TABLE `reponse`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT pour la table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `room_questions`
+--
+ALTER TABLE `room_questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

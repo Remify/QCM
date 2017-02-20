@@ -45,29 +45,24 @@ var RoomDAO = {
     },
 
     addQuestions: function(roomId, questionsId, callback) {
-        var query =  "INSERT INTO room_questions (room_id, question_id, qOrder) VALUES  "
+        var query =  "INSERT INTO room_questions VALUES "
 
         /**
          * i = order
          */
-       for(i=0; i < questionsId.length; i++) {
-            /*if(i == questionsId.length -1) {*/
-           query = "INSERT INTO room_questions (room_id, question_id, qOrder) VALUES ('" + roomId + "', '" + questionsId[i] + "', '" + 0 + "')";
-           //this.execute();
-
-            /*} else {
-                query += "(" + roomId + "', '" + questionsId[i] + "', '" + i + "'),";
-            }*/
-           console.log(query)
-           this.execute(query, function (results) {
-               //callback(results);
-           });
+        for(i=0; i < questionsId.length; i++) {
+            if(i == questionsId.length -1) {
+                query += "( null, '" + roomId + "', '" + questionsId[i] + "', '" + i + "')";
+            } else {
+                query += "( null, '" + roomId + "', '" + questionsId[i] + "', '" + i + "'),";
+            }
         }
 
-        console.log("QUESTIONS ID CONTAINS = " + questionsId);
-        console.log("QUESTIONS ID LENGTH IS = " + questionsId.length);
+        console.log(query);
 
-
+        this.execute(query, function (results) {
+            callback(results);
+        });
     }
 }
 
