@@ -4,7 +4,7 @@ var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '',
-    database : 'qcm-nodejs',
+    database : 'qcm_nodejs',
     port:''
 });
 
