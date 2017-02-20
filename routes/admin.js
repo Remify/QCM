@@ -58,7 +58,7 @@ router.get('/room/:id', function (req, res, next) {
 
 /**
  * Mise à jour des questions d'une room.
- * D'abord on supprime les entrées dans room_questions, puis on ajoute les nouvelles (Bourrain mais efficace !)
+ * D'abord on supprime les entrées dans room_questions, puis on ajoute les nouvelles (Bourrin mais efficace !)
  */
 router.post('/room/:id/update/questions', function (req, res, next) {
     var questionsId = req.body.questions.split(',').map(function (str) {
