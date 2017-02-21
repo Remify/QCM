@@ -1,7 +1,9 @@
     <% layout('../layout') %>
     <% script('/js/admin.front.js') %>
 
+<div class="form-question">
     <h1>Admin</h1>
+    <h2>Ajouter une question</h2>
     <form action="/admin/question/new" class="formNewQuestion" method="post">
         <div class="question">
             <label>Intitulé de la question :</label>
@@ -26,18 +28,18 @@
     </form>
 
     <div class="questions">
-        <h2> Questions existantes : </h2>
+        <h2> Modifications des questions existantes : </h2>
         <% questions.forEach(function (question) { %>
         <form action="/admin/question/edit" class="formNewQuestion" method="post">
-            <div>
+
                 <div class="qValues">
                     <p><%= question.intitule %></p>
                     <input type="hidden" name="id" value="<%=question.id%>">
-                    <input id="qValue<%=question.id%>" name="qValue" type="hidden" value="<%=question.intitule%>">
                 </div>
+                    <input id="qValue<%=question.id%>" name="qValue" type="hidden" value="<%=question.intitule%>">
                 <input type="submit" name="action" value="Update">
+
                 <input type="submit" name="action" value="Delete">
-            </div>
         </form>
         <% }) %>
     </div>

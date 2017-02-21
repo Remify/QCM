@@ -45,11 +45,11 @@ header div {
 header a {
     color: white;
     text-decoration: none;
-    transition :all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 header a:hover {
-    transition :all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     color: #FF7373;
 }
 
@@ -69,11 +69,11 @@ header a:hover {
     background-color: #4899CC;
 }
 
-.fa-user{
+.fa-user {
     position: relative;
 }
 
-.fa-user::before{
+.fa-user::before {
     left: -20px;
     position: absolute;
     font-size: 1.2rem;
@@ -85,14 +85,13 @@ header a:hover {
     position: relative;
 }
 
-.fa-comment::before{
+.fa-comment::before {
     left: -28px;
     position: absolute;
     font-size: 1.2rem;
     content: "\f075";
     font-family: FontAwesome;;
 }
-
 
 /**********************************************/
 /***************  MAIN CONTENT  ***************/
@@ -107,9 +106,8 @@ header a:hover {
     background-color: #FF7373;
 }
 
-
 .main-section h1 {
-    font-size:50px;
+    font-size: 50px;
     font-family: 'Pacifico', cursive;
     padding: 50px 0;
     text-align: center;
@@ -144,6 +142,7 @@ header a:hover {
 }
 
 .room input {
+    font-size: 20px;
     border: none;
     padding: 10px;
     border-radius: 20px;
@@ -173,40 +172,146 @@ header a:hover {
     background-color: #4899CC;
 }
 
-form {
+.main-section form {
     background-color: white;
     padding: 30px 0;
     justify-content: center;
     display: flex;
 }
 
-form label {
+.main-section form label {
     font-family: 'Pacifico', cursive;
     font-weight: bold;
     margin-right: 10px;
 }
 
-form input {
+.main-section form input {
     margin-left: 20px;
-    transition :all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-form input:hover,
-form input:focus{
+.main-section form input:hover,
+.main-section form input:focus {
     background-color: #FF7373;
     color: white;
-    transition :all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-input[type="submit"]{
-    margin-top:40px;
-    cursor:pointer;
+input[type="submit"] {
+    margin-top: 40px;
+    cursor: pointer;
     background-color: #4899CC;
     color: white;
 }
 
 /**********************************************/
-/******************  FOOTER  *****************/
+/*******************  ADMIN  ******************/
+/**********************************************/
+
+.form-question h2 {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #F5F5F5;
+}
+
+.form-question form {
+    display: flex;
+    align-items: center;
+    background-color: #F5F5F5;
+    flex-direction: column;
+}
+
+.form-question label {
+    display: block;
+}
+
+.form-question form input {
+    margin-left: 0px;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-question h1 {
+    padding: 30px;
+    text-align: center;
+    color: white;
+}
+
+.form-question button{
+    background-color: transparent;
+    margin: 20px 0;
+    color: #212121;
+    border-radius: 15px;
+    padding: 5px 25px;
+    border: 2px solid #212121;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-question button:hover{
+    color:white;
+    background-color: #212121;
+}
+
+.form-question input[type="submit"] {
+    background-color: transparent;
+    margin: 20px 0;
+    color: #4899CC;
+    border-radius: 15px;
+    padding: 5px 25px;
+    border: 2px solid #4899CC;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-question input[type="submit"]:hover{
+    color:white;
+    background-color: #4899CC;
+}
+
+.questions form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cccccc;
+    flex-direction: row;
+}
+
+.questions form input[value="Delete"] {
+    background-color: transparent;
+    margin: 20px 0;
+    color: #FF7373;
+    border-radius: 15px;
+    padding: 5px 25px;
+    border: 2px solid #FF7373;
+    transition: all 0.3s ease-in-out;
+}
+
+.questions form input[value="Delete"]:hover {
+    color:white;
+    background-color: #FF7373;
+}
+
+
+.questions h2{
+    color: white;
+    background-color: #4899CC;
+}
+
+.question label{
+    font-weight: bolder;
+    padding: 20px 0;
+}
+
+.reponse label{
+    padding: 10px 0;
+}
+
+.qValues{
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #9E9E9E;
+}
+
+/**********************************************/
+/******************  FOOTER  ******************/
 /**********************************************/
 
 footer {
@@ -221,6 +326,8 @@ footer p {
     padding: 20px 50px;
 }
 
+/***********************************************************************************************************************/
+
 /*****************************************************/
 
 /******************  Medium Devices  *****************/
@@ -229,6 +336,9 @@ footer p {
 
 @media (min-width: 480px) {
 
+    /**********************************************/
+    /******************  HEADER  ******************/
+    /**********************************************/
     header {
         align-items: baseline;
         flex-direction: row;
@@ -243,11 +353,14 @@ footer p {
 
     }
 
-    .main-section h1{
+    /**********************************************/
+    /***************  MAIN CONTENT  ***************/
+    /**********************************************/
+    .main-section h1 {
         font-size: 70px;
     }
 
-    .room{
+    .room {
         width: 65%;
         border-radius: 0px 80px 80px 80px;
     }
