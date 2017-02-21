@@ -1,17 +1,14 @@
-    <% layout('../layout') -%>
-    <% script('/js/admin.front.js') -%>
+    <% layout('../layout') %>
+    <% script('/js/admin.front.js') %>
 
     <h1>Admin</h1>
     <form action="/admin/question/new" class="formNewQuestion" method="post">
         <div class="question">
-
             <label>Intitulé de la question :</label>
             <input type="text" name="qIntitule">
-
         </div>
 
         <div class="reponses">
-
             <div class="reponse">
                 <label>Réponse <span>1</span>:</label>
                 <input type="text" name="rIntitule" data-nb-rep="1">
@@ -27,3 +24,15 @@
         <br>
         <input type="submit" value="Enregistrer la question">
     </form>
+
+    <div class="questions">
+        <h2> Questions existantes : </h2>
+        <% questions.forEach(function (question) { %>
+        <form action="/admin/question/delete/<%=question.id %>" class="formNewQuestion" method="post">
+            <div>
+                <%= question.intitule %>
+                <input type="submit" value="supprimer">
+            </div>
+        </form>
+        <% }) %>
+    </div>

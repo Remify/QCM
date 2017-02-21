@@ -77,13 +77,25 @@ var QuestionDAO = {
     },
 
     /**
-     * Enregistre une nouvelle question. Retourne l'id de la question créé
+     * Enregistre une nouvelle question. Retourne l'id de la question créée
      * Retourne
      * @param qIntitule
      * @param callback
      */
     newQuestion : function (qIntitule, callback) {
         var query = connection.query('INSERT INTO question SET intitule=?', qIntitule, function (error, results, fields) {
+            if (error) throw error;
+            callback(results.insertId);
+        });
+    },
+
+    /**
+     * Supprime la question dont l'id est passé en paramètre
+     * @param id
+     * @param callback
+     */
+    deleteQuestion : function (id, callback) {
+        var query = connection.query('DELETE FROM question WHERE id=?', id, function (error, results, fields) {
             if (error) throw error;
             callback(results.insertId);
         });

@@ -1,7 +1,6 @@
 $(function() {
 
     // New Question
-    // TODO : Suppression
     $('#addResponseButton').click(function () {
         var clone = $('.reponse').last().clone();
         var nbRep = parseInt(clone.children('input').attr('data-nb-rep')) + 1;
@@ -21,4 +20,5 @@ $(function() {
         $('#sortableData').val($("#roomQuestions").sortable("toArray"));
         return true;
     });
+
 } );
