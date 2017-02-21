@@ -101,28 +101,14 @@ router.post('/room/:id/update/questions', function (req, res, next) {
 });
 
 
-// TODO : session user : https://openclassrooms.com/courses/ultra-fast-applications-using-node-js/socket-io-let-s-go-to-real-time
 router.get('/room/:id/dashboard', function (req, res, next) {
 
-
-    /**
-     * Création de la liste de question et ses reponses à envoyé
-     * Nous utilisons l'identifiant unique de la question pour cette room : qUID
-     */
 
     // Récuếration de l'id de la room
     RoomDAO.retrieveById(req.params.id, function (results) {
         var room = results[0];
 
-        /**
-         * Récupération des questions et leurs réponses.
-         * Format :
-         *  +----+----------+-----+-----------------------------------------------------+------+
-            | id | intitule | qId | qIntitule                                           | qUID |
-            +----+----------+-----+-----------------------------------------------------+------+
-            | 7  | Blanc    | 3   | Qu'elle est la couleur du cheval Blanc d'Henry IV ? | 61   |
-            +----+----------+-----+-----------------------------------------------------+------+
-         */
+
 
         questionDAO.retrieveAllByRoomId(req.params.id, function (results) {
 
@@ -156,7 +142,6 @@ router.get('/room/:id/dashboard', function (req, res, next) {
 
 
 router.get('/room/:id/results', function (req, res, next) {
-
     /**
      * Création de la liste de question et ses reponses à envoyé
      * Nous utilisons l'identifiant unique de la question pour cette room : qUID
