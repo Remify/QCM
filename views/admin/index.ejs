@@ -28,7 +28,7 @@
     <div class="questions">
         <h2> Questions existantes : </h2>
         <% questions.forEach(function (question) { %>
-        <form action="/admin/question/delete/<%=question.id %>" class="formNewQuestion" method="post">
+        <form action="/admin/question/delete/<%=question.id %>" class="formNewQuestion" method="get">
             <div>
                 <%= question.intitule %>
                 <input type="submit" value="supprimer">
