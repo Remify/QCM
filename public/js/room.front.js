@@ -11,6 +11,12 @@ $(document).ready(function() {
         socket.emit("roomConnect", {room: registration.room, name: registration.name});
     }
 
+    // Supprime la question
+    socket.on("hideQuestion", function (idQuestion) {
+        if($(".question[data-id='"+ idQuestion +"']").length > 0) {
+            $(".question[data-id='"+ idQuestion +"']").remove();
+        }
+    });
 
     socket.on("displayQuestion", function (data) {
 

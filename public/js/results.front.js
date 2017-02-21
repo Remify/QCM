@@ -105,8 +105,10 @@ $(document).ready(function () {
         if (this.checked) {
 
             socket.emit("displayQuestionToRoom", {questionId: this.dataset.questionId, room: roomName});
+
         } else {
 
+            socket.emit("hideQuestionToRoom", {questionId: this.dataset.questionId, room: roomName});
         }
     })
 
