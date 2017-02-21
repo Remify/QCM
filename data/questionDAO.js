@@ -102,6 +102,18 @@ var QuestionDAO = {
 
     },
 
+    /**
+     * Modifie l'intitulé d'une question existante dont l'id est passé en paramètre
+     * @param id
+     * @param qIntitule
+     * @param callback
+     */
+    editQuestion : function (id, qIntitule, callback) {
+        var query = connection.query("REPLACE INTO question(id, intitule) VALUES(" + id + ",'" + qIntitule + "')" , function (error, results, fields) {
+            if (error) throw error;
+            callback(results.insertId);
+        });
+    },
 
     newReponse : function (rIntitule, qId, callback) {
 

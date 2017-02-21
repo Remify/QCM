@@ -13,11 +13,18 @@ router.get('', function (req, res, next) {
 
 
 
-//suppression de question
-router.get('/question/delete/:id', function (req, res, next) {
-   questionDAO.deleteQuestion(req.params.id, function () {
-       res.redirect('/admin');
-   });
+//modification / suppression de question
+router.post('/question/edit', function (req, res, next) {
+    if(req.body.action == 'Delete'){
+         questionDAO.deleteQuestion(req.body.id, function () {
+            res.redirect('/admin');
+        });
+    } else if(req.body.action == 'Update') {
+        questionDAO.editQuestion(req.body.id, req.body.qValue,function () {
+            res.redirect('/admin');
+        });
+    }
+
 });
 
 router.post('/question/new', function (req, res, next) {
