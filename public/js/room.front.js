@@ -32,7 +32,8 @@ $(document).ready(function() {
                 var questionId = this.dataset.questionId;
                 var data = {
                     questionId : this.dataset.questionId,
-                    responseId : this.value
+                    responseId : this.value,
+                    user: registration.name
                 }
 
                 console.log(data);
