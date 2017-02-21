@@ -1,5 +1,6 @@
 <% layout('../layout') -%>
-<% script('/js/dashboard.front.js') -%>
+<% script('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js') -%>
+<% script('/js/results.front.js') -%>
 <% stylesheet('/stylesheets/admin.css') -%>
 
 <div id="dataRoom" data-room-name="<%= room.name %>"></div>
@@ -11,11 +12,11 @@
 
         <h2><%= question.intitule %></h2>
         <div class="json" data-json="<%= JSON.stringify(question) %>"></div>
-        <!-- Rounded switch -->
-        <label class="switch">
-            <input type="checkbox" class="toggleButton" data-question-id="<%= question.id %>">
-            <div class="slider round"></div>
-        </label>
+
+        <div width="400" height="400">
+            <canvas class="charts" data-question-id="<%= question.id %>" data-reponse-nb="<%= question.reponses.length %>"
+                    id="chart-<%= question.id %>"></canvas>
+        </div>
     </div>
     <% }); %>
 </div>

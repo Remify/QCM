@@ -14,16 +14,17 @@ $(document).ready(function () {
 
     // Abonnement aux nouveaux résultats
     socket.on("newSubmission", function (entry) {
-        console.log(entry);
-
 
         var userSubmissions = []
         userSubmissions = submissions.filter(function (submission) {
-            return submission.user == entry.user
+            return submission.user == entry.user && submission.questionId == entry.questionId
         });
 
+        console.log('sub');
+        console.log(userSubmissions);
         if(userSubmissions.length > 0) {
             var lastSubmission = userSubmissions[userSubmissions.length -1];
+            console.log(lastSubmission)
             updateData(lastSubmission.questionId, lastSubmission.responseId, -1);
             updateData(entry.questionId, entry.responseId, +1);
         } else {
@@ -34,6 +35,7 @@ $(document).ready(function () {
 
 
     var updateData = function (idQuestion, idReponse, operator) {
+
         var question = $('#question-' + idQuestion).find('.json').data('json');
 
         // Tableau de conversion idReponse => index Chart
@@ -46,10 +48,8 @@ $(document).ready(function () {
 
         var idValue = arrRef[idReponse];
         if(operator < 0) {
-
             charts[idQuestion].data.datasets[0].data[idValue]--;
         } else {
-
             charts[idQuestion].data.datasets[0].data[idValue]++;
         }
         charts[idQuestion].update();
@@ -60,14 +60,11 @@ $(document).ready(function () {
 
         var question = $('#question-' + chart.dataset.questionId).find('.json').data('json');
 
-
         var dataReponses = [];
         for(i = 0; i < question.reponses.length; i++) {
             dataReponses[i] = 0 ;
         }
 
-
-        console.log(dataReponses);
 
         var data = {
 
@@ -97,19 +94,7 @@ $(document).ready(function () {
             data: data
         });
 
-        charts[$(this).data('questionId')] = myPieChart;
+        charts[$(this).data('questionId')] = myPieChart ;
     });
-
-    $('.toggleButton').change(function () {
-
-        if (this.checked) {
-
-            socket.emit("displayQuestionToRoom", {questionId: this.dataset.questionId, room: roomName});
-
-        } else {
-
-            socket.emit("hideQuestionToRoom", {questionId: this.dataset.questionId, room: roomName});
-        }
-    })
 
 });

@@ -155,6 +155,48 @@ router.get('/room/:id/dashboard', function (req, res, next) {
 });
 
 
+router.get('/room/:id/results', function (req, res, next) {
+
+    /**
+     * Création de la liste de question et ses reponses à envoyé
+     * Nous utilisons l'identifiant unique de la question pour cette room : qUID
+     */
+
+    // Récuếration de l'id de la room
+    RoomDAO.retrieveById(req.params.id, function (results) {
+        var room = results[0];
+
+        questionDAO.retrieveAllByRoomId(req.params.id, function (results) {
+
+            // Tableau des questions unique
+            questions = [];
+
+            // Pour chaque entrée :
+            results.forEach(function (line) {
+
+                // Nous vérifions si qUID existe dans les questions
+                if (typeof questions['' + line.qUID] === 'undefined') {
+
+                    // Si non, on créer la question avec la premier réponse associé
+                    var question = new Question(line.qUID, line.qIntitule);
+                    question.reponses.push({id: line.id, intitule: line.intitule});
+
+                    questions['' + question.id] = question;
+
+                } else {
+                    // Si oui, on ajoute la réponse
+                    questions[line.qUID].reponses.push({id: line.id, intitule: line.intitule});
+                }
+            });
+
+            res.render('admin/results', {questions: questions, room: room});
+        });
+
+    })
+
+});
+
+
 /**
  * récupération des réponses en AJAX
  */
