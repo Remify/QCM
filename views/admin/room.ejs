@@ -3,30 +3,34 @@
 <% script('/js/admin.front.js') -%>
 <% script('/js/jquery-ui.min.js') -%>
 
-<h1>Room : <%= room.name %></h1>
+<div class="room-question">
+    <h1>Room : <strong><%= room.name %></strong></h1>
+    <p>Glissez / Déposez les questions d'une setion à l'autre !</p>
+    <div id="questionSelection">
 
-<div id="questionSelection">
+        <div class="roomQuestions sortBlock">
+            <h2>Questions séléctionnées dans la room</h2>
+            <form action="/admin/room/<%= room.id %>/update/questions" id="formRoomQuestions" method="post">
+                <input type="hidden" name="questions" id="sortableData">
+                <div id="roomQuestions" class="connectedSortable">
+                    <% roomQuestions.forEach(function (question) { %>
+                    <div id="question_<%= question.id %>"><%= question.intitule %></div>
+                    <% }) %>
+                </div>
+                <br>
+                <button id="roomButtonSave">Enregistrer</button>
+            </form>
+        </div>
 
-    <div class="roomQuestions sortBlock" >
-        <form action="/admin/room/<%= room.id %>/update/questions" id="formRoomQuestions" method="post">
-        <input type="hidden" name="questions" id="sortableData">
-        <div id="roomQuestions" class="connectedSortable">
-            <% roomQuestions.forEach(function (question) { %>
-            <div id="question_<%= question.id %>"><%= question.intitule %></div>
-            <% }) %>
-        </div><br>
-            <button id="roomButtonSave">Enregistrer</button>
-        </form>
-    </div>
+        <div class="allQuestions sortBlock">
+            <h2>Questions disponibles</h2>
+            <div id="allQuestions" class="connectedSortable">
+                <% questions.forEach(function (question) { %>
+                <div id="question_<%= question.id %>"><%= question.intitule %></div>
+                <% }) %>
+            </div>
 
-    <div class="allQuestions sortBlock">
-
-        <div id="allQuestions" class="connectedSortable">
-            <% questions.forEach(function (question) { %>
-            <div id="question_<%= question.id %>"><%= question.intitule %></div>
-            <% }) %>
         </div>
 
     </div>
-
 </div>

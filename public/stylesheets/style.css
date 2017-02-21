@@ -125,7 +125,7 @@ header a:hover {
     margin: 20px auto;
 }
 
-.room {
+.main-section .room {
     padding: 50px;
     background-color: #FFFD8C;
     margin: 0 auto;
@@ -133,6 +133,147 @@ header a:hover {
     display: flex;
     justify-content: center;
 }
+
+.main-section form {
+    background-color: white;
+    padding: 30px 0;
+    justify-content: center;
+    display: flex;
+}
+
+.main-section form label {
+    font-family: 'Pacifico', cursive;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.main-section form input {
+    margin-left: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.main-section form input:hover,
+.main-section form input:focus {
+    background-color: #FF7373;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+input[type="submit"] {
+    margin-top: 40px;
+    cursor: pointer;
+    background-color: #4899CC;
+    color: white;
+}
+
+/***************  ROOMS QUESTIONS ***************/
+
+.room-question p {
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.room-question h1 {
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+
+.roomQuestions{
+    margin: 20px 0;
+    padding:0 !important;
+}
+
+#questionSelection .ui-sortable-handle{
+    margin: 3px;
+    border-radius: 15px;
+}
+
+#questionSelection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #9E9E9E;
+}
+
+#questionSelection button{
+    margin:20px;
+    background-color: transparent;
+    color: #4899CC;
+    border-radius: 15px;
+    padding: 5px 25px;
+    border: 2px solid #4899CC;
+    transition: all 0.3s ease-in-out;
+}
+
+#questionSelection button:hover{
+    color: white;
+    background-color: #4899CC;
+}
+
+#questionSelection h2 {
+    padding:20px 20px;
+    background-color: #4899CC;
+    color: white;
+}
+
+.sortBlock{
+    padding: 0 !important;
+}
+
+.allQuestions h2 {
+    padding:20px 20px;
+    background-color: #4899CC;
+    color: white;
+}
+
+#questionSelection {
+    padding: 50px 0;
+
+}
+
+/***************  ROOMS LISTE ***************/
+
+.rooms-list {
+    background-color: #F5F5F5;
+}
+
+.rooms-list h1 {
+    background-color: #FF7373;
+    text-align: center;
+    color: white;
+    padding: 30px 0;
+}
+
+.rooms-list p {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.rooms-list ul {
+    display: inline;
+    height: 50%;
+    text-align: center;
+    background-color: transparent;
+}
+
+.rooms-list ul li {
+    padding: 20px;
+}
+
+.rooms-list ul li a {
+    font-size: 30px;
+    text-decoration: none;
+    color: #212121;
+    transition: all 0.3s ease-in-out;
+}
+
+.rooms-list ul li a:hover {
+    color: #FF7373;
+}
+
+/***************  ROOM  ***************/
 
 .room label {
     font-size: 30px;
@@ -172,38 +313,6 @@ header a:hover {
     background-color: #4899CC;
 }
 
-.main-section form {
-    background-color: white;
-    padding: 30px 0;
-    justify-content: center;
-    display: flex;
-}
-
-.main-section form label {
-    font-family: 'Pacifico', cursive;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.main-section form input {
-    margin-left: 20px;
-    transition: all 0.3s ease-in-out;
-}
-
-.main-section form input:hover,
-.main-section form input:focus {
-    background-color: #FF7373;
-    color: white;
-    transition: all 0.3s ease-in-out;
-}
-
-input[type="submit"] {
-    margin-top: 40px;
-    cursor: pointer;
-    background-color: #4899CC;
-    color: white;
-}
-
 /**********************************************/
 /*******************  ADMIN  ******************/
 /**********************************************/
@@ -236,7 +345,7 @@ input[type="submit"] {
     color: white;
 }
 
-.form-question button{
+.form-question button {
     background-color: transparent;
     margin: 20px 0;
     color: #212121;
@@ -246,14 +355,14 @@ input[type="submit"] {
     transition: all 0.3s ease-in-out;
 }
 
-.form-question button:hover{
-    color:white;
+.form-question button:hover {
+    color: white;
     background-color: #212121;
 }
 
 .form-question input[type="submit"] {
     background-color: transparent;
-    margin: 20px 0;
+    margin: 20px;
     color: #4899CC;
     border-radius: 15px;
     padding: 5px 25px;
@@ -261,12 +370,12 @@ input[type="submit"] {
     transition: all 0.3s ease-in-out;
 }
 
-.form-question input[type="submit"]:hover{
-    color:white;
+.form-question input[type="submit"]:hover {
+    color: white;
     background-color: #4899CC;
 }
 
-.questions form{
+.questions form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -285,26 +394,25 @@ input[type="submit"] {
 }
 
 .questions form input[value="Delete"]:hover {
-    color:white;
+    color: white;
     background-color: #FF7373;
 }
 
-
-.questions h2{
+.questions h2 {
     color: white;
     background-color: #4899CC;
 }
 
-.question label{
+.question label {
     font-weight: bolder;
     padding: 20px 0;
 }
 
-.reponse label{
+.reponse label {
     padding: 10px 0;
 }
 
-.qValues{
+.qValues {
     background-color: white;
     padding: 5px;
     border: 1px solid #9E9E9E;
@@ -363,5 +471,16 @@ footer p {
     .room {
         width: 65%;
         border-radius: 0px 80px 80px 80px;
+    }
+
+    .sortBlock{
+        margin: 20px 0;
+    }
+
+    #questionSelection {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #9E9E9E;
     }
 }
