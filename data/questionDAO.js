@@ -122,6 +122,20 @@ var QuestionDAO = {
         var query = connection.query('INSERT INTO reponse SET ?', reponse, function (error, results, fields) {
             if (error) throw error;
         });
+    }, 
+
+    deleteReponse: function(rId, callback){
+        var query = "DELETE FROM reponse WHERE id = " +rId ;
+        this.execute(query, function (results) {
+            callback(results);
+        })
+    },
+
+    getReponseByQuestionId: function (id, callback) {
+        var query = "SELECT * FROM reponse WHERE question_id =" +id;
+        this.execute(query, function (results) {
+            callback(results);
+        })
     }
 }
 

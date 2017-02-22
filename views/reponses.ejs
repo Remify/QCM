@@ -1,0 +1,31 @@
+<% layout('layout') %>
+<% script('/js/admin.front.js') %>
+
+<div>
+    <h2> Modifications des réponses pour la question : </h2>
+    <% reponses.forEach(function (reponse) { %>
+    <form action="/admin/question/editR" class="formNewQuestion" method="post">
+
+        <div class="Values">
+            <p><%= reponse.intitule %></p>
+            <input type="hidden" name="id" value="<%=reponse.id%>">
+            <input type="hidden" name="Qid" value="<%=reponse.question_id%>">
+            <input id="qValue<%=reponse.id%>" name="rValue" type="hidden" value="<%=reponse.intitule%>">
+        </div>
+        <input type="submit" name="action" value="Enregistrer">
+        <input type="submit" name="action" value="Supprimer">
+    </form>
+    <% }) %>
+
+    <form action="/admin/reponse/new" class="formNewResponse" method="post">
+        <div class="reponses">
+            <div class="reponse">
+                <label>Réponse <span>1</span>:</label>
+                <input type="text" name="rIntitule" data-nb-rep="1">
+            </div>
+        </div>
+        <button type="button" id="addResponseButton">Ajouter une réponse</button>
+        <input type="submit" value="Enregistrer la question">
+    </form>
+
+</div>

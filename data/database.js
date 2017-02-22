@@ -5,6 +5,7 @@ var connection = mysql.createConnection({
     user     : 'root',
     password : '',
     database : 'qcm-nodejs',
-    port:''});
+    port     : '3306'
+});
 
 module.exports = connection;

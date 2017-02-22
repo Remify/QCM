@@ -11,18 +11,32 @@ router.get('', function (req, res, next) {
     })
 });
 
-
+//modification / suppression de réponses
+router.post('/question/editR', function (req, res, next) {
+    if(req.body.action == 'Supprimer'){
+        questionDAO.deleteReponse(req.body.id, function () {
+            questionDAO.getReponseByQuestionId(req.body.Qid, function (reponses) {
+                res.render('reponses',{reponses: reponses});
+            })
+        });
+    }
+    //TODO modification de questions
+});
 
 //modification / suppression de question
 router.post('/question/edit', function (req, res, next) {
-    if(req.body.action == 'Delete'){
+    if(req.body.action == 'Supprimer'){
          questionDAO.deleteQuestion(req.body.id, function () {
             res.redirect('/admin');
         });
-    } else if(req.body.action == 'Update') {
+    } else if(req.body.action == 'Enregistrer') {
         questionDAO.editQuestion(req.body.id, req.body.qValue,function () {
             res.redirect('/admin');
         });
+    } else if(req.body.action == 'Modifier questions') {
+        questionDAO.getReponseByQuestionId(req.body.id, function (reponses) {
+            res.render('reponses',{reponses: reponses});
+        })
     }
 
 });
