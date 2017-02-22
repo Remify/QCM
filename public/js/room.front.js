@@ -17,6 +17,10 @@ $(document).ready(function() {
             $(".question[data-id='"+ idQuestion +"']").remove();
         }
     });
+    
+    socket.on('reloadPage', function () {
+        location.reload();
+    })
 
     socket.on("displayQuestion", function (data) {
 

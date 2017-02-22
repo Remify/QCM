@@ -63,6 +63,8 @@ module.exports = function(server, RoomsState){
         socket.on('roomStart', function (input) {
 
             RoomsState.getRoom(input.room).changeState('started');
+
+            io.sockets.in(input.room).emit('reloadPage', {});
         })
 
 
@@ -70,6 +72,7 @@ module.exports = function(server, RoomsState){
 
             RoomsState.getRoom(input.room).changeState('stopped');
 
+            io.sockets.in(input.room).emit('reloadPage', {});
         })
         
         socket.on('connectDashboard', function (input) {
