@@ -35,11 +35,12 @@
                 <div class="qValues">
                     <p><%= question.intitule %></p>
                     <input type="hidden" name="id" value="<%=question.id%>">
-                </div>
                     <input id="qValue<%=question.id%>" name="qValue" type="hidden" value="<%=question.intitule%>">
+                </div>
                 <input type="submit" name="action" value="Update">
-
                 <input type="submit" name="action" value="Delete">
+                <input type="submit" name="action" value="Modifier réponses">
         </form>
         <% }) %>
     </div>
+</div>

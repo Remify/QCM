@@ -109,6 +109,7 @@ var QuestionDAO = {
      * @param callback
      */
     editQuestion : function (id, qIntitule, callback) {
+        qIntitule = qIntitule.replace(/(['"])/g, "\\$1"); //quotes escape
         var query = connection.query("REPLACE INTO question(id, intitule) VALUES(" + id + ",'" + qIntitule + "')" , function (error, results, fields) {
             if (error) throw error;
             callback(results.insertId);
