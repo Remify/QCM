@@ -2,33 +2,40 @@
 <% script('/js/dashboard.front.js') -%>
 <% stylesheet('/stylesheets/admin.css') -%>
 
-<div id="dataRoom" data-room-name="<%= room.name %>"></div>
-<h1>Dashboard : <%= room.name %></h1>
-<div class="actions">
+<div class="dashboard">
+    <div id="dataRoom" data-room-name="<%= room.name %>"></div>
+    <h1>Dashboard : <%= room.name %></h1>
+    <div class="actions">
 
-    <span>Démarrer la room :</span>
-    <label class="switch">
-        <input type="checkbox" id="toggleStartRoom">
-        <div class="slider round"></div>
-    </label>
-
-</div>
-
-<div class="containter">
-    <% questions.forEach(function(question){ %>
-
-    <div id="question-<%= question.id %>">
-
-        <h2><%= question.intitule %></h2>
-        <div class="json" data-json="<%= JSON.stringify(question) %>"></div>
-        <!-- Rounded switch -->
+        <span>Démarrer la room :</span>
         <label class="switch">
-            <input type="checkbox" class="toggleButton question" data-question-id="<%= question.id %>">
+            <input type="checkbox" id="toggleStartRoom">
             <div class="slider round"></div>
         </label>
+
     </div>
-    <% }); %>
+
+    <div class="containter">
+
+        <h2>Activer les questions disponible pour la room <span><%= room.name %></span></h2>
+
+        <% questions.forEach(function(question){ %>
+
+        <div class="qusetionDashboard" id="question-<%= question.id %>">
+
+            <h2><%= question.intitule %></h2>
+            <div class="json" data-json="<%= JSON.stringify(question) %>"></div>
+            <!-- Rounded switch -->
+            <label class="switch">
+                <input type="checkbox" class="toggleButton question" data-question-id="<%= question.id %>">
+                <div class="slider round"></div>
+            </label>
+        </div>
+        <% }); %>
+    </div>
+    <p>
+        <a href="results" target="_blank">
+            <button class="blue-button">Afficher les résultats</button>
+        </a>
+    </p>
 </div>
-<p>
-    <a href="results" target="_blank"><button>Afficher les résultats</button></a>
-</p>

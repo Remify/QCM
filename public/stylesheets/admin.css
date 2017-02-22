@@ -98,3 +98,76 @@ button.red {
     border: 2px solid #FF7373;
     transition: all 0.3s ease-in-out;
 }
+
+/*************** dashboard dataROOM  ***************/
+
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.dashboard h1 {
+    width:100%;
+    background-color: #FF7373;
+    text-align: center;
+    color: white;
+    padding: 30px 0;
+}
+
+.dashboard h2 {
+    padding: 20px;
+}
+
+.dashboard h2 span {
+    color: #FF7373;
+}
+
+.dashboard .actions {
+    background-color: #9E9E9E;
+    padding: 20px 0;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.dashboard .actions span {
+    font-size: 21px;
+    margin-right: 20px;
+}
+
+.qusetionDashboard {
+    width: 70%;
+    border: 1px solid #212121;
+    border-radius: 15px;
+    margin: 10px auto;
+    background-color: white;
+    padding: 20px 0;
+}
+
+/*************** dashboard dataROOM  ***************/
+
+.result h1{
+    padding: 30px;
+    text-align: center;
+    color: white;
+}
+
+.resulquestion {
+    background-color: #f5f5f5;
+}
+
+.resulquestion h2 {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.result .charts {
+    width: 70% !important;
+    height: 70% !important;
+    margin: 0 auto;
+}
