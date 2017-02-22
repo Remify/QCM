@@ -88,3 +88,13 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+button.red {
+    background-color: transparent;
+    margin: 20px 0;
+    color: #FF7373;
+    border-radius: 15px;
+    padding: 5px 25px;
+    border: 2px solid #FF7373;
+    transition: all 0.3s ease-in-out;
+}
