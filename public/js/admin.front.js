@@ -1,7 +1,7 @@
 $(function() {
 
     // Edit question
-    $(".qValues").click(function() {
+    $(".Values").click(function() {
         var input = $("<input>", { val: $(this).text().trim(),
             type: "text", id:"updatedValue"});
 

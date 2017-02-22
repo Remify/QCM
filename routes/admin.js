@@ -12,9 +12,16 @@ router.get('', function (req, res, next) {
 });
 
 //modification / suppression de réponses
-router.post('/admin/questionsEdit/:id', function (req, res, next) {
-
-})
+router.post('/question/editR', function (req, res, next) {
+    if(req.body.action == 'Supprimer'){
+        questionDAO.deleteReponse(req.body.id, function () {
+            questionDAO.getReponseByQuestionId(req.body.Qid, function (reponses) {
+                res.render('reponses',{reponses: reponses});
+            })
+        });
+    }
+    //TODO modification de questions
+});
 
 //modification / suppression de question
 router.post('/question/edit', function (req, res, next) {

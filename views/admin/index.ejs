@@ -32,7 +32,7 @@
         <% questions.forEach(function (question) { %>
         <form action="/admin/question/edit" class="formNewQuestion" method="post">
 
-                <div class="qValues">
+                <div class="Values">
                     <p><%= question.intitule %></p>
                     <input type="hidden" name="id" value="<%=question.id%>">
                     <input id="qValue<%=question.id%>" name="qValue" type="hidden" value="<%=question.intitule%>">
