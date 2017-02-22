@@ -9,7 +9,7 @@
     <div id="questionSelection">
 
         <div class="roomQuestions sortBlock">
-            <h2>Questions séléctionnées dans la room</h2>
+            <h2>Questions séléctionnées dans la room <%= room.name %></h2>
             <form action="/admin/room/<%= room.id %>/update/questions" id="formRoomQuestions" method="post">
                 <input type="hidden" name="questions" id="sortableData">
                 <div id="roomQuestions" class="connectedSortable">
@@ -34,5 +34,5 @@
 
     </div>
 
-    <p><a href="<%= room.id %>/dashboard"> <button class="red">Démarrez la room</button></a></p>
+    <p><a href="<%= room.id %>/dashboard"> <button class="red-button">Démarrez la room</button></a></p>
 </div>

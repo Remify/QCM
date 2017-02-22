@@ -4,19 +4,22 @@
 <% stylesheet('/stylesheets/admin.css') -%>
 
 <div id="dataRoom" data-room-name="<%= room.name %>"></div>
-<h1>Resultats</h1>
-<div class="containter">
-    <% questions.forEach(function(question){ %>
+<div class="result">
+    <h1>Resultats</h1>
+    <div class="containter">
+        <% questions.forEach(function(question){ %>
 
-    <div id="question-<%= question.id %>">
+        <div class="resulquestion" id="question-<%= question.id %>">
 
-        <h2><%= question.intitule %></h2>
-        <div class="json" data-json="<%= JSON.stringify(question) %>"></div>
+            <h2><%= question.intitule %></h2>
+            <div class="json" data-json="<%= JSON.stringify(question) %>"></div>
 
-        <div width="400" height="400">
-            <canvas class="charts" data-question-id="<%= question.id %>" data-reponse-nb="<%= question.reponses.length %>"
-                    id="chart-<%= question.id %>"></canvas>
+            <div width="400" height="400">
+                <canvas class="charts" data-question-id="<%= question.id %>"
+                        data-reponse-nb="<%= question.reponses.length %>"
+                        id="chart-<%= question.id %>"></canvas>
+            </div>
         </div>
+        <% }); %>
     </div>
-    <% }); %>
 </div>

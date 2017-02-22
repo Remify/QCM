@@ -168,6 +168,28 @@ input[type="submit"] {
 
 /***************  ROOMS QUESTIONS ***************/
 
+.question{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    margin: 50px auto;
+}
+
+.intitule {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    color: white;
+    background-color: #4899CC;
+}
+
+.reponse form div{
+    padding: 10px 0;
+}
+
 .room-question p {
     text-align: center;
     background-color: #f5f5f5;
@@ -272,6 +294,26 @@ input[type="submit"] {
 .rooms-list ul li a:hover {
     color: #FF7373;
 }
+
+/***************  dataROOM  ***************/
+
+#dataRoom {
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+#dataRoom h1{
+    background-color: #FF7373;
+    text-align: center;
+    color: white;
+    padding: 30px 0;
+}
+
+#dataRoom p {
+    padding: 20px;
+    color: #212121;
+}
+
 
 /***************  ROOM  ***************/
 
@@ -432,6 +474,40 @@ footer p {
     font-family: 'Abril Fatface', cursive;
     text-align: center;
     padding: 20px 50px;
+}
+
+/**********************************************/
+/***************  UTILITAIRES  ****************/
+/**********************************************/
+
+.red-button{
+    background-color: transparent;
+    margin: 20px 0;
+    color: #FF7373;
+    border-radius: 15px;
+    padding: 5px 25px;
+    border: 2px solid #FF7373;
+    transition: all 0.3s ease-in-out;
+}
+
+.red-button:hover {
+    color: white;
+    background-color: #FF7373;
+}
+
+.blue-button{
+    background-color: transparent;
+    margin: 20px 0;
+    color: #4899CC;
+    border-radius: 15px;
+    padding: 5px 25px;
+    border: 2px solid #4899CC;
+    transition: all 0.3s ease-in-out;
+}
+
+.blue-button:hover {
+    color: white;
+    background-color: #4899CC;
 }
 
 /***********************************************************************************************************************/
