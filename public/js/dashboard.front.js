@@ -11,7 +11,7 @@ $(document).ready(function () {
     socket.emit("roomConnect", {room: roomName, name: 'admin'});
 
 
-    $('.toggleButton').change(function () {
+    $('.toggleButton.question').change(function () {
 
         if (this.checked) {
 
@@ -20,6 +20,15 @@ $(document).ready(function () {
         } else {
 
             socket.emit("hideQuestionToRoom", {questionId: this.dataset.questionId, room: roomName});
+        }
+    })
+    
+    $('#toggleStartRoom').change(function () {
+        if(this.checked) {
+            socket.emit("roomStart", { room: roomName });
+        } else {
+
+            socket.emit("roomStop", { room: roomName });
         }
     })
 });

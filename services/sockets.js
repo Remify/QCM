@@ -6,9 +6,8 @@
 var Question = require('../data/question')
 var questionDAO = require('../data/questionDAO')
 var RoomDAO = require('../data/roomDAO')
-var RoomsState = require('./rooms-state.service')
 
-module.exports = function(server){
+module.exports = function(server, RoomsState){
 
     var io = require("socket.io").listen(server);
 
@@ -18,10 +17,9 @@ module.exports = function(server){
         // Quand le serveur reçoit un signal de type "inputQuestion" du client
         socket.on('inputQuestion', function (data) {
 
-            console.log(data);
             // io.emit pour envoyer à tout le monde
             io.emit('newSubmission', data);
-        });
+        })
 
         // TODO : communication dans la room
         socket.on('roomConnect', function (input) {
@@ -30,7 +28,7 @@ module.exports = function(server){
 
                 RoomsState.addRoom(input.room);
 
-            } else {
+            } else if(RoomsState.getRoom(input.room).state === 'started') {
 
                 RoomsState.getRoom(input.room).questions.forEach(function (question) {
                     socket.emit('displayQuestion', question);
@@ -38,9 +36,8 @@ module.exports = function(server){
             }
 
 
-            console.log(RoomsState);
             socket.join(input.room);
-        });
+        })
         
         socket.on('displayQuestionToRoom', function (input) {
 
@@ -48,7 +45,10 @@ module.exports = function(server){
 
                 RoomsState.addQuestionToRoom(input.room, question);
 
-                io.sockets.in(input.room).emit('displayQuestion', question);
+                if(RoomsState.getRoom(input.room).state === 'started') {
+
+                    io.sockets.in(input.room).emit('displayQuestion', question);
+                }
             })
         })
 
@@ -58,6 +58,18 @@ module.exports = function(server){
             RoomsState.removeQuestionFromRoom(input.room, input.questionId);
 
             io.sockets.in(input.room).emit('hideQuestion', input.questionId);
+        })
+
+        socket.on('roomStart', function (input) {
+
+            RoomsState.getRoom(input.room).changeState('started');
+        })
+
+
+        socket.on('roomStop', function (input) {
+
+            RoomsState.getRoom(input.room).changeState('stopped');
+
         })
 
     });

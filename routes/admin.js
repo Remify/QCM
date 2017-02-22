@@ -28,7 +28,6 @@ router.post('/question/edit', function (req, res, next) {
 });
 
 router.post('/question/new', function (req, res, next) {
-    console.log(req.body);
 
     if (req.body.rIntitule && req.body.qIntitule) {
 
@@ -55,7 +54,6 @@ router.get('/rooms', function (req, res, next) {
 router.get('/room/:id', function (req, res, next) {
 
 
-    console.log(router.stack);
     RoomDAO.retrieveById(req.params.id, function (results) {
         var room = results[0];
         if (room) {
@@ -82,7 +80,6 @@ router.post('/room/:id/update/questions', function (req, res, next) {
     });
 
     RoomDAO.removeQuestions(req.params.id, function () {
-        console.log(questionsId);
 
         /**
          * Vérifie si questionId existe / est vide

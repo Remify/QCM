@@ -29,8 +29,11 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 
+// RoomsState service
+var RoomsState = require('./services/rooms-state.service');
+
 // Socket IO
-var io = require("./lib/sockets")(server);
+var io = require("./services/sockets")(server, RoomsState);
 
 
 // Midleware pour Socket.io

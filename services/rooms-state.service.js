@@ -6,10 +6,28 @@
  * @type {{rooms: Array}}
  */
 
+var states = {
+    stopped: 'stopped',
+    started: 'started'
+};
+
 function Room(name) {
     this.name = name;
     this.questions = [];
-    this.state = 'closed';
+    this.state = 'stopped';
+
+
+    this.changeState = function(state) {
+        if(state === states.started) {
+            this.state = states.started;
+        } else if(state === states.stopped) {
+            this.state = states.stopped;
+        } else {
+            this.state = states.stopped;
+        }
+
+        console.log(this);
+    }
 }
 
 var RoomsState = {
@@ -22,7 +40,6 @@ var RoomsState = {
 
     addRoom: function (name) {
         this.rooms[name] = new Room(name);
-        console.log(this);
     },
 
     addQuestionToRoom: function (roomName, question) {

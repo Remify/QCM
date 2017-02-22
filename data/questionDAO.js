@@ -122,7 +122,6 @@ var QuestionDAO = {
         var query = connection.query('INSERT INTO reponse SET ?', reponse, function (error, results, fields) {
             if (error) throw error;
         });
-        console.log(query.sql);
     }
 }
 

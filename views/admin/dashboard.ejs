@@ -3,7 +3,17 @@
 <% stylesheet('/stylesheets/admin.css') -%>
 
 <div id="dataRoom" data-room-name="<%= room.name %>"></div>
-<h1>Resultats</h1>
+<h1>Dashboard : <%= room.name %></h1>
+<div class="actions">
+
+    <span>Démarrer la room :</span>
+    <label class="switch">
+        <input type="checkbox" id="toggleStartRoom">
+        <div class="slider round"></div>
+    </label>
+
+</div>
+
 <div class="containter">
     <% questions.forEach(function(question){ %>
 
@@ -13,7 +23,7 @@
         <div class="json" data-json="<%= JSON.stringify(question) %>"></div>
         <!-- Rounded switch -->
         <label class="switch">
-            <input type="checkbox" class="toggleButton" data-question-id="<%= question.id %>">
+            <input type="checkbox" class="toggleButton question" data-question-id="<%= question.id %>">
             <div class="slider round"></div>
         </label>
     </div>

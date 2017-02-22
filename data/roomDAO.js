@@ -14,7 +14,6 @@ var RoomDAO = {
         var query = "SELECT * from rooms"
         
         this.execute(query, function (results, fields) {
-            console.log(results);
             callback(results);
         });
     },
@@ -37,11 +36,9 @@ var RoomDAO = {
           var query = "DELETE FROM room_questions WHERE room_id = " + roomId;
 
           this.execute(query, function (results, error) {
-              console.log(results);
               callback(results, error);
           });
 
-          console.log('remove');
     },
 
     addQuestions: function(roomId, questionsId, callback) {
@@ -57,8 +54,6 @@ var RoomDAO = {
                 query += "( null, '" + roomId + "', '" + questionsId[i] + "', '" + i + "'),";
             }
         }
-
-        console.log(query);
 
         this.execute(query, function (results) {
             callback(results);
