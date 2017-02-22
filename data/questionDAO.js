@@ -131,6 +131,16 @@ var QuestionDAO = {
         })
     },
 
+    editReponse: function (id, rIntitule, Qid, callback) {
+        rIntitule = rIntitule.replace(/(['"])/g, "\\$1");
+
+        var query = connection.query("REPLACE INTO reponse (id, intitule, question_id) VALUES(" + id + ",'" + rIntitule + "'," + Qid + ")" , function (error, results, fields) {
+            console.log(query);
+            if (error) throw error;
+            callback(results.insertId);
+        });
+    },
+
     getReponseByQuestionId: function (id, callback) {
         var query = "SELECT * FROM reponse WHERE question_id =" +id;
         this.execute(query, function (results) {

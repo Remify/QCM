@@ -20,6 +20,13 @@ router.post('/question/editR', function (req, res, next) {
             })
         });
     }
+    if(req.body.action == 'Enregistrer'){
+        questionDAO.editReponse(req.body.id, req.body.rValue, req.body.Qid, function(){
+            questionDAO.getReponseByQuestionId(req.body.Qid, function (reponses) {
+                res.render('reponses',{reponses: reponses});
+            })
+        });
+    }
     //TODO modification de questions
 });
 
