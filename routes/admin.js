@@ -23,10 +23,7 @@ router.post('/question/edit', function (req, res, next) {
         questionDAO.editQuestion(req.body.id, req.body.qValue,function () {
             res.redirect('/admin');
         });
-    } else  {
-
     }
-
 
 });
 
