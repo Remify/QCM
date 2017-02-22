@@ -71,6 +71,12 @@ module.exports = function(server, RoomsState){
             RoomsState.getRoom(input.room).changeState('stopped');
 
         })
+        
+        socket.on('connectDashboard', function (input) {
+            var roomState = RoomsState.getRoom(input.room);
+
+            socket.emit('initRoomState', roomState);
+        })
 
     });
 

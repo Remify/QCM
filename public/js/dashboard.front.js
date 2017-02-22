@@ -11,6 +11,21 @@ $(document).ready(function () {
     socket.emit("roomConnect", {room: roomName, name: 'admin'});
 
 
+    // Connection à la room
+    socket.emit("connectDashboard", {room: roomName });
+    
+    socket.on('initRoomState', function (input) {
+        
+        if(input.state == 'started') {
+            $('#toggleStartRoom').prop('checked', true);
+        }
+
+        input.questions.forEach(function (question) {
+            $('.toggleButton.question[data-question-id='+ question.id +']').prop('checked', true)
+        });
+
+    })
+
     $('.toggleButton.question').change(function () {
 
         if (this.checked) {
@@ -24,6 +39,7 @@ $(document).ready(function () {
     })
     
     $('#toggleStartRoom').change(function () {
+
         if(this.checked) {
             socket.emit("roomStart", { room: roomName });
         } else {
