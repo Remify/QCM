@@ -8,8 +8,18 @@ router.get('', function (req, res, next) {
     //On envoie la liste des questions pour modification
     var questions = questionDAO.getAllQuestions(function (results) {
         res.render('admin/index', {questions: results});
+    });
+});
+
+//ajout de reponse question existante
+router.post('/reponse/new', function(req, res, next){
+    questionDAO.newReponse(req.body.rIntitule, req.body.Qid, function () {
+    });
+    questionDAO.getReponseByQuestionId(req.body.Qid, function (reponses) {
+        res.render('reponses',{reponses: reponses});
     })
 });
+
 
 //modification / suppression de réponses
 router.post('/question/editR', function (req, res, next) {
@@ -24,7 +34,7 @@ router.post('/question/editR', function (req, res, next) {
         questionDAO.editReponse(req.body.id, req.body.rValue, req.body.Qid, function(){
             questionDAO.getReponseByQuestionId(req.body.Qid, function (reponses) {
                 res.render('reponses',{reponses: reponses});
-            })
+            });
         });
     }
     //TODO modification de questions
@@ -40,10 +50,10 @@ router.post('/question/edit', function (req, res, next) {
         questionDAO.editQuestion(req.body.id, req.body.qValue,function () {
             res.redirect('/admin');
         });
-    } else if(req.body.action == 'Modifier questions') {
+    } else if(req.body.action == 'Modifier reponses') {
         questionDAO.getReponseByQuestionId(req.body.id, function (reponses) {
             res.render('reponses',{reponses: reponses});
-        })
+        });
     }
 
 });

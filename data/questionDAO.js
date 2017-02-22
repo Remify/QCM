@@ -120,6 +120,7 @@ var QuestionDAO = {
 
         var reponse = { id: null, intitule: rIntitule, question_id:qId };
         var query = connection.query('INSERT INTO reponse SET ?', reponse, function (error, results, fields) {
+            console.log(query);
             if (error) throw error;
         });
     }, 
@@ -133,9 +134,7 @@ var QuestionDAO = {
 
     editReponse: function (id, rIntitule, Qid, callback) {
         rIntitule = rIntitule.replace(/(['"])/g, "\\$1");
-
         var query = connection.query("REPLACE INTO reponse (id, intitule, question_id) VALUES(" + id + ",'" + rIntitule + "'," + Qid + ")" , function (error, results, fields) {
-            console.log(query);
             if (error) throw error;
             callback(results.insertId);
         });

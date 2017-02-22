@@ -22,10 +22,15 @@
             <div class="reponse">
                 <label>Réponse <span>1</span>:</label>
                 <input type="text" name="rIntitule" data-nb-rep="1">
+                <input type="hidden" name="Qid" value="<%=reponses[0].question_id%>">
+                <input type="submit" value="Ajouter">
             </div>
+
         </div>
-        <button type="button" id="addResponseButton">Ajouter une réponse</button>
-        <input type="submit" value="Enregistrer la question">
     </form>
+
+    <button type="button" id="addResponseButton">Ajouter une réponse</button>
+
+
 
 </div>
