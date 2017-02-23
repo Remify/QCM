@@ -1,0 +1,7 @@
+
+/******************  FOR VIEWS/ROOM.EJS  *****************/
+
+.question .reponse input,
+.question .reponse label {
+    cursor: pointer;
+}

@@ -4,10 +4,17 @@ var questions = $('.question');
 $(document).ready(function () {
 
     var roomName = $('#dataRoom').data('roomName');
-    var registration = JSON.parse(localStorage.getItem('node-' + roomName));
+    var registration = JSON.parse(sessionStorage.getItem('node-' + roomName));
 
     if (registration) {
         socket.emit("roomConnect", {room: registration.room, name: registration.name});
+    } else {
+
+        $("#alertNoAuth").dialog();
+
+         setTimeout(function () {
+             $(location).attr('href', '../../');
+         }, 2500);
     }
 
     // Supprime la question
@@ -41,9 +48,9 @@ $(document).ready(function () {
 
             data.reponses.forEach(function (reponse) {
                 var div = $("<div></div>")
-                var radio = $("<input type='radio' name='reponse'   value='" + reponse.id + "' data-question-id='" + data.id + "'/>");
+                var radio = $("<input type='radio' id='r"+ reponse.id +"'  name='reponse'   value='" + reponse.id + "' data-question-id='" + data.id + "'/>");
                 div.append(radio);
-                div.append(reponse.intitule);
+                div.append($("<label for='r" + reponse.id + "'>" + reponse.intitule + "</label>"));
                 qDiv.find('form').append(div);
 
                 // Abonnement à change

@@ -12,7 +12,7 @@ $(document).ready(function() {
         var name = $('#nameInput').val();
         var room = $('#roomInput').val();
 
-        localStorage.setItem("node-" + room, JSON.stringify({name: name, room: room}));
+        sessionStorage.setItem("node-" + room, JSON.stringify({name: name, room: room}));
         $(location).attr('href', '/room/'+ room);
         return false;
     });

@@ -1,8 +1,17 @@
 <% layout('layout') -%>
+<% script('/js/jquery-ui.min.js') -%>
 <% script('/js/room.front.js') -%>
+<% stylesheet('/stylesheets/room.css') -%>
+<% stylesheet('/stylesheets/jquery-ui.css') -%>
+<% stylesheet('/stylesheets/jquery-ui.theme.css') -%>
 
 <div id="dataRoom" data-room-name="<%= room %>">
     <h1>room : <%= room %></h1>
     <p><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<span id="roomState"></span></p>
 </div>
 
+
+<div style="display: none;" id="alertNoAuth" title="401 - Accès non autorisé">
+
+    <p><b>Vous n'êtes pas autorisé à accéder à cette page. </b>Vous allez maintenant être redirigé vers la page d'accueil</p>
+</div>
