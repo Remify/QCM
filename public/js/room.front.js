@@ -51,6 +51,7 @@ $(document).ready(function () {
     socket.on("displayQuestion", function (data) {
 
         console.log(data);
+
         if ($(".question[data-id='" + data.id + "']").length == 0) {
 
             var qDiv = $("<div class='question' data-id='" + data.id + "'></div>");

@@ -35,7 +35,13 @@ var RoomsState = {
     rooms: [],
 
     getRoom: function (name) {
-        return this.rooms[name];
+        if(name in this.rooms) {
+            return this.rooms[name];
+        } else {
+            this.addRoom(name);
+            return this.rooms[name];
+        }
+
     },
 
     addRoom: function (name) {
@@ -67,12 +73,7 @@ var RoomsState = {
     },
 
     newRoomUser: function (roomName, userName) {
-        if(this.rooms[roomName].users.indexOf(userName) < 0) {
             this.rooms[roomName].users.push(userName);
-            return {code: 200, message: 'new user' };
-        } else {
-            return {code: 304, message: 'user already exist' };
-        }
     },
 
     removeRoomUser: function (roomName, userName) {

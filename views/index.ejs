@@ -1,4 +1,7 @@
     <% layout('layout') %>
+    <% script('/js/jquery-ui.min.js') -%>
+    <% stylesheet('/stylesheets/jquery-ui.css') -%>
+    <% stylesheet('/stylesheets/jquery-ui.theme.css') -%>
 
     <section class="main-section">
 
@@ -14,3 +17,8 @@
         </form>
 
     </section>
+
+
+    <div style="display: none;" id="alertNoAuth" title="401 - Accès non autorisé">
+        <p><b>Vous n'êtes pas autorisé à accéder à cette page. </b></p>
+    </div>

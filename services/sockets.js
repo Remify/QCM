@@ -13,6 +13,19 @@ module.exports = function(server, RoomsState){
 
 
     io.sockets.on('connection', function (socket) {
+        
+        socket.on('isUserInRoom', function (input) {
+            console.log('is user in Room')
+            console.log(RoomsState.getRoom(input.room).users.indexOf(input.name));
+            if(RoomsState.getRoom(input.room).users.indexOf(input.name) >= 0) {
+                console.log('user exist')
+                socket.emit('isUserInRoomResponse', true)
+            } else {
+
+                socket.emit('isUserInRoomResponse', false)
+            }
+
+        })
 
         // Quand le serveur reçoit un signal de type "inputQuestion" du client
         socket.on('inputQuestion', function (data) {
@@ -24,8 +37,10 @@ module.exports = function(server, RoomsState){
         // TODO : communication dans la room
         socket.on('roomConnect', function (input) {
             console.log(input);
+
             // Si la room n'existe pas dans RoomService, nous l'ajoutons
             if(RoomsState.getRoom(input.room) === undefined) {
+                console('create room')
                 RoomsState.addRoom(input.room);
             }
 
@@ -40,12 +55,12 @@ module.exports = function(server, RoomsState){
             // envoie de l'état de la room à l'utilisateur
             socket.emit('roomState', {state: RoomsState.getRoom(input.room).state});
 
+            // Ajout de l'utilisateur à la room
             var status = RoomsState.newRoomUser(input.room, input.name);
-            if(status.code === 200) {
-                socket.join(input.room);
-            } else {
-                socket.emit('kick', status);
-            }
+
+            socket.join(input.room);
+            io.sockets.in(input.room).emit('newUser', input.name);
+
 
         })
         
@@ -57,6 +72,7 @@ module.exports = function(server, RoomsState){
 
                 if(RoomsState.getRoom(input.room).state === 'started') {
 
+                    console.log(io.sockets.in(input.room))
                     io.sockets.in(input.room).emit('displayQuestion', question);
                 }
             })
@@ -86,9 +102,9 @@ module.exports = function(server, RoomsState){
         })
         
         socket.on('connectDashboard', function (input) {
+
             var roomState = RoomsState.getRoom(input.room);
             socket.emit('initRoomState', roomState);
-
 
             socket.join(input.room);
         })
