@@ -26,6 +26,7 @@ module.exports = function(server, RoomsState){
 
             if(RoomsState.getRoom(input.room) === undefined) {
 
+                // Si la room n'existe pas dans RoomService, nous l'ajoutons
                 RoomsState.addRoom(input.room);
 
             } else if(RoomsState.getRoom(input.room).state === 'started') {
@@ -35,7 +36,7 @@ module.exports = function(server, RoomsState){
                 });
             }
 
-
+            socket.emit('roomState', {state: RoomsState.getRoom(input.room).state});
             socket.join(input.room);
         })
         

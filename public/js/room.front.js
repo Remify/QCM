@@ -17,7 +17,15 @@ $(document).ready(function() {
             $(".question[data-id='"+ idQuestion +"']").remove();
         }
     });
-    
+
+    socket.on('roomState', function (input) {
+        if(input.state === 'stopped') {
+            $('#roomState').text("La room n'a pas encore démarré.")
+        } else  {
+            $('#roomState').text("Répondez au question !")
+        }
+    })
+
     socket.on('reloadPage', function () {
         location.reload();
     })
