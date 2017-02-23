@@ -47,15 +47,21 @@ $(function() {
     })
 
     // Room Sortable
-    $( "#roomQuestions, #allQuestions" ).sortable({
-        connectWith: ".connectedSortable"
-    }).disableSelection();
+    if($('#roomQuestions').length > 0) {
 
-    // Room submit data
-    $('#formRoomQuestions').submit(function(){
-        console.log($("#roomQuestions").sortable("toArray"));
-        $('#sortableData').val($("#roomQuestions").sortable("toArray"));
-        return true;
-    });
+
+        $( "#roomQuestions, #allQuestions" ).sortable({
+            connectWith: ".connectedSortable"
+        }).disableSelection();
+
+        // Room submit data
+        $('#formRoomQuestions').submit(function(){
+            console.log($("#roomQuestions").sortable("toArray"));
+            $('#sortableData').val($("#roomQuestions").sortable("toArray"));
+            return true;
+        });
+
+
+    }
 
 } );
