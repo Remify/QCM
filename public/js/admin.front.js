@@ -32,6 +32,20 @@ $(function() {
         clone.appendTo('.reponses');
     });
 
+    // Recherche sur la vue rooms
+    $('#roomsSearch').keyup(function () {
+        var search = this.value;
+
+        $('.roomElement a').each(function () {
+            console.log($(this).text().search(search));
+            if($(this).text().search(search) < 0) {
+                $(this).parent('li').first().hide();
+            } else {
+                $(this).parent('li').first().show();
+            }
+        })
+    })
+
     // Room Sortable
     $( "#roomQuestions, #allQuestions" ).sortable({
         connectWith: ".connectedSortable"

@@ -4,10 +4,10 @@
 <div class="rooms-list">
 
     <h1>Rooms disponibles</h1>
-    <p>Sélectionnez une room</p>
+    <p><input type="text" id="roomsSearch" placeholder="Recherche"></p>
     <ul>
         <% rooms.forEach(function (room) { %>
-        <li><a href="room/<%= room.id %>"><%= room.name %></a></li>
+            <li class="roomElement"><a href="room/<%= room.id %>"><%= room.name %></a></li>
         <% }) %>
     </ul>
 </div>
