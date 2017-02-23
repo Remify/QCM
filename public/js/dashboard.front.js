@@ -7,15 +7,13 @@ $(document).ready(function () {
     var roomName = $('#dataRoom').data('roomName');
     // Ensemble des requêtes reçu par la room
     var submissions = []
-    // Connection à la room
-    socket.emit("roomConnect", {room: roomName, name: 'admin'});
 
 
     // Connection à la room
     socket.emit("connectDashboard", {room: roomName });
     
     socket.on('initRoomState', function (input) {
-        
+        console.log(input);
         if(input.state == 'started') {
             $('#toggleStartRoom').prop('checked', true);
         }

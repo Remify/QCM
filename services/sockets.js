@@ -23,21 +23,30 @@ module.exports = function(server, RoomsState){
 
         // TODO : communication dans la room
         socket.on('roomConnect', function (input) {
-
+            console.log(input);
+            // Si la room n'existe pas dans RoomService, nous l'ajoutons
             if(RoomsState.getRoom(input.room) === undefined) {
-
-                // Si la room n'existe pas dans RoomService, nous l'ajoutons
                 RoomsState.addRoom(input.room);
+            }
 
-            } else if(RoomsState.getRoom(input.room).state === 'started') {
+
+            if(RoomsState.getRoom(input.room).state === 'started') {
 
                 RoomsState.getRoom(input.room).questions.forEach(function (question) {
                     socket.emit('displayQuestion', question);
                 });
             }
 
+            // envoie de l'état de la room à l'utilisateur
             socket.emit('roomState', {state: RoomsState.getRoom(input.room).state});
-            socket.join(input.room);
+
+            var status = RoomsState.newRoomUser(input.room, input.name);
+            if(status.code === 200) {
+                socket.join(input.room);
+            } else {
+                socket.emit('kick', status);
+            }
+
         })
         
         socket.on('displayQuestionToRoom', function (input) {
@@ -78,8 +87,10 @@ module.exports = function(server, RoomsState){
         
         socket.on('connectDashboard', function (input) {
             var roomState = RoomsState.getRoom(input.room);
-
             socket.emit('initRoomState', roomState);
+
+
+            socket.join(input.room);
         })
 
     });

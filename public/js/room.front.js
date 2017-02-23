@@ -37,6 +37,17 @@ $(document).ready(function () {
         location.reload();
     })
 
+    socket.on('kick', function (input) {
+
+        $('#alertNoAuth b').text('Erreur : ' + input.message + '. ')
+        $("#alertNoAuth").dialog();
+
+        setTimeout(function () {
+            $(location).attr('href', '../../');
+        }, 2500);
+
+    })
+
     socket.on("displayQuestion", function (data) {
 
         console.log(data);
