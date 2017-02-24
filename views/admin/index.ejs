@@ -35,6 +35,8 @@
                 <div class="Values">
                     <p><%= question.intitule %></p>
                     <input type="hidden" name="id" value="<%=question.id%>">
+                    <input type="hidden" name="id_niveau" value="<%=question.id_niveau %>">
+                    <input type="hidden" name="id_matiere" value="<%=question.id_matiere %>">
                     <input id="qValue<%=question.id%>" name="qValue" type="hidden" value="<%=question.intitule%>">
                 </div>
                 <input type="submit" name="action" value="Enregistrer">
