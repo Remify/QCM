@@ -82,8 +82,8 @@ var QuestionDAO = {
      * @param qIntitule
      * @param callback
      */
-    newQuestion : function (qIntitule, callback) {
-        var query = connection.query('INSERT INTO question SET intitule=?', qIntitule, function (error, results, fields) {
+    newQuestion : function (qIntitule, id_niveau, id_matiere, callback) {
+        var query = connection.query('INSERT INTO question SET intitule=?, id_niveau=?, id_matiere=?', qIntitule, id_niveau, id_matiere, function (error, results, fields) {
             if (error) throw error;
             callback(results.insertId);
         });
@@ -108,9 +108,10 @@ var QuestionDAO = {
      * @param qIntitule
      * @param callback
      */
-    editQuestion : function (id, qIntitule, callback) {
+    editQuestion : function (id, qIntitule, id_niveau, id_matiere, callback) {
         qIntitule = qIntitule.replace(/(['"])/g, "\\$1");
-        var query = connection.query("REPLACE INTO question(id, intitule) VALUES(" + id + ",'" + qIntitule + "')" , function (error, results, fields) {
+        var query = connection.query("REPLACE INTO question(id, intitule, id_niveau, id_matiere) VALUES(" + id + ",'" + qIntitule + "'," + id_niveau + "," + id_matiere + ")" , function (error, results, fields) {
+            console.log(query);
             if (error) throw error;
             callback(results.insertId);
         });

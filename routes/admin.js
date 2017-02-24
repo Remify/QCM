@@ -49,7 +49,7 @@ router.post('/question/edit', function (req, res, next) {
             res.redirect('/admin');
         });
     } else if(req.body.action == 'Enregistrer') {
-        questionDAO.editQuestion(req.body.id, req.body.qValue,function () {
+        questionDAO.editQuestion(req.body.id, req.body.qValue, req.body.id_niveau, req.body.id_matiere, function () {
             res.redirect('/admin');
         });
     } else if(req.body.action == 'Modifier reponses') {
