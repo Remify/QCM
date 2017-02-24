@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var Question = require('../data/question')
-var questionDAO = require('../data/questionDAO')
-var RoomDAO = require('../data/roomDAO')
-var NiveauDAO = require('../data/niveauDAO')
+var Question = require('../data/question');
+var questionDAO = require('../data/questionDAO');
+var RoomDAO = require('../data/roomDAO');
+var NiveauDAO = require('../data/niveauDAO');
+var MatiereDAO = require('../data/matiereDAO');
 
 router.get('', function (req, res, next) {
     //On envoie la liste des questions pour modification
@@ -255,6 +256,40 @@ router.post('/niveau/delete', function (req, res, next) {
 router.post('/niveau/new', function (req, res, next) {
     NiveauDAO.new(req.body.intitule, function () {
         res.redirect('/admin/niveau/');
+    })
+});
+
+/**
+ *
+ */
+router.get('/matiere/:id?', function(req, res, next) {
+    MatiereDAO.getAll(function (results) {
+        var matiere = undefined
+
+        matiere = results.filter(function (n) {
+            return n.id == req.params.id
+        })
+
+        res.render('admin/matiere', { matieres: results, matiere: matiere[0] })
+    })
+});
+router.post('/matiere/edit', function (req, res, next) {
+    var matiere = {id: req.body.id, intitule: req.body.intitule } ;
+    MatiereDAO.update(req.body.id, req.body.intitule, function (results) {
+
+        res.redirect('/admin/matiere/');
+    })
+});
+
+router.post('/matiere/delete', function (req, res, next) {
+    MatiereDAO.delete(req.body.id, function () {
+        res.redirect('/admin/matiere/');
+    })
+});
+
+router.post('/matiere/new', function (req, res, next) {
+    MatiereDAO.new(req.body.intitule, function () {
+        res.redirect('/admin/matiere/');
     })
 });
 

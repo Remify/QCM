@@ -1,0 +1,36 @@
+<% layout('../layout') %>
+<% script('/js/admin.front.js') %>
+
+<div class="container">
+
+    <div class="leftMenu">
+        <ul>
+            <% matieres.forEach(function (matiere) { %>
+            <li><a href="<%= matiere.id %>"><%= matiere.intitule %></a></li>
+            <% })%>
+        </ul>
+        <div class="newmatiere">
+            <form method="post" action="/admin/matiere/new">
+                <input type="text" name="intitule">
+                <input type="submit" value="Ajouter" >
+            </form>
+        </div>
+    </div>
+
+    <% if(matiere) { %>
+
+    <div class="matiere">
+        <form method="post" action="/admin/matiere/edit">
+            <h2><%= matiere.intitule %></h2>
+            <input type="hidden" name="id" value="<%= matiere.id%>">
+            <input id="inputIntitule" name="intitule" type="hidden" value="<%=matiere.intitule%>">
+            <input id="submitmatiere" type="submit" value="Mettre à jour" style="display: none">
+        </form>
+        <form method="post" action="/admin/matiere/delete">
+            <input type="hidden" name="id" value="<%= matiere.id%>">
+            <input id="submitmatiere" type="submit" value="Supprimer" >
+        </form>
+    </div>
+
+    <% } %>
+</div>

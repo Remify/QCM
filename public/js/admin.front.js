@@ -21,10 +21,18 @@ $(function() {
         })
     });
 
+    //Modif niveau
     $('.niveau h2').click(function () {
         $(this).hide()
         $('#inputIntitule').attr('type', 'text')
         $('#submitNiveau').show()
+    })
+
+    //Modif matiere
+    $('.matiere h2').click(function () {
+        $(this).hide()
+        $('#inputIntitule').attr('type', 'text')
+        $('#submitmatiere').show()
     })
 
     // New Question
