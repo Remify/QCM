@@ -1,36 +1,41 @@
 <% layout('../layout') %>
 <% script('/js/admin.front.js') %>
+<% stylesheet('/stylesheets/admin.css') -%>
 
-<div class="container">
+<div class="view-niveau">
 
     <div class="leftMenu">
         <ul>
             <% niveaux.forEach(function (niveau) { %>
             <li><a href="<%= niveau.id %>"><%= niveau.intitule %></a></li>
             <% })%>
+
+            <li class="newNiveau">
+                <form method="post" action="/admin/niveau/new">
+                    <input type="text" name="intitule" placeholder="Ajouter un niveau">
+                    <input type="submit" value="Ajouter" >
+                </form>
+            </li>
         </ul>
-        <div class="newNiveau">
-            <form method="post" action="/admin/niveau/new">
-                <input type="text" name="intitule">
-                <input type="submit" value="Ajouter" >
-            </form>
-        </div>
     </div>
 
     <% if(niveau) { %>
 
-        <div class="niveau">
-            <form method="post" action="/admin/niveau/edit">
-                <h2><%= niveau.intitule %></h2>
-                <input type="hidden" name="id" value="<%= niveau.id%>">
-                <input id="inputIntitule" name="intitule" type="hidden" value="<%=niveau.intitule%>">
-                <input id="submitNiveau" type="submit" value="Mettre à jour" style="display: none">
-            </form>
-            <form method="post" action="/admin/niveau/delete">
-                <input type="hidden" name="id" value="<%= niveau.id%>">
-                <input id="submitNiveau" type="submit" value="Supprimer" >
-            </form>
-        </div>
+    <div class="niveau">
+        <form method="post" action="/admin/niveau/edit">
+            <h2><%= niveau.intitule %></h2>
+            <input type="hidden" name="id" value="<%= niveau.id%>">
+            <input id="inputIntitule" name="intitule" type="hidden" value="<%=niveau.intitule%>">
+            <input id="submitNiveau" type="submit" value="Mettre à jour" style="display: none"><br>
+            <i class="fa fa-info-circle" aria-hidden="true">Cliquez sur le titre pour modifier l'intitulé du niveau</i>
+        </form>
+        <form method="post" action="/admin/niveau/delete">
+            <input type="hidden" name="id" value="<%= niveau.id%>">
+            <input id="submitNiveau" type="submit" value="Supprimer" >
+        </form>
+    </div>
 
     <% } %>
+
 </div>
+

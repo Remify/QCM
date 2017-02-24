@@ -21,18 +21,32 @@ $(function() {
         })
     });
 
-    //Modif niveau
+
+    /** Vue niveau **/
     $('.niveau h2').click(function () {
         $(this).hide()
-        $('#inputIntitule').attr('type', 'text')
-        $('#submitNiveau').show()
+        $('#inputIntitule').attr('type', 'text').show().focus()
+        $('.niveau .fa').text('Appuyez sur entrée pour enregistrer')
     })
 
-    //Modif matiere
+    $('#inputIntitule').blur(function () {
+        $(this).hide();
+        $('.niveau h2').show();
+        $('.niveau .fa').text('Cliquez sur le titre pour modifier l\'intitulé du niveau')
+    })
+
+
+    /** Vue Matière **/
     $('.matiere h2').click(function () {
         $(this).hide()
-        $('#inputIntitule').attr('type', 'text')
-        $('#submitmatiere').show()
+        $('#inputIntitule').attr('type', 'text').show().focus()
+        $('.niveau .fa').text('Appuyez sur entrée pour enregistrer')
+    })
+
+    $('#inputIntitule').blur(function () {
+        $(this).hide();
+        $('.matiere h2').show();
+        $('.niveau .fa').text('Cliquez sur le titre pour modifier l\'intitulé de la matière')
     })
 
     // New Question
