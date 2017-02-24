@@ -181,3 +181,43 @@ button.red {
     height: 70% !important;
     margin: 0 auto;
 }
+
+
+/***** VIEW Niveau *****/
+
+.view-niveau {
+    display: flex;
+}
+
+.view-niveau .leftMenu {
+    width: 400px;
+    background-color: grey;
+}
+
+.view-niveau .leftMenu ul {
+    padding: 5px;
+
+}
+
+.view-niveau .leftMenu li {
+    margin: 0;
+    list-style-type: none;
+    padding: 5px;
+}
+
+.view-niveau .leftMenu li:hover {
+    background-color: #333333;
+}
+
+.view-niveau .leftMenu li a {
+    width: 100%;
+    display: block;
+}
+
+.view-niveau .niveau {
+    padding: 25px;
+}
+
+.view-niveau .leftMenu input {
+    margin-top:0px;
+}

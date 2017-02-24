@@ -21,10 +21,21 @@ $(function() {
         })
     });
 
+
+    /** Vue nivea **/
     $('.niveau h2').click(function () {
         $(this).hide()
-        $('#inputIntitule').attr('type', 'text')
+        $('#inputIntitule').attr('type', 'text').show().focus()
         $('#submitNiveau').show()
+        $('.niveau .fa').hide()
+    })
+
+    $('#inputIntitule').blur(function () {
+        $(this).hide();
+        $('.niveau h2').show();
+        $('#submitNiveau').hide()
+        $('.niveau .fa').show()
+
     })
 
     // New Question
