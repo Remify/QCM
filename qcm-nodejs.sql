@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.5.1
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Ven 17 Février 2017 à 11:39
--- Version du serveur :  10.1.16-MariaDB
--- Version de PHP :  5.6.24
+-- Client :  127.0.0.1
+-- Généré le :  Ven 24 Février 2017 à 14:59
+-- Version du serveur :  5.7.11
+-- Version de PHP :  5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,22 +23,63 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `matiere`
+--
+
+CREATE TABLE `matiere` (
+  `id` int(11) NOT NULL,
+  `intitule` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `matiere`
+--
+
+INSERT INTO `matiere` (`id`, `intitule`) VALUES
+(1, 'INFO2'),
+(2, 'MIAW-ANGLAIS');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `niveau`
+--
+
+CREATE TABLE `niveau` (
+  `id` int(11) NOT NULL,
+  `intitule` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `niveau`
+--
+
+INSERT INTO `niveau` (`id`, `intitule`) VALUES
+(1, 'L1'),
+(2, 'L2');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `question`
 --
 
 CREATE TABLE `question` (
   `id` int(11) NOT NULL,
-  `intitule` text NOT NULL
+  `intitule` text NOT NULL,
+  `id_niveau` int(11) NOT NULL,
+  `id_matiere` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `question`
 --
 
-INSERT INTO `question` (`id`, `intitule`) VALUES
-(2, 'Qu''est ce qui est petit et Marron ?'),
-(3, 'Cheval blanc'),
-(4, 'A cours de question ?');
+INSERT INTO `question` (`id`, `intitule`, `id_niveau`, `id_matiere`) VALUES
+(2, 'Qu\'est ce qui est petit et Marron ?', 1, 1),
+(3, 'Cheval blanc', 1, 2),
+(4, 'A cours de question ?', 2, 1),
+(5, 'Qu\'est ce qui est petit et Marron ?', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -57,13 +98,13 @@ CREATE TABLE `reponse` (
 --
 
 INSERT INTO `reponse` (`id`, `intitule`, `question_id`) VALUES
-(7, 'Un arbre', 2),
-(8, 'Un marron ', 2),
-(9, 'Un petit marron', 2),
 (10, 'Blanc', 3),
 (11, 'Bleu', 3),
 (12, 'Oui', 4),
-(13, 'Non', 4);
+(13, 'Non', 4),
+(14, 'ZE', 5),
+(15, 'ZE', 5),
+(16, 'ZE', 5);
 
 -- --------------------------------------------------------
 
@@ -102,15 +143,27 @@ CREATE TABLE `room_questions` (
 --
 
 INSERT INTO `room_questions` (`id`, `room_id`, `question_id`, `qOrder`) VALUES
-(8, 1, 1, 2),
-(7, 1, 1, 1),
-(6, 1, 1, 0),
+(43, 1, 4, 2),
+(42, 1, 2, 1),
+(41, 1, 3, 0),
 (36, 2, 3, 1),
 (35, 2, 4, 0);
 
 --
 -- Index pour les tables exportées
 --
+
+--
+-- Index pour la table `matiere`
+--
+ALTER TABLE `matiere`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `niveau`
+--
+ALTER TABLE `niveau`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `question`
@@ -141,15 +194,25 @@ ALTER TABLE `room_questions`
 --
 
 --
+-- AUTO_INCREMENT pour la table `matiere`
+--
+ALTER TABLE `matiere`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `niveau`
+--
+ALTER TABLE `niveau`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT pour la table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `reponse`
 --
 ALTER TABLE `reponse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT pour la table `rooms`
 --
@@ -159,7 +222,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT pour la table `room_questions`
 --
 ALTER TABLE `room_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT ;*/
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS ;*/
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION ;*/
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
