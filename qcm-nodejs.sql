@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 24 Février 2017 à 14:59
+-- Généré le :  Ven 24 Février 2017 à 17:20
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.19
 
@@ -36,8 +36,7 @@ CREATE TABLE `matiere` (
 --
 
 INSERT INTO `matiere` (`id`, `intitule`) VALUES
-(1, 'INFO2'),
-(2, 'MIAW-ANGLAIS');
+(1, 'INFO2');
 
 -- --------------------------------------------------------
 
@@ -55,8 +54,8 @@ CREATE TABLE `niveau` (
 --
 
 INSERT INTO `niveau` (`id`, `intitule`) VALUES
-(1, 'L1'),
-(2, 'L2');
+(2, 'L2'),
+(3, 'L3 - Informatique ');
 
 -- --------------------------------------------------------
 
@@ -90,21 +89,22 @@ INSERT INTO `question` (`id`, `intitule`, `id_niveau`, `id_matiere`) VALUES
 CREATE TABLE `reponse` (
   `id` int(11) NOT NULL,
   `intitule` text NOT NULL,
-  `question_id` int(11) NOT NULL
+  `question_id` int(11) NOT NULL,
+  `isTrue` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `reponse`
 --
 
-INSERT INTO `reponse` (`id`, `intitule`, `question_id`) VALUES
-(10, 'Blanc', 3),
-(11, 'Bleu', 3),
-(12, 'Oui', 4),
-(13, 'Non', 4),
-(14, 'ZE', 5),
-(15, 'ZE', 5),
-(16, 'ZE', 5);
+INSERT INTO `reponse` (`id`, `intitule`, `question_id`, `isTrue`) VALUES
+(10, 'Blanc', 3, 1),
+(11, 'Bleu', 3, 0),
+(12, 'Oui', 4, 0),
+(13, 'Non', 4, 0),
+(14, 'ZE', 5, 0),
+(15, 'ZE', 5, 0),
+(16, 'ZE', 5, 0);
 
 -- --------------------------------------------------------
 
@@ -202,7 +202,7 @@ ALTER TABLE `matiere`
 -- AUTO_INCREMENT pour la table `niveau`
 --
 ALTER TABLE `niveau`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `question`
 --
