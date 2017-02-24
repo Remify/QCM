@@ -1,0 +1,36 @@
+<% layout('../layout') %>
+<% script('/js/admin.front.js') %>
+
+<div class="container">
+
+    <div class="leftMenu">
+        <ul>
+            <% niveaux.forEach(function (niveau) { %>
+            <li><a href="<%= niveau.id %>"><%= niveau.intitule %></a></li>
+            <% })%>
+        </ul>
+        <div class="newNiveau">
+            <form method="post" action="/admin/niveau/new">
+                <input type="text" name="intitule">
+                <input type="submit" value="Ajouter" >
+            </form>
+        </div>
+    </div>
+
+    <% if(niveau) { %>
+
+        <div class="niveau">
+            <form method="post" action="/admin/niveau/edit">
+                <h2><%= niveau.intitule %></h2>
+                <input type="hidden" name="id" value="<%= niveau.id%>">
+                <input id="inputIntitule" name="intitule" type="hidden" value="<%=niveau.intitule%>">
+                <input id="submitNiveau" type="submit" value="Mettre à jour" style="display: none">
+            </form>
+            <form method="post" action="/admin/niveau/delete">
+                <input type="hidden" name="id" value="<%= niveau.id%>">
+                <input id="submitNiveau" type="submit" value="Supprimer" >
+            </form>
+        </div>
+
+    <% } %>
+</div>

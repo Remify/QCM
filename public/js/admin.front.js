@@ -21,7 +21,11 @@ $(function() {
         })
     });
 
-
+    $('.niveau h2').click(function () {
+        $(this).hide()
+        $('#inputIntitule').attr('type', 'text')
+        $('#submitNiveau').show()
+    })
 
     // New Question
     $('#addResponseButton').click(function () {

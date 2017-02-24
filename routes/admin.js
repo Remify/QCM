@@ -3,6 +3,7 @@ var router = express.Router();
 var Question = require('../data/question')
 var questionDAO = require('../data/questionDAO')
 var RoomDAO = require('../data/roomDAO')
+var NiveauDAO = require('../data/niveauDAO')
 
 router.get('', function (req, res, next) {
     //On envoie la liste des questions pour modification
@@ -219,5 +220,42 @@ router.get('/question/:qId/getResponses', function(req, res, next) {
     });
 });
 
+
+/**
+ * 
+ */
+router.get('/niveau/:id?', function(req, res, next) {
+    NiveauDAO.getAll(function (results) {
+        var niveau = undefined
+
+        niveau = results.filter(function (n) {
+            return n.id == req.params.id
+        })
+
+        console.log(results)
+        res.render('admin/niveau', { niveaux: results, niveau: niveau[0] })
+    })
+});
+
+
+router.post('/niveau/edit', function (req, res, next) {
+    var niveau = {id: req.body.id, intitule: req.body.intitule } ;
+    NiveauDAO.update(req.body.id, req.body.intitule, function (results) {
+
+        res.redirect('/admin/niveau/');
+    })
+});
+
+router.post('/niveau/delete', function (req, res, next) {
+    NiveauDAO.delete(req.body.id, function () {
+        res.redirect('/admin/niveau/');
+    })
+});
+
+router.post('/niveau/new', function (req, res, next) {
+    NiveauDAO.new(req.body.intitule, function () {
+        res.redirect('/admin/niveau/');
+    })
+});
 
 module.exports = router;
