@@ -1,20 +1,21 @@
 <% layout('../layout') %>
 <% script('/js/admin.front.js') %>
+<% stylesheet('/stylesheets/admin.css') -%>
 
-<div class="container">
+<div class="view-matiere">
 
     <div class="leftMenu">
         <ul>
             <% matieres.forEach(function (matiere) { %>
             <li><a href="<%= matiere.id %>"><%= matiere.intitule %></a></li>
             <% })%>
+            <li class="newmatiere">
+                <form method="post" action="/admin/matiere/new">
+                    <input type="text" name="intitule" placeholder="Ajouter une matière">
+                    <input type="submit" value="Ajouter"  >
+                </form>
+            </li>
         </ul>
-        <div class="newmatiere">
-            <form method="post" action="/admin/matiere/new">
-                <input type="text" name="intitule">
-                <input type="submit" value="Ajouter" >
-            </form>
-        </div>
     </div>
 
     <% if(matiere) { %>
@@ -24,7 +25,8 @@
             <h2><%= matiere.intitule %></h2>
             <input type="hidden" name="id" value="<%= matiere.id%>">
             <input id="inputIntitule" name="intitule" type="hidden" value="<%=matiere.intitule%>">
-            <input id="submitmatiere" type="submit" value="Mettre à jour" style="display: none">
+            <input id="submitmatiere" type="submit" value="Mettre à jour" style="display: none"><br>
+            <i class="fa fa-info-circle" aria-hidden="true">Cliquez sur le titre pour modifier l'intitulé du niveau</i>
         </form>
         <form method="post" action="/admin/matiere/delete">
             <input type="hidden" name="id" value="<%= matiere.id%>">

@@ -183,41 +183,48 @@ button.red {
 }
 
 
-/***** VIEW Niveau *****/
+/***** VIEW Niveau & Matiere *****/
 
-.view-niveau {
+.view-niveau, .view-matiere {
     display: flex;
 }
 
-.view-niveau .leftMenu {
+.view-niveau .leftMenu,
+.view-matiere .leftMenu {
     width: 400px;
     background-color: grey;
 }
 
-.view-niveau .leftMenu ul {
+.view-niveau .leftMenu ul,
+.view-matiere .leftMenu ul {
     padding: 5px;
 
 }
 
-.view-niveau .leftMenu li {
+.view-niveau .leftMenu li,
+.view-matiere .leftMenu li {
     margin: 0;
     list-style-type: none;
     padding: 5px;
 }
 
-.view-niveau .leftMenu li:hover {
+.view-niveau .leftMenu li:hover,
+.view-matiere .leftMenu li:hover {
     background-color: #333333;
 }
 
-.view-niveau .leftMenu li a {
+.view-niveau .leftMenu li a,
+.view-matiere .leftMenu li a {
     width: 100%;
     display: block;
 }
 
-.view-niveau .niveau {
+.view-niveau .niveau,
+.view-matiere .matiere  {
     padding: 25px;
 }
 
-.view-niveau .leftMenu input {
+.view-niveau .leftMenu input,
+.view-matiere .leftMenu input {
     margin-top:0px;
 }

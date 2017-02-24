@@ -24,10 +24,10 @@
     <div class="niveau">
         <form method="post" action="/admin/niveau/edit">
             <h2><%= niveau.intitule %></h2>
-            <i class="fa fa-info-circle" aria-hidden="true">Cliquez sur le titre pour modifier l'intitulé du niveau</i>
             <input type="hidden" name="id" value="<%= niveau.id%>">
             <input id="inputIntitule" name="intitule" type="hidden" value="<%=niveau.intitule%>">
-            <input id="submitNiveau" type="submit" value="Mettre à jour" style="display: none">
+            <input id="submitNiveau" type="submit" value="Mettre à jour" style="display: none"><br>
+            <i class="fa fa-info-circle" aria-hidden="true">Cliquez sur le titre pour modifier l'intitulé du niveau</i>
         </form>
         <form method="post" action="/admin/niveau/delete">
             <input type="hidden" name="id" value="<%= niveau.id%>">
