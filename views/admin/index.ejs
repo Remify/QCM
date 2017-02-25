@@ -1,8 +1,8 @@
     <% layout('../layout') %>
     <% script('/js/admin.front.js') %>
 
-<div class="form-question">
-    <h1>Admin</h1>
+<div class="form-question round-input-text">
+    <h1 class="red-h1" >Admin</h1>
     <h2>Ajouter une question</h2>
     <form action="/admin/question/new" class="formNewQuestion" method="post">
         <div class="question">
@@ -24,7 +24,7 @@
 
         <button type="button" id="addResponseButton">Ajouter une réponse</button>
         <br>
-        <input type="submit" value="Enregistrer la question">
+        <input class="blue-button" type="submit" value="Enregistrer la question">
     </form>
 
     <div class="questions">
@@ -39,9 +39,9 @@
                     <input type="hidden" name="id_matiere" value="<%=question.id_matiere %>">
                     <input id="qValue<%=question.id%>" name="qValue" type="hidden" value="<%=question.intitule%>">
                 </div>
-                <input type="submit" name="action" value="Enregistrer">
-                <input type="submit" name="action" value="Supprimer">
-                <input type="submit" name="action" value="Modifier reponses">
+                <input class="blue-button" type="submit" name="action" value="Enregistrer">
+                <input class="red-button" type="submit" name="action" value="Supprimer">
+                <input class="orangered-button" type="submit" name="action" value="Modifier reponses">
         </form>
         <% }) %>
     </div>

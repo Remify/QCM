@@ -58,10 +58,12 @@ header a:hover {
     align-content: center;
     justify-content: center;
     background-color: #212121;
-    flex-direction: row;
+    flex-direction: column;
+    line-height: 20px;
 }
 
 .header-top {
+    width: 100%;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -98,36 +100,33 @@ header a:hover {
 /**********************************************/
 
 .main-section {
-    padding-bottom: 20%;
 }
 
 .container {
     width: 100%;
-    background-color: #FF7373;
+    height: 100%;
 }
 
 .main-section h1 {
     font-size: 50px;
     font-family: 'Pacifico', cursive;
-    padding: 50px 0;
+    padding: 25px 0;
     text-align: center;
     color: white;
+    background-color: #FF7373;
 }
 
 .main-section h2 {
-    width: 75%;
-    padding: 5px;
+    padding: 20px;
     background-color: #4899CC;
-    border-radius: 20px;
     font-family: 'Abril Fatface', cursive;
     text-align: center;
     color: white;
-    margin: 20px auto;
 }
 
 .main-section .room {
     padding: 50px;
-    background-color: #FFFD8C;
+    background-color: #f5f5f5;
     margin: 0 auto;
     flex-direction: column;
     display: flex;
@@ -150,32 +149,31 @@ header a:hover {
 .main-section form input {
     margin-left: 20px;
     transition: all 0.3s ease-in-out;
+    border: 1px solid #212121;
 }
 
 .main-section form input:hover,
 .main-section form input:focus {
-    background-color: #FF7373;
-    color: white;
+    border: 1px solid #FF7373;
+    color: #212121;
     transition: all 0.3s ease-in-out;
-}
-
-input[type="submit"] {
-    margin-top: 40px;
-    cursor: pointer;
-    background-color: #4899CC;
-    color: white;
 }
 
 /***************  ROOMS QUESTIONS ***************/
 
-.question{
+.question {
     width: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: #f5f5f5;
-    margin: 50px auto;
+    margin:0 auto 20px auto;
+}
+
+.reponses {
+    width: 70%;
+    text-align: center;
 }
 
 .intitule {
@@ -186,7 +184,7 @@ input[type="submit"] {
     background-color: #4899CC;
 }
 
-.reponse form div{
+.reponse form div {
     padding: 10px 0;
 }
 
@@ -202,12 +200,12 @@ input[type="submit"] {
     color: white;
 }
 
-.roomQuestions{
+.roomQuestions {
     margin: 20px 0;
-    padding:0 !important;
+    padding: 0 !important;
 }
 
-#questionSelection .ui-sortable-handle{
+#questionSelection .ui-sortable-handle {
     margin: 3px;
     border-radius: 15px;
 }
@@ -219,8 +217,8 @@ input[type="submit"] {
     background-color: #9E9E9E;
 }
 
-#questionSelection button{
-    margin:20px;
+#questionSelection button {
+    margin: 20px;
     background-color: transparent;
     color: #4899CC;
     border-radius: 15px;
@@ -229,23 +227,23 @@ input[type="submit"] {
     transition: all 0.3s ease-in-out;
 }
 
-#questionSelection button:hover{
+#questionSelection button:hover {
     color: white;
     background-color: #4899CC;
 }
 
 #questionSelection h2 {
-    padding:20px 20px;
+    padding: 20px 20px;
     background-color: #4899CC;
     color: white;
 }
 
-.sortBlock{
+.sortBlock {
     padding: 0 !important;
 }
 
 .allQuestions h2 {
-    padding:20px 20px;
+    padding: 20px 20px;
     background-color: #4899CC;
     color: white;
 }
@@ -295,6 +293,10 @@ input[type="submit"] {
     color: #FF7373;
 }
 
+.rooms-list input[type="text"]{
+
+}
+
 /***************  dataROOM  ***************/
 
 #dataRoom {
@@ -302,7 +304,7 @@ input[type="submit"] {
     background-color: #f5f5f5;
 }
 
-#dataRoom h1{
+#dataRoom h1 {
     background-color: #FF7373;
     text-align: center;
     color: white;
@@ -310,10 +312,10 @@ input[type="submit"] {
 }
 
 #dataRoom p {
+    margin-bottom:20px;
     padding: 20px;
     color: #212121;
 }
-
 
 /***************  ROOM  ***************/
 
@@ -347,7 +349,7 @@ input[type="submit"] {
     border: none;
     background-color: #FF7373;
     margin-top: 40px;
-    color: white;
+    color: #212121;
 }
 
 .room button:hover {
@@ -358,6 +360,14 @@ input[type="submit"] {
 /**********************************************/
 /*******************  ADMIN  ******************/
 /**********************************************/
+
+.form-question h1 {
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    background-color: #FF7373;
+}
+
 
 .form-question h2 {
     padding: 20px 0;
@@ -402,27 +412,16 @@ input[type="submit"] {
     background-color: #212121;
 }
 
-.form-question input[type="submit"] {
-    background-color: transparent;
-    margin: 20px;
-    color: #4899CC;
-    border-radius: 15px;
-    padding: 5px 25px;
-    border: 2px solid #4899CC;
-    transition: all 0.3s ease-in-out;
-}
-
-.form-question input[type="submit"]:hover {
-    color: white;
-    background-color: #4899CC;
-}
-
 .questions form {
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid #212121;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #cccccc;
-    flex-direction: row;
+    background-color: #f5f5f5;
+    flex-direction: column;
 }
 
 .questions form input[value="Delete"] {
@@ -443,6 +442,10 @@ input[type="submit"] {
 .questions h2 {
     color: white;
     background-color: #4899CC;
+}
+
+.questions p {
+    padding-top: 20px;
 }
 
 .question label {
@@ -480,9 +483,10 @@ footer p {
 /***************  UTILITAIRES  ****************/
 /**********************************************/
 
-.red-button{
+.red-button {
+    cursor: pointer;
     background-color: transparent;
-    margin: 20px 0;
+    margin: 20px 5px;
     color: #FF7373;
     border-radius: 15px;
     padding: 5px 25px;
@@ -495,9 +499,10 @@ footer p {
     background-color: #FF7373;
 }
 
-.blue-button{
+.blue-button {
+    cursor: pointer;
     background-color: transparent;
-    margin: 20px 0;
+    margin: 20px 5px;
     color: #4899CC;
     border-radius: 15px;
     padding: 5px 25px;
@@ -510,31 +515,53 @@ footer p {
     background-color: #4899CC;
 }
 
+.orangered-button {
+    cursor: pointer;
+    background-color: transparent;
+    margin: 20px 5px;
+    color: orangered;
+    border-radius: 15px;
+    padding: 5px 25px;
+    border: 2px solid orangered;
+    transition: all 0.3s ease-in-out;
+}
+
+.orangered-button:hover {
+    color: white;
+    background-color: orangered;
+}
+
+.round-input-text input[type="text"]{
+    width: 70%;
+}
+
+.red-h1 {
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    background-color: #FF7373;
+}
+
 /***********************************************************************************************************************/
 
 /*****************************************************/
 
-/******************  Medium Devices  *****************/
+/******************  Small-Medium Devices  *****************/
 
 /*****************************************************/
 
-@media (min-width: 480px) {
+@media (min-width: 576px) {
 
     /**********************************************/
     /******************  HEADER  ******************/
     /**********************************************/
     header {
         align-items: baseline;
-        flex-direction: row;
-    }
-
-    .header-top {
-        width: 40%;
     }
 
     .header-bottom {
-        width: 60%;
-
+        flex-direction: row;
+        margin: 0 auto;
     }
 
     /**********************************************/
@@ -544,12 +571,7 @@ footer p {
         font-size: 70px;
     }
 
-    .room {
-        width: 65%;
-        border-radius: 0px 80px 80px 80px;
-    }
-
-    .sortBlock{
+    .sortBlock {
         margin: 20px 0;
     }
 
@@ -558,5 +580,29 @@ footer p {
         flex-direction: row;
         align-items: center;
         background-color: #9E9E9E;
+    }
+
+}
+
+/***********************************************************************************************************************/
+
+/*****************************************************/
+
+/******************  Medium Devices  *****************/
+
+/*****************************************************/
+
+@media (min-width: 768px) {
+
+    /**********************************************/
+    /***************  FORM-QUESTION  ***************/
+    /**********************************************/
+    .questions form {
+        flex-direction: row;
+    }
+
+    .questions p {
+        padding-top: 0;
+        margin-right: 10px;
     }
 }
