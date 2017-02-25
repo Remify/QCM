@@ -94,6 +94,7 @@ router.get('/room/:id', function (req, res, next) {
                 var roomQuestions = results;
 
                 questionDAO.getAllQuestions(function (results) {
+                    console.log(results)
                     res.render('admin/room', {room: room, questions: results, roomQuestions: roomQuestions});
                 })
             });

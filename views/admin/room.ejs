@@ -24,9 +24,14 @@
 
         <div class="allQuestions sortBlock">
             <h2>Questions disponibles</h2>
+            <input type="text" id="searchQuestions" placeholder="Filtrer">
             <div id="allQuestions" class="connectedSortable">
                 <% questions.forEach(function (question) { %>
-                <div id="question_<%= question.id %>"><%= question.intitule %></div>
+                    <div id="question_<%= question.id %>"
+                         data-niveau="<%= question.nIntitule %>"
+                         data-matiere="<%= question.mIntitule %>">
+                        <%= question.intitule %>
+                    </div>
                 <% }) %>
             </div>
 
