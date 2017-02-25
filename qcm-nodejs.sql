@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 24 Février 2017 à 17:20
+-- Généré le :  Sam 25 Février 2017 à 15:26
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.19
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `matiere` (
   `id` int(11) NOT NULL,
   `intitule` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `matiere`
@@ -47,7 +47,7 @@ INSERT INTO `matiere` (`id`, `intitule`) VALUES
 CREATE TABLE `niveau` (
   `id` int(11) NOT NULL,
   `intitule` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `niveau`
@@ -68,15 +68,15 @@ CREATE TABLE `question` (
   `intitule` text NOT NULL,
   `id_niveau` int(11) NOT NULL,
   `id_matiere` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `question`
 --
 
 INSERT INTO `question` (`id`, `intitule`, `id_niveau`, `id_matiere`) VALUES
-(2, 'Qu\'est ce qui est petit et Marron ?', 1, 1),
-(3, 'Cheval blanc', 1, 2),
+(2, 'Qu\'est ce qui est petit et Marron ?', 3, 1),
+(3, 'Cheval blanc', 3, 2),
 (4, 'A cours de question ?', 2, 1),
 (5, 'Qu\'est ce qui est petit et Marron ?', 2, 1);
 
@@ -91,7 +91,7 @@ CREATE TABLE `reponse` (
   `intitule` text NOT NULL,
   `question_id` int(11) NOT NULL,
   `isTrue` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `reponse`
@@ -115,7 +115,7 @@ INSERT INTO `reponse` (`id`, `intitule`, `question_id`, `isTrue`) VALUES
 CREATE TABLE `rooms` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `rooms`
@@ -136,18 +136,32 @@ CREATE TABLE `room_questions` (
   `room_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   `qOrder` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `room_questions`
 --
 
 INSERT INTO `room_questions` (`id`, `room_id`, `question_id`, `qOrder`) VALUES
-(43, 1, 4, 2),
-(42, 1, 2, 1),
-(41, 1, 3, 0),
+(35, 2, 4, 0),
 (36, 2, 3, 1),
-(35, 2, 4, 0);
+(44, 1, 2, 0),
+(45, 1, 3, 1),
+(46, 1, 5, 2),
+(47, 1, 4, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Index pour les tables exportées
@@ -190,6 +204,12 @@ ALTER TABLE `room_questions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -222,7 +242,12 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT pour la table `room_questions`
 --
 ALTER TABLE `room_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
