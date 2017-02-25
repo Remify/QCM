@@ -42,7 +42,7 @@ $(document).ready(function () {
         var arrRef = [];
 
         // Construction du tablaeu de conversion
-        for(i=0; i < question.reponses.length; i++ ) {
+        for(var i=0; i < question.reponses.length; i++ ) {
             arrRef[question.reponses[i].id] = i;
         }
 
@@ -61,7 +61,7 @@ $(document).ready(function () {
         var question = $('#question-' + chart.dataset.questionId).find('.json').data('json');
 
         var dataReponses = [];
-        for(i = 0; i < question.reponses.length; i++) {
+        for(var i = 0; i < question.reponses.length; i++) {
             dataReponses[i] = 0 ;
         }
 
