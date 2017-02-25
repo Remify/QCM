@@ -2,6 +2,8 @@
 <% stylesheet('/stylesheets/admin.css') -%>
 <% script('/js/admin.front.js') -%>
 <% script('/js/jquery-ui.min.js') -%>
+<% stylesheet('/stylesheets/jquery-ui.css') -%>
+<% stylesheet('/stylesheets/jquery-ui.theme.css') -%>
 
 <div class="room-question">
     <h1>Room : <strong><%= room.name %></strong></h1>
@@ -24,9 +26,16 @@
 
         <div class="allQuestions sortBlock">
             <h2>Questions disponibles</h2>
-            <input type="text" id="searchQuestions" placeholder="Filtrer">
+            <input type="text" id="searchQuestions" placeholder="Filtrer les questions" title="Entrez le nom du Niveau ou de la Matière pour filtrer les résultats">
             <div id="allQuestions" class="connectedSortable">
-                <% questions.forEach(function (question) { %>
+                <% questions.forEach(function (question) {
+                        if(question.nIntitule == null) {
+                            question.nIntitule = "";
+                        }
+                        if(question.mIntitule == null) {
+                            question.mIntitule = "";
+                        }
+                %>
                     <div id="question_<%= question.id %>"
                          data-niveau="<%= question.nIntitule %>"
                          data-matiere="<%= question.mIntitule %>">

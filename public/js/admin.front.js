@@ -74,21 +74,23 @@ $(function() {
 
     // Room Sortable
     if($('#roomQuestions').length > 0) {
-        
+
+
+        // Recherche
+        $('#searchQuestions').tooltip();
         $('#searchQuestions').keyup(function () {
+
             var search = this.value.toLowerCase();
 
             $('#allQuestions').children('div').each(function () {
 
-                console.log($(this).data('matiere'));
-
-                if($(this).text().toLowerCase().search(search) < 0
-                    || $(this).data('matiere').search(search) < 0
-                    || $(this).data('niveau').search(search) < 0
+                if($(this).text().toLowerCase().search(search) >= 0
+                    || $(this).data('matiere').toLowerCase().search(search) >= 0
+                    || $(this).data('niveau').toLowerCase().search(search) >= 0
                     ) {
-                    $(this).hide();
-                } else {
                     $(this).show();
+                } else {
+                    $(this).hide();
                 }
             })
         })
