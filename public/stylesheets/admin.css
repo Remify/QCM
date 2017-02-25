@@ -1,6 +1,7 @@
 .sortBlock {
+    width: 90%;
     display: inline-block;
-    margin: 0 20px;
+    margin: 20px 20px;
     background-color: white;
     padding: 0 10px;
 }
@@ -15,14 +16,14 @@
     border: 0px solid;
     height: 30px;
     padding: 5px 15px;
-    min-width: 480px;
     text-align: center;
     font-size: 30px;
 }
 
 #roomQuestions, #allQuestions {
-    width:300px;
-    height:150px;
+    height: 150px;
+    width: 90%;
+    margin: 0 auto;
 }
 
 #questionSelection .ui-sortable-handle {
@@ -134,7 +135,7 @@ button.red {
     padding: 30px 0;
 }
 
-.dashboard h2 {
+.dashboard h2,h3 {
     padding: 20px;
 }
 
@@ -193,18 +194,18 @@ button.red {
 
 .view-niveau, .view-matiere {
     display: flex;
+    flex-direction: column;
 }
 
 .view-niveau .leftMenu,
 .view-matiere .leftMenu {
-    width: 400px;
-    background-color: grey;
+    width: 100%;
+    background-color: #f5f5f5;
 }
 
 .view-niveau .leftMenu ul,
 .view-matiere .leftMenu ul {
-    padding: 5px;
-
+    padding: 20px;
 }
 
 .view-niveau .leftMenu li,
@@ -214,23 +215,48 @@ button.red {
     padding: 5px;
 }
 
-.view-niveau .leftMenu li:hover,
-.view-matiere .leftMenu li:hover {
-    background-color: #333333;
+.view-niveau .leftMenu li a,
+ .view-matiere .leftMenu li a {
+     width: 100%;
+     display: block;
+     text-decoration: none;
+     color: #212121;
+    transition: all 0.3s ease;
+
 }
 
-.view-niveau .leftMenu li a,
-.view-matiere .leftMenu li a {
-    width: 100%;
-    display: block;
+.view-niveau .leftMenu li a:hover,
+.view-matiere .leftMenu li a:hover {
+    transition: all 0.3s ease;
+    color: #FF7373;
 }
 
 .view-niveau .niveau,
 .view-matiere .matiere  {
-    padding: 25px;
+    width: 100%;
+}
+
+.view-niveau .niveau form {
+    padding: 20px;
 }
 
 .view-niveau .leftMenu input,
 .view-matiere .leftMenu input {
     margin-top:0px;
+}
+
+
+@media (min-width: 768px) {
+    .view-niveau, .view-matiere {
+        flex-direction: row;
+    }
+
+    .view-niveau .leftMenu,
+    .view-matiere .leftMenu {
+        width: 50%;
+    }
+    .view-niveau .niveau,
+    .view-matiere .matiere  {
+        width: 50%;
+    }
 }
