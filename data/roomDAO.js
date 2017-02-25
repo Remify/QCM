@@ -47,7 +47,7 @@ var RoomDAO = {
         /**
          * i = order
          */
-        for(i=0; i < questionsId.length; i++) {
+        for(var i=0; i < questionsId.length; i++) {
             if(i == questionsId.length -1) {
                 query += "( null, '" + roomId + "', '" + questionsId[i] + "', '" + i + "')";
             } else {

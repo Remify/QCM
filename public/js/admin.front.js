@@ -76,6 +76,25 @@ $(function() {
     if($('#roomQuestions').length > 0) {
 
 
+        // Recherche
+        $('#searchQuestions').tooltip();
+        $('#searchQuestions').keyup(function () {
+
+            var search = this.value.toLowerCase();
+
+            $('#allQuestions').children('div').each(function () {
+
+                if($(this).text().toLowerCase().search(search) >= 0
+                    || $(this).data('matiere').toLowerCase().search(search) >= 0
+                    || $(this).data('niveau').toLowerCase().search(search) >= 0
+                    ) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            })
+        })
+
         $( "#roomQuestions, #allQuestions" ).sortable({
             connectWith: ".connectedSortable"
         }).disableSelection();

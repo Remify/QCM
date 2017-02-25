@@ -70,8 +70,9 @@ var QuestionDAO = {
     },
     
     getAllQuestions: function (callback) {
-        var query = "SELECT * FROM question"
+        var query = 'SELECT question.id, question.intitule, niveau.intitule as nIntitule, matiere.intitule as mIntitule FROM question LEFT JOIN niveau ON question.id_niveau = niveau.id LEFT JOIN matiere ON question.id_matiere = matiere.id'
         this.execute(query, function (results) {
+
             callback(results);
         })
     },
