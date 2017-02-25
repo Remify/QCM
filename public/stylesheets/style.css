@@ -155,7 +155,7 @@ header a:hover {
 .main-section form input:hover,
 .main-section form input:focus {
     border: 1px solid #FF7373;
-    color: white;
+    color: #212121;
     transition: all 0.3s ease-in-out;
 }
 
@@ -293,6 +293,10 @@ header a:hover {
     color: #FF7373;
 }
 
+.rooms-list input[type="text"]{
+
+}
+
 /***************  dataROOM  ***************/
 
 #dataRoom {
@@ -308,6 +312,7 @@ header a:hover {
 }
 
 #dataRoom p {
+    margin-bottom:20px;
     padding: 20px;
     color: #212121;
 }
@@ -344,7 +349,7 @@ header a:hover {
     border: none;
     background-color: #FF7373;
     margin-top: 40px;
-    color: white;
+    color: #212121;
 }
 
 .room button:hover {
@@ -479,6 +484,7 @@ footer p {
 /**********************************************/
 
 .red-button {
+    cursor: pointer;
     background-color: transparent;
     margin: 20px 5px;
     color: #FF7373;
@@ -494,6 +500,7 @@ footer p {
 }
 
 .blue-button {
+    cursor: pointer;
     background-color: transparent;
     margin: 20px 5px;
     color: #4899CC;
@@ -509,6 +516,7 @@ footer p {
 }
 
 .orangered-button {
+    cursor: pointer;
     background-color: transparent;
     margin: 20px 5px;
     color: orangered;

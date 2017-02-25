@@ -6,7 +6,7 @@
 <% stylesheet('/stylesheets/jquery-ui.theme.css') -%>
 
 <div class="room-question">
-    <h1>Room : <strong><%= room.name %></strong></h1>
+    <h1 class="red-h1">Room : <strong><%= room.name %></strong></h1>
     <p>Glissez / Déposez les questions d'une setion à l'autre !</p>
     <div id="questionSelection">
 
@@ -20,7 +20,7 @@
                     <% }) %>
                 </div>
                 <br>
-                <button id="roomButtonSave">Enregistrer</button>
+                <button class="blue-button" id="roomButtonSave">Enregistrer les questions de la room : <strong><%= room.name %></strong></button>
             </form>
         </div>
 
@@ -48,5 +48,5 @@
 
     </div>
 
-    <p><a href="<%= room.id %>/dashboard"> <button class="red-button">Démarrez la room</button></a></p>
+    <p><a href="<%= room.id %>/dashboard"> <button class="orangered-button">Démarrez la room</button></a></p>
 </div>
