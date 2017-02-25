@@ -536,10 +536,37 @@ footer p {
 }
 
 .red-h1 {
+     color: white;
+     padding: 20px 0;
+     text-align: center;
+     background-color: #FF7373;
+ }
+
+.blue-h2 {
+     color: white;
+     padding: 20px 0;
+     text-align: center;
+     background-color: #4899CC;
+ }
+
+.orangered-h2 {
     color: white;
     padding: 20px 0;
     text-align: center;
-    background-color: #FF7373;
+    background-color: orangered;
+}
+
+
+.dark-p {
+    color: #212121;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.white-p {
+    color: white;
+    padding: 20px 0;
+    text-align: center;
 }
 
 /***********************************************************************************************************************/
@@ -593,6 +620,11 @@ footer p {
 /*****************************************************/
 
 @media (min-width: 768px) {
+
+
+    .main-section .room{
+        width: 70%;
+    }
 
     /**********************************************/
     /***************  FORM-QUESTION  ***************/
