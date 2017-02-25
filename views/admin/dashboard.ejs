@@ -25,13 +25,24 @@
 
             <h2><%= question.intitule %></h2>
             <div class="json" data-json="<%= JSON.stringify(question) %>"></div>
-            <!-- Rounded switch -->
+            <!-- Rounded switch for questions-->
             <label class="switch">
                 <input type="checkbox" class="toggleButton question" data-question-id="<%= question.id %>">
                 <div class="slider round"></div>
             </label>
+
         </div>
-        <% }); %>
+
+        <div>
+            <h3> Afficher réponse juste :  </h3>
+            <!-- Rounded switch for results -->
+            <label class="switch">
+                <input type="checkbox" class="toggleButton reponse">
+                <div class="slider round"></div>
+                <input type="hidden" name="idQst" value="<%= question.id%>">
+            </label>
+            <% }); %>
+        </div>
     </div>
     <p>
         <a href="results" target="_blank">
