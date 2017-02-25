@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 25 Février 2017 à 15:26
+-- Généré le :  Sam 25 Février 2017 à 18:30
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.19
 
@@ -164,6 +164,13 @@ CREATE TABLE `user` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
+-- Contenu de la table `user`
+--
+
+INSERT INTO `user` (`id`, `login`, `password`, `role`) VALUES
+(1, 'admin', '$2a$10$rnmCyaevgJ5Y4gQSO9rxcOyfEFbthDvsCRamsrdGdkC9A0ceAjBTK', 'ADMIN');
+
+--
 -- Index pour les tables exportées
 --
 
@@ -247,7 +254,7 @@ ALTER TABLE `room_questions`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
