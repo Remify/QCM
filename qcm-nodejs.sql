@@ -36,7 +36,9 @@ CREATE TABLE `matiere` (
 --
 
 INSERT INTO `matiere` (`id`, `intitule`) VALUES
-(1, 'INFO2');
+(1, 'INFO1'),
+(2, 'INFO2'),
+(3, 'INFO3');
 
 -- --------------------------------------------------------
 
@@ -54,8 +56,9 @@ CREATE TABLE `niveau` (
 --
 
 INSERT INTO `niveau` (`id`, `intitule`) VALUES
-(2, 'L2'),
-(3, 'L3 - Informatique ');
+(1, 'L1 informatique'),
+(2, 'L2 informatique'),
+(3, 'L3 informatique');
 
 -- --------------------------------------------------------
 
@@ -75,13 +78,12 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`id`, `intitule`, `id_niveau`, `id_matiere`) VALUES
-(2, 'Qu\'est ce qui est petit et Marron ?', 3, 1),
-(3, 'De quelle couleur est le cheval blanc de Napoléon ?', 3, 2),
-(4, 'A cours de questions ?', 2, 1),
-(5, 'Qu\'est ce qui est petit et Marron ?', 2, 1);
+(1, 'Le contenu de l''une de ces balises correspond au titre principal de votre page. Il est très important pour les moteurs de recherche. Lequel ?', 1, 2),
+(3, 'Quel est le rôle du navigateur web ?', 1, 2),
+(4, 'Lequel de ces éléments rencontre-t-on en premier dans un code HTML ?', 2, 1),
+(5, 'Quelle mer communique avec l\'Atlantique via le détroit de Gibraltar ?', 3, 1);
 
 -- --------------------------------------------------------
-
 --
 -- Structure de la table `reponse`
 --
@@ -98,13 +100,19 @@ CREATE TABLE `reponse` (
 --
 
 INSERT INTO `reponse` (`id`, `intitule`, `question_id`, `isTrue`) VALUES
-(10, 'Blanc', 3, 1),
-(11, 'Bleu', 3, 0),
-(12, 'Oui', 4, 0),
-(13, 'Non', 4, 1),
-(14, 'Un marron', 5, 0),
-(15, 'Un gros marron', 5, 1),
-(16, 'Un petit marron', 5, 1);
+(1, 'Ecrire du code en HTML et CSS', 3, 0),
+(2, 'Traduire le code HTML et CSS en un résultat visuel', 3, 1),
+(3, 'Se connecter au réseau Wifi', 3, 0),
+(4, 'Fournir votre site web à vos visiteurs', 3, 0),
+(5, '<html>', 4, 1),
+(6, '<!DOCTYPE html>', 4, 0),
+(7, '<head>', 1, 0),
+(8, '<title>', 1, 1),
+(9, '<h1>', 1, 0),
+(10, 'La mer méditerranée', 5, 0),
+(11, 'C\'est la mer Noire', 5, 1);
+
+
 
 -- --------------------------------------------------------
 
@@ -143,12 +151,12 @@ CREATE TABLE `room_questions` (
 --
 
 INSERT INTO `room_questions` (`id`, `room_id`, `question_id`, `qOrder`) VALUES
-(35, 2, 4, 0),
-(36, 2, 3, 1),
-(44, 1, 2, 0),
-(45, 1, 3, 1),
-(46, 1, 5, 2),
-(47, 1, 4, 3);
+(1, 2, 4, 0),
+(2, 2, 3, 1),
+(3, 1, 2, 0),
+(4, 1, 3, 1),
+(5, 1, 5, 2),
+(6, 1, 4, 3);
 
 -- --------------------------------------------------------
 
