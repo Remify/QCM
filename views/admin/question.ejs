@@ -1,5 +1,5 @@
 <% layout('../layout-admin') %>
-<% script('/js/admin.front.js') %>
+<% script('/js/question.front.js') %>
 <% stylesheet('/stylesheets/admin.css') -%>
 
 
@@ -36,21 +36,27 @@
                     <input name="intitule" value="<%= question.intitule %>" type="text" id="inputIntituleQuestion">
 
                 </div>
-                <div class="">
+                <div class="reponses">
                     <% question.reponses.forEach(function (reponse, index) {
                     if(reponse.id) {
                         var checked = "";
-                        if(reponse.isTrue){ checked = "checked" }
+                        if(reponse.isTrue > 0){ checked = "checked" }
                         %>
-                        <div class=""><br>
-                            <label for=inputReponse-<%= reponse.id %>"> Reponse <%= index + 1 %> :</label>
-                            <input type="text" name="reponse-<%= reponse.id %>" id="inputReponse-<%= reponse.id %>" value="<%= reponse.intitule %>">
-                            <input type="checkbox" name="reponse-<%= reponse.id%>-true" id="isTrue-<%= reponse.id%>" <%= checked %> >
+
+                        <div class="reponse"><br>
+                            <label for=inputReponse-<%= reponse.id %>"> Reponse <span><%= index + 1 %></span> :</label>
+                            <input type="hidden" name="reponse-<%= reponse.id%>" value="<%= reponse.id%>" class="idInputHidden">
+                            <input type="text" class="repIntitule" data-nb-rep="<%= index + 1 %> " name="reponse-<%= reponse.id %>" id="inputReponse-<%= reponse.id %>" value="<%= reponse.intitule %>">
+                            <input type="checkbox" class="isTrue" name="reponse-<%= reponse.id%>" id="isTrue-<%= reponse.id%>" <%= checked %> >
                             <label for="isTrue-<%= reponse.id%>">Réponse juste</label>
+                            <button class="deleteReponse" data-rid="<%= reponse.id%>" ><i class="fa fa-trash" aria-hidden="true"></i></button>
                             <br>
                         </div>
                     <% } }) %>
+
                 </div>
+
+                <button type="button" id="addResponseButton">Ajouter une réponse</button>
                 <div class="matiereQuestion">
                     <label for="matiereSelect">Matière</label>
                     <select id="matiereSelect" name="id_matiere">
@@ -83,6 +89,11 @@
             <form method="post" action="/admin/question/delete">
                 <input type="hidden" name="id" value="<%= question.id%>">
                 <input class="red-button" id="submitNiveau" type="submit" value="Supprimer" >
+            </form>
+
+            <form method="post" action="/admin/question/delete/reponse" id='deleteReponse'>
+                <input type="hidden" name="qId" value="<%= question.id%>">
+                <input type="hidden" id="hiddenDeleteReponse" name="id" value="">
             </form>
         </div>
 

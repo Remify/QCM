@@ -61,6 +61,12 @@ router.post('/reponse/new', function(req, res, next){
     })
 });
 
+router.post('/question/delete/reponse', function (req, res, next) {
+    questionDAO.deleteReponse(req.body.id, function () {
+        res.redirect('/admin/question/' + req.body.qId);
+    });
+});
+
 
 //modification / suppression de réponses
 router.post('/question/editR', function (req, res, next) {
@@ -82,7 +88,6 @@ router.post('/question/editR', function (req, res, next) {
 });
 
 router.post('/question/edit', function (req, res, next) {
-    console.log(req.body)
 
     // Gestion des réponses
     var reponsesKeys = Object.keys(req.body).filter(function (key) {
@@ -93,19 +98,47 @@ router.post('/question/edit', function (req, res, next) {
 
     // Construction des réponses
     reponsesKeys.forEach(function (reponse) {
-        var values = reponse.split('-')
-        var isTrue = 0;
-        if(typeof values[2] != 'undefined') {
-            reponses[reponses.length - 1].isTrue = 1;
-        } else {
+        console.log(req.body[reponse])
+            var isTrue = 0;
+
+            if(typeof req.body[reponse][2] !== 'undefined') {
+                isTrue = 1 ;
+            }
             reponses.push({
-                id: values[1],
-                intitule: req.body[reponse],
-                isTrue: 0
+                id: req.body[reponse][0],
+                intitule: req.body[reponse][1],
+                isTrue: isTrue
             })
-        }
     })
-    
+
+    // Gestion des nouvelles réponses :
+    var newReponses = [];
+    if(req.body.new) {
+        var news = [];
+        if(! Array.isArray(req.body.new)) {
+            news.push(req.body.new)
+        }
+        console.log(news)
+        news.forEach(function (n) {
+            if(n !== "on") {
+                newReponses.push({
+                    id: '',
+                    intitule: n,
+                    isTrue: 0
+                });
+            } else {
+                newReponses[newReponses.length - 1].isTrue = 1;
+            }
+        })
+    }
+    newReponses.forEach(function (reponse) {
+        questionDAO.newReponse(reponse.intitule, req.body.id, reponse.isTrue, function () {
+            console.log('new rep')
+        })
+    })
+
+
+    // Enregistrements
     reponses.forEach(function (reponse) {
         questionDAO.editReponse(reponse.id, reponse.intitule, reponse.isTrue, req.body.id, function (results) {
         })

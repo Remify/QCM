@@ -127,7 +127,7 @@ var QuestionDAO = {
 
         var reponse = { id: null, intitule: rIntitule, question_id: qId, isTrue: istrue };
         var query = connection.query('INSERT INTO reponse SET ?', reponse, function (error, results, fields) {
-            console.log(query);
+
             if (error) throw error;
         });
     }, 
@@ -144,7 +144,6 @@ var QuestionDAO = {
         var query = connection.query("REPLACE INTO reponse (id, intitule, isTrue, question_id ) VALUES(" + id + ",'" + rIntitule + "'," + isTrue + ", " + Qid + ")" , function (error, results, fields) {
 
             if (error) throw error;
-            console.log(query)
             callback(results.insertId);
         });
     },
