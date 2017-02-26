@@ -7,10 +7,42 @@ var NiveauDAO = require('../data/niveauDAO');
 var MatiereDAO = require('../data/matiereDAO');
 
 router.get('', function (req, res, next) {
+
     //On envoie la liste des questions pour modification
     var questions = questionDAO.getAllQuestions(function (results) {
         res.render('admin/index', {questions: results});
     });
+});
+
+
+router.get('/question/:id?', function (req, res, next) {
+    //On envoie la liste des questions pour modification
+    if(req.params.id) {
+        
+        questionDAO.retrieveById(req.params.id, function (question) {
+
+            NiveauDAO.getAll(function (niveaux) {
+                
+                MatiereDAO.getAll(function (matieres) {
+
+                    var questions = questionDAO.getAllQuestions(function (results) {
+                        console.log(question)
+                        res.render('admin/question', {questions: results, question: question, niveaux: niveaux, matieres: matieres});
+                    });
+
+                })
+
+            })
+
+        })
+        
+        
+    } else {
+        var questions = questionDAO.getAllQuestions(function (results) {
+            res.render('admin/question', {questions: results, question: undefined});
+        });
+    }
+
 });
 
 //test afficher réponses justes
@@ -49,23 +81,60 @@ router.post('/question/editR', function (req, res, next) {
     //TODO modification de questions
 });
 
-//modification / suppression de question
 router.post('/question/edit', function (req, res, next) {
-    if(req.body.action == 'Supprimer'){
-         questionDAO.deleteQuestion(req.body.id, function () {
-            res.redirect('/admin');
-        });
-    } else if(req.body.action == 'Enregistrer') {
-        questionDAO.editQuestion(req.body.id, req.body.qValue, req.body.id_niveau, req.body.id_matiere, function () {
-            res.redirect('/admin');
-        });
-    } else if(req.body.action == 'Modifier reponses') {
-        questionDAO.getReponseByQuestionId(req.body.id, function (reponses) {
-            res.render('reponses',{reponses: reponses});
-        });
-    }
+    console.log(req.body)
+
+    // Gestion des réponses
+    var reponsesKeys = Object.keys(req.body).filter(function (key) {
+        return key.indexOf('reponse') >= 0
+    })
+
+    var reponses = [];
+
+    // Construction des réponses
+    reponsesKeys.forEach(function (reponse) {
+        var values = reponse.split('-')
+        var isTrue = 0;
+        if(typeof values[2] != 'undefined') {
+            reponses[reponses.length - 1].isTrue = 1;
+        } else {
+            reponses.push({
+                id: values[1],
+                intitule: req.body[reponse],
+                isTrue: 0
+            })
+        }
+    })
+    
+    reponses.forEach(function (reponse) {
+        questionDAO.editReponse(reponse.id, reponse.intitule, reponse.isTrue, req.body.id, function (results) {
+        })
+    })
+
+    questionDAO.editQuestion(req.body.id, req.body.intitule, req.body.id_niveau, req.body.id_matiere, function (results) {
+        res.redirect('/admin/question/' + req.body.id);
+    });
 
 });
+
+
+//modification / suppression de question
+// router.post('/question/edit', function (req, res, next) {
+//     if(req.body.action == 'Supprimer'){
+//          questionDAO.deleteQuestion(req.body.id, function () {
+//             res.redirect('/admin');
+//         });
+//     } else if(req.body.action == 'Enregistrer') {
+//         questionDAO.editQuestion(req.body.id, req.body.qValue, req.body.id_niveau, req.body.id_matiere, function () {
+//             res.redirect('/admin');
+//         });
+//     } else if(req.body.action == 'Modifier reponses') {
+//         questionDAO.getReponseByQuestionId(req.body.id, function (reponses) {
+//             res.render('reponses',{reponses: reponses});
+//         });
+//     }
+//
+// });
 
 router.post('/question/new', function (req, res, next) {
 
