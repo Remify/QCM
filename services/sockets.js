@@ -96,12 +96,11 @@ module.exports = function(server, RoomsState){
 
         //Afficher réponse juste
         socket.on('displayRightAnswer', function (input) {
-            console.log(input);
             questionDAO.getReponseJuste(input.questionId, function (result) {
+                console.log(result)
                 io.sockets.in(input.room).emit('reponseJuste', result);
             });
         })
-
 
 
         socket.on('roomStop', function (input) {

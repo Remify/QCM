@@ -35,48 +35,21 @@ $(document).ready(function () {
 
     //Si on a cliqué sur Réponse juste
     socket.on('reponseJuste', function (result) {
-        console.log(charts);
-        /*charts[result[0].qId].config.options.defaultColor = 'rgba(0, 255, 0, 0.3)';
-        charts[result[0].qId].update();*/
+        console.log(charts[result[0].qId].data.datasets);
 
         var question = $('#question-' + result[0].qId).find('.json').data('json');
 
-        var dataReponses = [];
-        for(var i = 0; i < question.reponses.length; i++) {
-            dataReponses[i] = 0 ;
+        // Tableau de conversion idReponse => index Chart
+        var arrRef = [];
+
+        // Construction du tableau de conversion
+        for(var i=0; i < question.reponses.length; i++ ) {
+            arrRef[question.reponses[i].id] = i;
         }
 
-        var data = {
-
-            // Labels
-            labels: question.reponses.map(function (reponse) {
-                return reponse.intitule
-            }),
-
-            datasets: [
-                {
-                    data: dataReponses,
-                    backgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56"
-                    ],
-                    hoverBackgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56"
-                    ]
-                }]
-        }
-
-        var myPieChart = new Chart($(this), {
-            type: 'pie',
-            data: data
-        });
-
-        charts[result[0].qId] = myPieChart ;
-
-        var context = document.getElementById('clients').getContext('2d');
+        //On colorie la bonne réponse en vert
+        charts[result[0].qId].data.datasets[0].backgroundColor[arrRef[result[0].rId]] = '#00ff00';
+        charts[result[0].qId].update();
     });
 
 
