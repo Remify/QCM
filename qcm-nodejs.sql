@@ -76,8 +76,8 @@ CREATE TABLE `question` (
 
 INSERT INTO `question` (`id`, `intitule`, `id_niveau`, `id_matiere`) VALUES
 (2, 'Qu\'est ce qui est petit et Marron ?', 3, 1),
-(3, 'Cheval blanc', 3, 2),
-(4, 'A cours de question ?', 2, 1),
+(3, 'De quelle couleur est le cheval blanc de Napoléon ?', 3, 2),
+(4, 'A cours de questions ?', 2, 1),
 (5, 'Qu\'est ce qui est petit et Marron ?', 2, 1);
 
 -- --------------------------------------------------------
@@ -101,10 +101,10 @@ INSERT INTO `reponse` (`id`, `intitule`, `question_id`, `isTrue`) VALUES
 (10, 'Blanc', 3, 1),
 (11, 'Bleu', 3, 0),
 (12, 'Oui', 4, 0),
-(13, 'Non', 4, 0),
-(14, 'ZE', 5, 0),
-(15, 'ZE', 5, 0),
-(16, 'ZE', 5, 0);
+(13, 'Non', 4, 1),
+(14, 'Un marron', 5, 0),
+(15, 'Un gros marron', 5, 1),
+(16, 'Un petit marron', 5, 1);
 
 -- --------------------------------------------------------
 

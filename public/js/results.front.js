@@ -47,13 +47,16 @@ $(document).ready(function () {
             arrRef[question.reponses[i].id] = i;
         }
 
-        //On colorie la bonne réponse en vert
+        //On colorie la (les) bonnes réponses en vert
         console.log();
-        if(charts[result[0].qId].data.datasets[0].data[arrRef[result[0].rId]] == 0){
-            charts[result[0].qId].data.datasets[0].data[arrRef[result[0].rId]] = 1;
+        var i;
+        for(i=0; i<result.length;i++){
+            if(charts[result[i].qId].data.datasets[0].data[arrRef[result[i].rId]] == 0){
+                charts[result[i].qId].data.datasets[0].data[arrRef[result[i].rId]] = 1;
+            }
+            charts[result[i].qId].data.datasets[0].backgroundColor[arrRef[result[i].rId]] = '#00ff00';
+            charts[result[i].qId].update();
         }
-        charts[result[0].qId].data.datasets[0].backgroundColor[arrRef[result[0].rId]] = '#00ff00';
-        charts[result[0].qId].update();
     });
 
 
