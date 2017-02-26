@@ -27,7 +27,7 @@
     <% if(niveau) { %>
 
     <div class="niveau">
-        <h2 class="orangered-h2">Modification du niveau : <strong><%= niveau.intitule%></strong></h2>
+        <h3 class="orangered-h2">Modification du niveau : <strong><%= niveau.intitule%></strong></h3>
         <form method="post" action="/admin/niveau/edit">
             <h2><%= niveau.intitule %></h2>
             <input type="hidden" name="id" value="<%= niveau.id%>">

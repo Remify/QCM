@@ -236,7 +236,8 @@ button.red {
     width: 100%;
 }
 
-.view-niveau .niveau form {
+.view-niveau .niveau form,
+.view-matiere .matiere form {
     padding: 20px;
 }
 

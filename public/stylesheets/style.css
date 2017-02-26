@@ -569,6 +569,12 @@ footer p {
     text-align: center;
 }
 
+.flex-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 /***********************************************************************************************************************/
 
 /*****************************************************/
@@ -621,6 +627,9 @@ footer p {
 
 @media (min-width: 768px) {
 
+    .flex-btn {
+        flex-direction: row;
+    }
 
     .main-section .room{
         width: 70%;
@@ -629,12 +638,10 @@ footer p {
     /**********************************************/
     /***************  FORM-QUESTION  ***************/
     /**********************************************/
-    .questions form {
-        flex-direction: row;
-    }
+
 
     .questions p {
-        padding-top: 0;
+        padding-top: 20px;
         margin-right: 10px;
     }
 }
