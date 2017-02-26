@@ -163,7 +163,6 @@ router.post('/question/delete', function (req, res, next) {
 
 router.post('/question/new', function (req, res, next) {
 
-
     if(! req.body.matiere) {
         req.body.matiere = null
     }
@@ -172,19 +171,18 @@ router.post('/question/new', function (req, res, next) {
     }
 
     console.log(req.body)
-   // if (req.body.rIntitule && req.body.qIntitule && req.body.idniveau && req.body.idmatiere) {
 
-        var is_true = 0;
-        questionDAO.newQuestion(req.body.qIntitule, req.body.niveau, req.body.matiere, function (questionId) {
+    questionDAO.newQuestion(req.body.qIntitule, req.body.niveau, req.body.matiere, function (questionId) {
 
-            req.body.rIntitule.forEach(function (reponseIntitule) {
-                // Si l'intitule est vide, il ne passe pas
-                if (reponseIntitule) {
-                    questionDAO.newReponse(reponseIntitule, questionId, 0);
-                }
-            });
+        req.body.rIntitule.forEach(function (reponseIntitule, index) {
+
+            // Si l'intitule est vide, il ne passe pas
+            if (reponseIntitule) {
+                questionDAO.newReponse(reponseIntitule, questionId, req.body.istrue[index]);
+            }
         });
-    //}
+    });
+
     res.redirect('/admin/question/');
 });
 
