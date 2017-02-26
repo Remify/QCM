@@ -9,18 +9,20 @@
     <%- stylesheets %>
 </head>
 <body>
+<!-- Inclusion du header -->
+<% include templates/header.ejs %>
 
-    <!-- Inculsion du content -->
-    <div class="container">
-        <%- body %>
-    </div>
+<!-- Inculsion du content -->
+<div class="container">
+    <%- body %>
+</div>
 
-    <!-- Inclusion du footer -->
-    <% include templates/footer.ejs%>
+<!-- Inclusion du footer -->
+<% include templates/footer.ejs%>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/jquery-3.1.1.js"></script>
-    <script src="/js/index.front.js"></script>
-    <%-scripts%>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/jquery-3.1.1.js"></script>
+<script src="/js/index.front.js"></script>
+<%-scripts%>
 </body>
 </html>
