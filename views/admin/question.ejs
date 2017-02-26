@@ -27,7 +27,7 @@
             <h3 class="orangered-h2">Modification de la question : <strong><%= question.intitule%></strong></h3>
             <form method="post" action="/admin/question/edit">
                 <input type="hidden" name="id" value="<%= question.id%>">
-                <div>
+                <div class="p-t-20">
 
                     <label for="inputIntituleQuestion">Intitulé :</label>
                     <input name="intitule" value="<%= question.intitule %>" type="text" id="inputIntituleQuestion">
@@ -40,15 +40,23 @@
                         if(reponse.isTrue > 0){ checked = "checked" }
                         %>
 
-                        <div class="reponse"><br>
+                    <div class="reponse"><br>
+                        <div>
                             <label for=inputReponse-<%= reponse.id %>"> Reponse <span><%= index + 1 %></span> :</label>
-                            <input type="hidden" name="reponse-<%= reponse.id%>" value="<%= reponse.id%>" class="idInputHidden">
-                            <input type="text" class="repIntitule" data-nb-rep="<%= index + 1 %> " name="reponse-<%= reponse.id %>" id="inputReponse-<%= reponse.id %>" value="<%= reponse.intitule %>">
-                            <input type="checkbox" class="isTrue" name="reponse-<%= reponse.id%>" id="isTrue-<%= reponse.id%>" <%= checked %> >
-                            <label for="isTrue-<%= reponse.id%>">Réponse juste</label>
-                            <button class="deleteReponse" data-rid="<%= reponse.id%>" ><i class="fa fa-trash" aria-hidden="true"></i></button>
-                            <br>
+                            <input type="hidden" name="reponse-<%= reponse.id %>" value="<%= reponse.id %>"
+                                   class="idInputHidden">
+                            <input type="text" class="repIntitule" data-nb-rep="<%= index + 1 %> "
+                                   name="reponse-<%= reponse.id %>" id="inputReponse-<%= reponse.id %>"
+                                   value="<%= reponse.intitule %>">
                         </div>
+                        <div class="p-t-20">
+                            <input type="checkbox" class="isTrue" name="reponse-<%= reponse.id %>"
+                                   id="isTrue-<%= reponse.id %>" <%= checked %> >
+                            <label for="isTrue-<%= reponse.id %>">Réponse juste</label>
+                            <button class="deleteReponse" data-rid="<%= reponse.id %>"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </div>
+                        <br>
+                    </div>
                     <% } }) %>
 
                 </div>
