@@ -38,9 +38,8 @@
             <h3> Afficher réponse juste :  </h3>
             <!-- Rounded switch for results -->
             <label class="switch">
-                <input type="checkbox" class="toggleButton reponse">
+                <input type="checkbox" class="toggleButton reponse" value="<%= question.id%>">
                 <div class="slider round"></div>
-                <input type="hidden" name="idQst" value="<%= question.id%>">
             </label>
             <% }); %>
         </div>

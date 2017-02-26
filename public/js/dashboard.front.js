@@ -17,22 +17,17 @@ $(document).ready(function () {
         if(input.state == 'started') {
             $('#toggleStartRoom').prop('checked', true);
         }
-
         input.questions.forEach(function (question) {
             $('.toggleButton.question[data-question-id='+ question.id +']').prop('checked', true)
         });
-
     })
 
 
     $('.toggleButton.question').change(function () {
 
         if (this.checked) {
-
             socket.emit("displayQuestionToRoom", {questionId: this.dataset.questionId, room: roomName});
-
         } else {
-
             socket.emit("hideQuestionToRoom", {questionId: this.dataset.questionId, room: roomName});
         }
     })
@@ -40,9 +35,10 @@ $(document).ready(function () {
     //Afficher résultats par question
     $('.toggleButton.reponse').change(function () {
         if (this.checked) {
-            socket.emit("displayRightAnswer", {questionId: $( "input[name='idQst']" ).val(), room: roomName});
+            console.log($(this).val())
+            socket.emit("displayRightAnswer", {questionId: $(this).val(), room: roomName});
         } else {
-            socket.emit("hideRightAnswer", {questionId: $( "input[name='idQst']" ).val(), room: roomName});
+            socket.emit("hideRightAnswer", {questionId: $(this).val(), room: roomName});
         }
     })
 
