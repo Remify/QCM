@@ -18,12 +18,12 @@ var index = require('./routes/index');
 var room = require('./routes/room');
 var admin = require('./routes/admin');
 
-// Session Middleware
+// Session Middleware - Temps de la session 2h
 app.use(session({
     secret: 'qcmSecretKey',
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 }
+    cookie: { maxAge: 7200000 }
 }))
 
 // Services et Middlewares

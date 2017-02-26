@@ -10,5 +10,10 @@
         <% rooms.forEach(function (room) { %>
             <li class="roomElement"><a href="room/<%= room.id %>"><%= room.name %></a></li>
         <% }) %>
+        <li class="roomElement">
+            <form action="/admin/room/new" method="post">
+                <input type="text" name="roomIntitule" placeholder="Créer une nouvelle Room">
+            </form>
+        </li>
     </ul>
 </div>

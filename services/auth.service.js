@@ -8,7 +8,7 @@ var bcrypt = require('bcrypt-nodejs');
 var AuthService = {
 
     authRequire: function (req, res, next) {
-        console.log(req.session)
+
         if(req.session.loggedIn) {
             next();
         } else {
@@ -24,7 +24,7 @@ var AuthService = {
             if(results.length > 0 ) {
 
                 if(bcrypt.compareSync(pwd, results[0].password)) {
-                    console.log('in')
+
                     callback({code:200 })
                 } else {
                     callback({code:401, message: 'Erreur d\'authentification'})

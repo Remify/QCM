@@ -108,5 +108,29 @@ $(function() {
 
 
     }
+    
+    if($('#deleteRoomForm').length > 0) {
+
+        $( "#buttonDeleteRoom").click(function () {
+
+            $( "#dialog-confirm").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "Supprimer": function() {
+                        $( this ).dialog( "close" );
+                        $('#deleteRoomForm').submit();
+                    },
+                    "Annuler la suppression": function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+
+        })
+
+    }
 
 } );

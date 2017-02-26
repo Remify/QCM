@@ -105,6 +105,22 @@ router.get('/room/:id', function (req, res, next) {
     })
 });
 
+router.post('/room/new', function (req, res, next) {
+
+    RoomDAO.create(req.body.roomIntitule, function (results) {
+        res.redirect('/admin/room/' + results.insertId)
+    })
+
+});
+
+router.post('/room/delete', function (req, res, next) {
+
+    RoomDAO.delete(req.body.id, function () {
+        res.redirect('/admin/rooms')
+    })
+
+});
+
 /**
  * Mise à jour des questions d'une room.
  * D'abord on supprime les entrées dans room_questions, puis on ajoute les nouvelles (Bourrain mais efficace !)

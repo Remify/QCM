@@ -48,5 +48,13 @@
 
     </div>
 
-    <p><a href="<%= room.id %>/dashboard"> <button class="orangered-button">Démarrez la room</button></a></p>
+    <p>
+        <form action="/admin/room/delete" method="post" id="deleteRoomForm"><input type="hidden"  value="<%= room.id %>" name="id"></form>
+        <div id="dialog-confirm" title="Êtes vous sur ?" style="display: none;">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Vous allez supprimer cette room, êtes vous sur de vouloir continuer ?</p>
+        </div>
+
+        <a><button class="orangered-button" id="buttonDeleteRoom">Supprimer la room</button></a>
+        <a href="<%= room.id %>/dashboard"> <button class="orangered-button">Démarrez la room</button></a>
+    </p>
 </div>

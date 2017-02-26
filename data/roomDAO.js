@@ -10,6 +10,30 @@ var RoomDAO = {
         });
     },
 
+    // Création d'une room
+    create: function (name, callback){
+        var query = connection.query('INSERT INTO rooms SET name = ?', name, function (error, results, fields) {
+            if (error) throw error;
+            callback(results);
+        });
+    },
+
+    // Suppresion d'une room
+    delete: function (id, callback) {
+
+        // Suppressions des questions associés
+        this.removeQuestions(id, function () {
+            
+        });
+
+        var query = "DELETE FROM rooms WHERE id = " + id;
+
+        this.execute(query, function (results, error) {
+            callback(results, error);
+        });
+
+    },
+
     getAll: function (callback) {
         var query = "SELECT * from rooms"
         
