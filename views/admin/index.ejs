@@ -3,28 +3,32 @@
 
 <div class="form-question round-input-text">
     <h1 class="red-h1">Admin</h1>
-    <h2>Ajouter une question</h2>
+    <h2 class="blue-h2">Ajouter une question</h2>
     <form action="/admin/question/new" class="formNewQuestion" method="post">
         <div class="question">
+            <h3 class="orangered-h2">Paramétrez votre question</h3>
             <label>Intitulé de la question :</label>
             <input type="text" name="qIntitule">
-            <label>Id niveau : </label>
-            <input type="number" name="niveau">
-            <label>Id matiere :</label>
-            <input type="number" name="matiere">
+                <label>Niveau de la question : </label>
+                <input min="0" type="number" name="niveau">
+                <label>Matière de la question : </label>
+                <input min="0" type="number" name="matiere">
         </div>
 
         <div class="reponses">
+            <h3 class="orangered-h2">Paramétrez les réponses associées</h3>
             <div class="reponse">
-                <label>Réponse <span>1</span>:</label>
+                <label>Intitulé de la réponse <span>1</span>:</label>
                 <input type="text" name="rIntitule" data-nb-rep="1">
-                <label><input type="checkbox" name="istrue" value="1" checked value="0" unchecked> Réponse vraie ? </label>
+                <label><input type="checkbox" name="istrue" value="1" checked value="0" unchecked> Réponse vraie ?
+                </label>
             </div>
 
             <div class="reponse">
-                <label>Réponse <span>2</span>:</label>
+                <label>Intitulé de la réponse <span>2</span>:</label>
                 <input type="text" name="rIntitule" data-nb-rep="2">
-                <label><input type="checkbox" name="istrue" value="1" checked value="0" unchecked> Réponse vraie ? </label>
+                <label><input type="checkbox" name="istrue" value="1" checked value="0" unchecked> Réponse vraie ?
+                </label>
             </div>
         </div>
 
@@ -34,7 +38,7 @@
     </form>
 
     <div class="questions">
-        <h2> Modifications des questions existantes : </h2>
+        <h2 class="blue-h2"> Modifications des questions existantes : </h2>
         <% questions.forEach(function (question) { %>
         <form action="/admin/question/edit" class="formNewQuestion" method="post">
 
