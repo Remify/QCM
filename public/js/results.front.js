@@ -33,6 +33,53 @@ $(document).ready(function () {
         submissions.push(entry);
     });
 
+    //Si on a cliqué sur Réponse juste
+    socket.on('reponseJuste', function (result) {
+        console.log(charts);
+        /*charts[result[0].qId].config.options.defaultColor = 'rgba(0, 255, 0, 0.3)';
+        charts[result[0].qId].update();*/
+
+        var question = $('#question-' + result[0].qId).find('.json').data('json');
+
+        var dataReponses = [];
+        for(var i = 0; i < question.reponses.length; i++) {
+            dataReponses[i] = 0 ;
+        }
+
+        var data = {
+
+            // Labels
+            labels: question.reponses.map(function (reponse) {
+                return reponse.intitule
+            }),
+
+            datasets: [
+                {
+                    data: dataReponses,
+                    backgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
+                    ],
+                    hoverBackgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
+                    ]
+                }]
+        }
+
+        var myPieChart = new Chart($(this), {
+            type: 'pie',
+            data: data
+        });
+
+        charts[result[0].qId] = myPieChart ;
+
+        var context = document.getElementById('clients').getContext('2d');
+    });
+
+
 
     var updateData = function (idQuestion, idReponse, operator) {
 

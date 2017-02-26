@@ -24,6 +24,7 @@ $(document).ready(function () {
 
     })
 
+
     $('.toggleButton.question').change(function () {
 
         if (this.checked) {
@@ -35,7 +36,17 @@ $(document).ready(function () {
             socket.emit("hideQuestionToRoom", {questionId: this.dataset.questionId, room: roomName});
         }
     })
-    
+
+    //Afficher résultats par question
+    $('.toggleButton.reponse').change(function () {
+        if (this.checked) {
+            socket.emit("displayRightAnswer", {questionId: $( "input[name='idQst']" ).val(), room: roomName});
+        } else {
+            socket.emit("hideRightAnswer", {questionId: $( "input[name='idQst']" ).val(), room: roomName});
+        }
+    })
+
+
     $('#toggleStartRoom').change(function () {
 
         if(this.checked) {
