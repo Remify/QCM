@@ -48,6 +48,10 @@ $(document).ready(function () {
         }
 
         //On colorie la bonne réponse en vert
+        console.log();
+        if(charts[result[0].qId].data.datasets[0].data[arrRef[result[0].rId]] == 0){
+            charts[result[0].qId].data.datasets[0].data[arrRef[result[0].rId]] = 1;
+        }
         charts[result[0].qId].data.datasets[0].backgroundColor[arrRef[result[0].rId]] = '#00ff00';
         charts[result[0].qId].update();
     });
