@@ -1,25 +1,23 @@
-Installation :
-`Npm install`
+Installation
+==
 
-Lancement : `npm start`
+`$ Npm install`
 
-Visible sur localhost:3000
+Lancement : `$ npm start`
+
+Visible sur : [localhost:3000](localhost:3000) 
+
 
 Base de donné
 ===
+
 Installer `qcm-nodejs.sql` sur phpMyAdmin
 
 Nom de la base : `qcm-nodejs`
 
+Connexion Admin 
+==
+*login* : `admin`
 
-A voir
- ===
-Sur Express Generator : http://expressjs.com/fr/guide/routing.html
+*mot de passe* : `admin`
 
-Nodemon : Utilitaire qui relance le serveur à la modification
-
-
-ATTENTION =====> En cas d'erreurs de connexion mysql, verifier port de connexion 3306 CAR lucas travail sur port 3307
- ===
- enlever ligne dans  data/database.js :     port:'3307'
- port par defaut : 3306

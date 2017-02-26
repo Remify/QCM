@@ -8,12 +8,12 @@ var bcrypt = require('bcrypt-nodejs');
 var AuthService = {
 
     authRequire: function (req, res, next) {
-        next();
-        // if(req.session.loggedIn) {
-        //     next();
-        // } else {
-        //     res.redirect("/login");
-        // }
+
+        if(req.session.loggedIn) {
+            next();
+        } else {
+            res.redirect("/login");
+        }
     },
     
     login: function (login, pwd, callback) {
