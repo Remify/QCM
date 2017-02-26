@@ -2,9 +2,14 @@
 <% script('/js/admin.front.js') %>
 <% stylesheet('/stylesheets/admin.css') -%>
 
+<h1 class="red-h1">Gestion des matières</h1>
+
 <div class="view-matiere">
 
     <div class="leftMenu">
+        <h2 class="blue-h2">Matières disponibles</h2>
+        <p class="dark-p">Sélectionnez une matière pour la modifier</p>
+
         <ul>
             <% matieres.forEach(function (matiere) { %>
             <li><a href="<%= matiere.id %>"><%= matiere.intitule %></a></li>
@@ -12,7 +17,7 @@
             <li class="newmatiere">
                 <form method="post" action="/admin/matiere/new">
                     <input type="text" name="intitule" placeholder="Ajouter une matière">
-                    <input type="submit" value="Ajouter"  >
+                    <input class="blue-button" type="submit" value="Ajouter"  >
                 </form>
             </li>
         </ul>
@@ -21,6 +26,7 @@
     <% if(matiere) { %>
 
     <div class="matiere">
+        <h3 class="orangered-h2">Modification du niveau : <strong><%= matiere.intitule%></strong></h3>
         <form method="post" action="/admin/matiere/edit">
             <h2><%= matiere.intitule %></h2>
             <input type="hidden" name="id" value="<%= matiere.id%>">
@@ -30,7 +36,7 @@
         </form>
         <form method="post" action="/admin/matiere/delete">
             <input type="hidden" name="id" value="<%= matiere.id%>">
-            <input id="submitmatiere" type="submit" value="Supprimer" >
+            <input  class="red-button" id="submitmatiere" type="submit" value="Supprimer" >
         </form>
     </div>
 

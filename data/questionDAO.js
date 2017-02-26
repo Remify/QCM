@@ -84,7 +84,8 @@ var QuestionDAO = {
      * @param callback
      */
     newQuestion : function (qIntitule, id_niveau, id_matiere, callback) {
-        var query = connection.query('INSERT INTO question SET intitule=?, id_niveau=?, id_matiere=?', qIntitule, id_niveau, id_matiere, function (error, results, fields) {
+        var question = { id: null, intitule: qIntitule, id_niveau: id_niveau, id_matiere: id_matiere };
+        var query = connection.query('INSERT INTO question SET ?', question, function (error, results, fields) {
             if (error) throw error;
             callback(results.insertId);
         });
@@ -118,9 +119,9 @@ var QuestionDAO = {
         });
     },
 
-    newReponse : function (rIntitule, qId, callback) {
+    newReponse : function (rIntitule, qId, istrue, callback) {
 
-        var reponse = { id: null, intitule: rIntitule, question_id:qId };
+        var reponse = { id: null, intitule: rIntitule, question_id: qId, isTrue: istrue };
         var query = connection.query('INSERT INTO reponse SET ?', reponse, function (error, results, fields) {
             console.log(query);
             if (error) throw error;
@@ -144,6 +145,13 @@ var QuestionDAO = {
 
     getReponseByQuestionId: function (id, callback) {
         var query = "SELECT * FROM reponse WHERE question_id =" +id;
+        this.execute(query, function (results) {
+            callback(results);
+        })
+    },
+
+    getReponseJuste: function (Qid, callback) {
+        var query = "SELECT reponse.id as rId, room_questions.id as qId FROM reponse JOIN room_questions USING (question_id) WHERE (room_questions.id =" +Qid+" and reponse.isTrue = 1)";
         this.execute(query, function (results) {
             callback(results);
         })

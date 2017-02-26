@@ -13,6 +13,13 @@ router.get('', function (req, res, next) {
     });
 });
 
+//test afficher réponses justes
+router.post('/affRep', function (req, res, next) {
+    questionDAO.getReponseJuste(req.body.id);
+    res.redirect('/admin/room/' + req.body.id + '/dashboard');
+})
+
+
 //ajout de reponse question existante
 router.post('/reponse/new', function(req, res, next){
     questionDAO.newReponse(req.body.rIntitule, req.body.Qid, function () {
@@ -62,19 +69,19 @@ router.post('/question/edit', function (req, res, next) {
 
 router.post('/question/new', function (req, res, next) {
 
-    if (req.body.rIntitule && req.body.qIntitule) {
-
-        qIntitule = req.body.qIntitule;
-        questionDAO.newQuestion(qIntitule, function (questionId) {
+   // if (req.body.rIntitule && req.body.qIntitule && req.body.idniveau && req.body.idmatiere) {
+    console.log(req.body);
+        var is_true = 0;
+        questionDAO.newQuestion(req.body.qIntitule, req.body.niveau, req.body.matiere, function (questionId) {
 
             req.body.rIntitule.forEach(function (reponseIntitule) {
                 // Si l'intitule est vide, il ne passe pas
                 if (reponseIntitule) {
-                    questionDAO.newReponse(reponseIntitule, questionId);
+                    questionDAO.newReponse(reponseIntitule, questionId, 0);
                 }
             });
         });
-    }
+    //}
     res.redirect('/admin');
 });
 
@@ -169,7 +176,7 @@ router.get('/room/:id/dashboard', function (req, res, next) {
                 // Nous vérifions si qUID existe dans les questions
                 if (typeof questions['' + line.qUID] === 'undefined') {
 
-                    // Si non, on créer la question avec la premier réponse associé
+                    // Si non, on crée la question avec la première réponse associée
                     var question = new Question(line.qUID, line.qIntitule);
                     question.reponses.push({id: line.id, intitule: line.intitule});
 
@@ -199,9 +206,10 @@ router.get('/room/:id/results', function (req, res, next) {
     RoomDAO.retrieveById(req.params.id, function (results) {
         var room = results[0];
 
+        //TODO : appliquer uniquement aux questions passées en paramètre
         questionDAO.retrieveAllByRoomId(req.params.id, function (results) {
 
-            // Tableau des questions unique
+            // Tableau des questions uniques
             questions = [];
 
             // Pour chaque entrée :
@@ -210,7 +218,7 @@ router.get('/room/:id/results', function (req, res, next) {
                 // Nous vérifions si qUID existe dans les questions
                 if (typeof questions['' + line.qUID] === 'undefined') {
 
-                    // Si non, on créer la question avec la premier réponse associé
+                    // Si non, on crée la question avec la première réponse associée
                     var question = new Question(line.qUID, line.qIntitule);
                     question.reponses.push({id: line.id, intitule: line.intitule});
 

@@ -4,16 +4,20 @@
 <% stylesheet('/stylesheets/jquery-ui.css') -%>
 <% stylesheet('/stylesheets/jquery-ui.theme.css') -%>
 
-<form action="/login/connect" method="post" id="loginForm">
-    <label for="loginInput">Login :</label>
-    <input type="text" name="login" id="loginInput" placeholder="Login">
-    <label for="passwordInput">Mot de passe :</label>
-    <input type="password" name="password" id="passwordInput" placeholder="Mot de passe">
-    <input type="submit" value="Se connecter">
-</form>
+
+<section class="login">
+    <form action="/login/connect" method="post" id="loginForm">
+        <label for="loginInput">Login :</label>
+        <input type="text" name="login" id="loginInput" placeholder="Login">
+        <label for="passwordInput">Mot de passe :</label>
+        <input type="password" name="password" id="passwordInput" placeholder="Mot de passe">
+        <input class="blue-button" type="submit" value="Se connecter">
+    </form>
+
+    <div style="display: none;" id="alertAuth" title="401 - Accès non autorisé">
+        <p><b>Vous n'êtes pas autorisé à accéder à cette page. </b></p>
+    </div>
+
+</section>
 
 
-
-<div style="display: none;" id="alertAuth" title="401 - Accès non autorisé">
-    <p><b>Vous n'êtes pas autorisé à accéder à cette page. </b></p>
-</div>

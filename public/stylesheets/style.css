@@ -162,17 +162,19 @@ header a:hover {
 /***************  ROOMS QUESTIONS ***************/
 
 .question {
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: #f5f5f5;
-    margin:0 auto 20px auto;
+    margin: 20px;
+    padding-bottom: 30px;
 }
 
 .reponses {
-    width: 70%;
+    background-color: #f5f5f5;
+    width: 100%;
     text-align: center;
 }
 
@@ -293,7 +295,7 @@ header a:hover {
     color: #FF7373;
 }
 
-.rooms-list input[type="text"]{
+.rooms-list input[type="text"] {
 
 }
 
@@ -312,7 +314,7 @@ header a:hover {
 }
 
 #dataRoom p {
-    margin-bottom:20px;
+    margin-bottom: 20px;
     padding: 20px;
     color: #212121;
 }
@@ -358,6 +360,23 @@ header a:hover {
 }
 
 /**********************************************/
+/****************  ADMIN LOGIN ****************/
+/**********************************************/
+
+.login form {
+    padding: 50px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login label {
+    font-weight: bolder;
+    padding: 20px 0;
+}
+
+/**********************************************/
 /*******************  ADMIN  ******************/
 /**********************************************/
 
@@ -368,17 +387,9 @@ header a:hover {
     background-color: #FF7373;
 }
 
-
-.form-question h2 {
-    padding: 20px 0;
-    text-align: center;
-    background-color: #F5F5F5;
-}
-
 .form-question form {
     display: flex;
     align-items: center;
-    background-color: #F5F5F5;
     flex-direction: column;
 }
 
@@ -387,7 +398,7 @@ header a:hover {
 }
 
 .form-question form input {
-    margin-left: 0px;
+    margin-left: 0;
     transition: all 0.3s ease-in-out;
 }
 
@@ -454,6 +465,7 @@ header a:hover {
 }
 
 .reponse label {
+    font-weight: bolder;
     padding: 10px 0;
 }
 
@@ -531,7 +543,23 @@ footer p {
     background-color: orangered;
 }
 
-.round-input-text input[type="text"]{
+.black-button {
+    cursor: pointer;
+    background-color: transparent;
+    margin: 20px 5px;
+    color: #212121;
+    border-radius: 15px;
+    padding: 5px 25px;
+    border: 2px solid #212121;
+    transition: all 0.3s ease-in-out;
+}
+
+.black-button:hover {
+    color: white;
+    background-color: #212121;
+}
+
+.round-input-text input[type="text"] {
     width: 70%;
 }
 
@@ -540,6 +568,41 @@ footer p {
     padding: 20px 0;
     text-align: center;
     background-color: #FF7373;
+}
+
+.blue-h2 {
+    width: 100%;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    background-color: #4899CC;
+}
+
+.orangered-h2 {
+    width: 100%;
+    font-size: 21px;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    background-color: orangered;
+}
+
+.dark-p {
+    color: #212121;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.white-p {
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.flex-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /***********************************************************************************************************************/
@@ -594,15 +657,49 @@ footer p {
 
 @media (min-width: 768px) {
 
-    /**********************************************/
-    /***************  FORM-QUESTION  ***************/
-    /**********************************************/
-    .questions form {
+    .flex-btn {
         flex-direction: row;
     }
 
+    .main-section .room {
+        width: 70%;
+    }
+
+    /**********************************************/
+    /***************  FORM-QUESTION  ***************/
+    /**********************************************/
+
+    .question {
+        width: 70%;
+        border: 1px solid #212121;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    .edit-question {
+        width: 70%;
+        border: 1px solid #212121;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        margin: 20px auto;
+    }
+
+    .edit-question form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reponses {
+        width: 70%;
+        border: 1px solid #212121;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
     .questions p {
-        padding-top: 0;
+        padding-top: 20px;
         margin-right: 10px;
     }
 }

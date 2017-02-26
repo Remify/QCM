@@ -2,9 +2,14 @@
 <% script('/js/admin.front.js') %>
 <% stylesheet('/stylesheets/admin.css') -%>
 
+
+<h1 class="red-h1">Gestion des niveaux</h1>
+
 <div class="view-niveau">
 
     <div class="leftMenu">
+        <h2 class="blue-h2">Niveaux disponibles</h2>
+        <p class="dark-p">Sélectionnez un niveau pour le modifier</p>
         <ul>
             <% niveaux.forEach(function (niveau) { %>
             <li><a href="<%= niveau.id %>"><%= niveau.intitule %></a></li>
@@ -13,7 +18,7 @@
             <li class="newNiveau">
                 <form method="post" action="/admin/niveau/new">
                     <input type="text" name="intitule" placeholder="Ajouter un niveau">
-                    <input type="submit" value="Ajouter" >
+                    <input class="blue-button" type="submit" value="Ajouter" >
                 </form>
             </li>
         </ul>
@@ -22,6 +27,7 @@
     <% if(niveau) { %>
 
     <div class="niveau">
+        <h3 class="orangered-h2">Modification du niveau : <strong><%= niveau.intitule%></strong></h3>
         <form method="post" action="/admin/niveau/edit">
             <h2><%= niveau.intitule %></h2>
             <input type="hidden" name="id" value="<%= niveau.id%>">
@@ -31,7 +37,7 @@
         </form>
         <form method="post" action="/admin/niveau/delete">
             <input type="hidden" name="id" value="<%= niveau.id%>">
-            <input id="submitNiveau" type="submit" value="Supprimer" >
+            <input class="red-button" id="submitNiveau" type="submit" value="Supprimer" >
         </form>
     </div>
 
