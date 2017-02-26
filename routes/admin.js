@@ -45,6 +45,20 @@ router.get('/question/:id?', function (req, res, next) {
 
 });
 
+router.get('/new/question', function (req, res, next) {
+
+    NiveauDAO.getAll(function (niveaux) {
+
+        MatiereDAO.getAll(function (matieres) {
+
+            res.render('admin/newQuestion', {matieres: matieres, niveaux:niveaux});
+
+        });
+
+    });
+
+});
+
 //test afficher réponses justes
 router.post('/affRep', function (req, res, next) {
     questionDAO.getReponseJuste(req.body.id);
@@ -67,27 +81,8 @@ router.post('/question/delete/reponse', function (req, res, next) {
     });
 });
 
-
-//modification / suppression de réponses
-router.post('/question/editR', function (req, res, next) {
-    if(req.body.action == 'Supprimer'){
-        questionDAO.deleteReponse(req.body.id, function () {
-            questionDAO.getReponseByQuestionId(req.body.Qid, function (reponses) {
-                res.render('reponses',{reponses: reponses});
-            })
-        });
-    }
-    if(req.body.action == 'Enregistrer'){
-        questionDAO.editReponse(req.body.id, req.body.rValue, req.body.Qid, function(){
-            questionDAO.getReponseByQuestionId(req.body.Qid, function (reponses) {
-                res.render('reponses',{reponses: reponses});
-            });
-        });
-    }
-    //TODO modification de questions
-});
-
 router.post('/question/edit', function (req, res, next) {
+    console.log(req.body);
 
     // Gestion des réponses
     var reponsesKeys = Object.keys(req.body).filter(function (key) {
@@ -98,12 +93,14 @@ router.post('/question/edit', function (req, res, next) {
 
     // Construction des réponses
     reponsesKeys.forEach(function (reponse) {
-        console.log(req.body[reponse])
+
             var isTrue = 0;
 
             if(typeof req.body[reponse][2] !== 'undefined') {
                 isTrue = 1 ;
             }
+
+
             reponses.push({
                 id: req.body[reponse][0],
                 intitule: req.body[reponse][1],
@@ -118,7 +115,7 @@ router.post('/question/edit', function (req, res, next) {
         if(! Array.isArray(req.body.new)) {
             news.push(req.body.new)
         }
-        console.log(news)
+
         news.forEach(function (n) {
             if(n !== "on") {
                 newReponses.push({
@@ -133,7 +130,7 @@ router.post('/question/edit', function (req, res, next) {
     }
     newReponses.forEach(function (reponse) {
         questionDAO.newReponse(reponse.intitule, req.body.id, reponse.isTrue, function () {
-            console.log('new rep')
+
         })
     })
 
@@ -150,29 +147,16 @@ router.post('/question/edit', function (req, res, next) {
 
 });
 
-
-//modification / suppression de question
-// router.post('/question/edit', function (req, res, next) {
-//     if(req.body.action == 'Supprimer'){
-//          questionDAO.deleteQuestion(req.body.id, function () {
-//             res.redirect('/admin');
-//         });
-//     } else if(req.body.action == 'Enregistrer') {
-//         questionDAO.editQuestion(req.body.id, req.body.qValue, req.body.id_niveau, req.body.id_matiere, function () {
-//             res.redirect('/admin');
-//         });
-//     } else if(req.body.action == 'Modifier reponses') {
-//         questionDAO.getReponseByQuestionId(req.body.id, function (reponses) {
-//             res.render('reponses',{reponses: reponses});
-//         });
-//     }
-//
-// });
+router.post('/question/delete', function (req, res, next) {
+    questionDAO.deleteQuestion(req.body.id, function () {
+        res.redirect('/admin/question/')
+    })
+});
 
 router.post('/question/new', function (req, res, next) {
 
    // if (req.body.rIntitule && req.body.qIntitule && req.body.idniveau && req.body.idmatiere) {
-    console.log(req.body);
+
         var is_true = 0;
         questionDAO.newQuestion(req.body.qIntitule, req.body.niveau, req.body.matiere, function (questionId) {
 

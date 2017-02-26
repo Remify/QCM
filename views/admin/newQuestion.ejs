@@ -1,0 +1,56 @@
+<% layout('../layout-admin') %>
+<% script('/js/admin.front.js') %>
+
+<div class="form-question round-input-text">
+    <h1 class="red-h1">Gestion des questions</h1>
+    <h2 class="blue-h2">Ajouter une question</h2>
+    <form action="/admin/question/new" class="formNewQuestion" method="post">
+        <div class="question">
+            <h3 class="orangered-h2">Paramétrez votre question</h3>
+            <label>Intitulé de la question :</label>
+            <input type="text" name="qIntitule">
+
+
+            <label for="niveaunSelect">Niveau</label>
+            <select id="niveauSelect" name="niveau">
+                <option value=""></option>
+                <% niveaux.forEach(function (niveau) {                %>
+                    <option value="<%= niveau.id %>"><%= niveau.intitule %></option>
+                <% }) %>
+            </select>
+
+
+            <label for="matiereSelect">Matière</label>
+            <select id="matiereSelect" name="matiere">
+                <option value=""></option>
+                <% matieres.forEach(function (matiere) {   %>
+                    <option value="<%= matiere.id %>">
+                        <%= matiere.intitule %>
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="reponses">
+            <h3 class="orangered-h2">Paramétrez les réponses associées</h3>
+            <div class="reponse">
+                <label>Intitulé de la réponse <span>1</span>:</label>
+                <input type="text" name="rIntitule" data-nb-rep="1">
+                <label><input type="checkbox" name="istrue" value="1" checked value="0" unchecked> Réponse vraie ?
+                </label>
+            </div>
+
+            <div class="reponse">
+                <label>Intitulé de la réponse <span>2</span>:</label>
+                <input type="text" name="rIntitule" data-nb-rep="2">
+                <label><input type="checkbox" name="istrue" value="1" checked value="0" unchecked> Réponse vraie ?
+                </label>
+            </div>
+        </div>
+
+        <button type="button" id="addResponseButton">Ajouter une réponse</button>
+        <br>
+        <input class="blue-button" type="submit" value="Enregistrer la question">
+    </form>
+
+</div>
