@@ -384,6 +384,22 @@ header a:hover {
 /*******************  ADMIN  ******************/
 /**********************************************/
 
+.admin-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-btn div {
+     margin:20px 0;
+ }
+
+.admin-btn a {
+    text-decoration: none
+}
+
+
 .form-question h1 {
     color: white;
     padding: 20px 0;
@@ -483,6 +499,8 @@ header a:hover {
     margin: 10px 0;
 }
 
+
+
 /**********************************************/
 /******************  FOOTER  ******************/
 /**********************************************/
@@ -528,6 +546,7 @@ footer p {
     padding: 5px 25px;
     border: 2px solid #4899CC;
     transition: all 0.3s ease-in-out;
+    text-decoration: none;
 }
 
 .blue-button:hover {
@@ -611,6 +630,7 @@ footer p {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-content: center;
 }
 
 .p-t-20{
@@ -717,4 +737,10 @@ footer p {
         padding-top: 20px;
         margin-right: 10px;
     }
+
+    .admin-btn {
+        flex-direction: row;
+
+    }
+
 }
