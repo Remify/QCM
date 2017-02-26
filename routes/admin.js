@@ -82,6 +82,14 @@ router.post('/question/delete/reponse', function (req, res, next) {
 });
 
 router.post('/question/edit', function (req, res, next) {
+
+
+    if(! req.body.id_matiere) {
+        req.body.id_matiere = null
+    }
+    if(! req.body.id_niveau) {
+        req.body.id_niveau = null
+    }
     console.log(req.body);
 
     // Gestion des réponses
@@ -155,6 +163,15 @@ router.post('/question/delete', function (req, res, next) {
 
 router.post('/question/new', function (req, res, next) {
 
+
+    if(! req.body.matiere) {
+        req.body.matiere = null
+    }
+    if(! req.body.niveau) {
+        req.body.niveau = null
+    }
+
+    console.log(req.body)
    // if (req.body.rIntitule && req.body.qIntitule && req.body.idniveau && req.body.idmatiere) {
 
         var is_true = 0;
@@ -168,7 +185,7 @@ router.post('/question/new', function (req, res, next) {
             });
         });
     //}
-    res.redirect('/admin');
+    res.redirect('/admin/question/');
 });
 
 router.get('/rooms', function (req, res, next) {
