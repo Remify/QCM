@@ -16,15 +16,19 @@ var QuestionDAO = {
 
     },
     retrieveById: function(id, callback) {
-            var query = "SELECT question.id as qId, question.intitule as qIntitule, reponse.id as rId, reponse.intitule as rIntitule FROM question, reponse WHERE question.id = reponse.question_id AND question.id = " + id;
+
+            var query = "SELECT question.id as qId, question.intitule as qIntitule, reponse.id as rId, reponse.intitule as rIntitule, question.id_niveau, question.id_matiere, reponse.isTrue FROM question LEFT JOIN reponse ON question.id = reponse.question_id  AND 	question.id = " + id;
             this.execute(query, function (results, fields) {
 
                 if(results[0]) {
                     var q = new Question(results[0].qId, results[0].qIntitule);
+                    q.id_niveau = results[0].id_niveau;
+                    q.id_matiere = results[0].id_matiere;
                     results.forEach(function (result) {
                         var reponse = {
                             id: result.rId,
-                            intitule: result.rIntitule
+                            intitule: result.rIntitule,
+                            isTrue : result.isTrue
                         };
                         q.reponses.push(reponse);
                     })
@@ -113,7 +117,7 @@ var QuestionDAO = {
     editQuestion : function (id, qIntitule, id_niveau, id_matiere, callback) {
         qIntitule = qIntitule.replace(/(['"])/g, "\\$1");
         var query = connection.query("REPLACE INTO question(id, intitule, id_niveau, id_matiere) VALUES(" + id + ",'" + qIntitule + "'," + id_niveau + "," + id_matiere + ")" , function (error, results, fields) {
-            console.log(query);
+
             if (error) throw error;
             callback(results.insertId);
         });
@@ -135,10 +139,12 @@ var QuestionDAO = {
         })
     },
 
-    editReponse: function (id, rIntitule, Qid, callback) {
+    editReponse: function (id, rIntitule, isTrue, Qid, callback) {
         rIntitule = rIntitule.replace(/(['"])/g, "\\$1");
-        var query = connection.query("REPLACE INTO reponse (id, intitule, question_id) VALUES(" + id + ",'" + rIntitule + "'," + Qid + ")" , function (error, results, fields) {
+        var query = connection.query("REPLACE INTO reponse (id, intitule, isTrue, question_id ) VALUES(" + id + ",'" + rIntitule + "'," + isTrue + ", " + Qid + ")" , function (error, results, fields) {
+
             if (error) throw error;
+            console.log(query)
             callback(results.insertId);
         });
     },

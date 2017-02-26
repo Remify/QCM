@@ -1,0 +1,92 @@
+<% layout('../layout-admin') %>
+<% script('/js/admin.front.js') %>
+<% stylesheet('/stylesheets/admin.css') -%>
+
+
+<h1 class="red-h1">Gestion des questions</h1>
+
+<div class="view-niveau">
+
+    <div class="leftMenu">
+        <h2 class="blue-h2">Questions disponibles</h2>
+        <p class="dark-p">Sélectionnez une question pour la modifier</p>
+        <ul>
+            <% questions.forEach(function (question) { %>
+            <li><a href="<%= question.id %>"><%= question.intitule %></a></li>
+            <% })%>
+
+            <li class="newQuestion">
+                <form method="post" action="/admin/question/new">
+                    <input type="text" name="intitule" placeholder="Ajouter une question">
+                    <input class="blue-button" type="submit" value="Ajouter" >
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <% if(question) { %>
+
+        <div class="questions">
+            <h3 class="orangered-h2">Modification de la question : <strong><%= question.intitule%></strong></h3>
+            <form method="post" action="/admin/question/edit">
+                <input type="hidden" name="id" value="<%= question.id%>">
+                <div>
+
+                    <label for="inputIntituleQuestion">Intitulé :</label>
+                    <input name="intitule" value="<%= question.intitule %>" type="text" id="inputIntituleQuestion">
+
+                </div>
+                <div class="">
+                    <% question.reponses.forEach(function (reponse, index) {
+                    if(reponse.id) {
+                        var checked = "";
+                        if(reponse.isTrue){ checked = "checked" }
+                        %>
+                        <div class=""><br>
+                            <label for=inputReponse-<%= reponse.id %>"> Reponse <%= index + 1 %> :</label>
+                            <input type="text" name="reponse-<%= reponse.id %>" id="inputReponse-<%= reponse.id %>" value="<%= reponse.intitule %>">
+                            <input type="checkbox" name="reponse-<%= reponse.id%>-true" id="isTrue-<%= reponse.id%>" <%= checked %> >
+                            <label for="isTrue-<%= reponse.id%>">Réponse juste</label>
+                            <br>
+                        </div>
+                    <% } }) %>
+                </div>
+                <div class="matiereQuestion">
+                    <label for="matiereSelect">Matière</label>
+                    <select id="matiereSelect" name="id_matiere">
+                        <option value=""></option>
+                        <% matieres.forEach(function (matiere) {
+                            var selected = "";
+                            if(matiere.id == question.id_matiere) { selected = "selected"}
+                        %>
+                        <option value="<%= matiere.id %>" <%= selected %>><%= matiere.intitule %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="niveauQuestion">
+                    <label for="niveaunSelect">Niveau</label>
+                    <select id="niveauSelect" name="id_niveau">
+                        <option value=""></option>
+                        <% niveaux.forEach(function (niveau) {
+                            var selected = "";
+                            if(niveau.id == question.id_niveau) { selected = "selected"}
+                        %>
+                        <option value="<%= niveau.id %>" <%= selected %>><%= niveau.intitule %></option>
+                        <% }) %>
+                    </select>
+                </div>
+
+
+                <input type="submit" class="blue-button" value="Enregistrer les modifications">
+            </form>
+
+            <form method="post" action="/admin/question/delete">
+                <input type="hidden" name="id" value="<%= question.id%>">
+                <input class="red-button" id="submitNiveau" type="submit" value="Supprimer" >
+            </form>
+        </div>
+
+    <% } %>
+
+</div>
+
