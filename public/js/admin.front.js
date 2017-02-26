@@ -132,6 +132,13 @@ $(function() {
         })
 
     }
+    $('.checkboxValue').change(function () {
+        if($(this).prop('checked')){
+            $(this).parent('label').siblings('.hiddenIsTrue').attr('value', '1')
+        } else {
+            $(this).parent('label').siblings('.hiddenIsTrue').attr('value', '0')
+        }
+    })
 
 
 } );
